@@ -24,54 +24,71 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script>
-        // Function to load and display MCQs
-        async function loadMCQs() {
+        // Function to load and display MCQs and short questions
+        async function loadQuestions() {
             try {
                 const response = await fetch('../data/qp01.json');
                 const data = await response.json();
                 const mcqsContainer = document.getElementById('mcqs-container');
-                
+                const shortQuestionsContainer = document.getElementById('short-questions-container');
+    
+                // Load MCQs
                 data.mcqs.forEach(mcq => {
                     const questionDiv = document.createElement('div');
                     questionDiv.className = 'mb-6';
-                    
+    
                     let questionHTML = `
                         <p class="text-gray-400">
                             <strong>(${mcq.id})</strong> ${mcq.question}
                         </p>
                     `;
-                    
+    
                     if (mcq.code) {
                         questionHTML += `
                             <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code}</code></pre>
                         `;
                     }
-                    
+    
                     const options = Object.entries(mcq.options)
                         .map(([key, value]) => `${key}) ${value}`)
                         .join('    ');
-                    
+    
                     questionHTML += `
                         <p class="text-gray-400">
                             ${options}
                         </p>
                     `;
-                    
+    
                     questionDiv.innerHTML = questionHTML;
                     mcqsContainer.appendChild(questionDiv);
                 });
-                
+    
+                // Load Short Questions
+                data.shortQuestions.forEach(shortQuestion => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'mb-6';
+    
+                    const questionHTML = `
+                        <p class="text-gray-400">
+                            <strong>(${shortQuestion.id})</strong> ${shortQuestion.question}
+                        </p>
+                    `;
+    
+                    questionDiv.innerHTML = questionHTML;
+                    shortQuestionsContainer.appendChild(questionDiv);
+                });
+    
                 // Highlight code blocks after adding them
                 Prism.highlightAll();
             } catch (error) {
-                console.error('Error loading MCQs:', error);
+                console.error('Error loading questions:', error);
                 const mcqsContainer = document.getElementById('mcqs-container');
                 mcqsContainer.innerHTML = '<p class="text-red-500">Error loading questions. Please try again later.</p>';
             }
         }
-
-        // Load MCQs when the page loads
-        window.addEventListener('load', loadMCQs);
+    
+        // Load questions when the page loads
+        window.addEventListener('load', loadQuestions);
     </script>
 </head>
 <body class="bg-[#020817] text-gray-100 min-h-screen">
@@ -85,28 +102,35 @@
         </a>
     </div>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Paper Title Section -->
-        <div class="mb-16 animate-title">
-            <h1 class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
-                JavaScript Question Paper
-            </h1>
-            <p class="text-gray-400 text-lg">
-                Date: 31st January 2025
-            </p>
-        </div>
+ <!-- Main Content -->
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Paper Title Section -->
+    <div class="mb-16 animate-title">
+        <h1 class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
+            JavaScript Question Paper
+        </h1>
+        <p class="text-gray-400 text-lg">
+            Date: 31st January 2025
+        </p>
+    </div>
 
-        <!-- Questions Section -->
-        <div class="space-y-8">
-            <!-- Q.1: Multiple Choice Questions -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6">Q.1 Multiple Choice Questions</h3>
-                <div id="mcqs-container" class="space-y-4">
-                </div>
+    <!-- Questions Section -->
+    <div class="space-y-8">
+        <!-- Q.1: Multiple Choice Questions -->
+        <div>
+            <h3 class="text-2xl font-bold mb-6">Q.1 Multiple Choice Questions</h3>
+            <div id="mcqs-container" class="space-y-4">
             </div>
         </div>
-    </main>
+
+        <!-- Q.2: Short Questions -->
+        <div>
+            <h3 class="text-2xl font-bold mb-6">Q.2 Attempt any five (Short Questions)</h3>
+            <div id="short-questions-container" class="space-y-4">
+            </div>
+        </div>
+    </div>
+</main>
 
     <footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800">
         <p>&copy; 2025 PracticeDojo. All rights reserved.</p>

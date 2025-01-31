@@ -106,5 +106,27 @@
                 "d": "undefined"
             }
         }
+    ],
+    "shortQuestions": [
+        {
+            "id": 1,
+            "question": "Devise a JavaScript function organizePlaylist(songs) that takes an array of song objects. Each song object has properties title, artist, and genre. The function should return an object where keys are genres, and the values are arrays of song titles for that genre, sorted alphabetically. Assume all input is valid (i.e., the songs array exists and each song object has the required properties)."
+        },
+        {
+            "id": 2,
+            "question": "You're implementing a comment system. Given a string representing a comment, write a function to truncate it to a maximum length of 150 characters and add an ellipsis ('...') if it was truncated. Handle cases where the comment is already shorter than 150 characters."
+        },
+        {
+            "id": 3,
+            "question": "Create a function createLogger(prefix) that takes a string prefix as an argument. It should return a new function that takes a string message as an argument and logs the prefix followed by the message to the console."
+        },
+        {
+            "id": 4,
+            "question": "You are building a calendar application. You need to represent different types of calendar events. Create a base Event object with properties like title, date, and time. Then, using prototypal inheritance, create two specific event types: Meeting (which adds an attendees property) and Appointment (which adds a location property). Ensure that both Meeting and Appointment inherit the common properties from Event. Implement a getDescription() method on each object that returns a string describing the event, including its specific properties."
+        },
+        {
+            "id": 5,
+            "question": "You are building a library for data analysis. You need to create a flexible function for performing mathematical operations on arrays of numbers. Use currying to create a function that can be partially applied to specify the operation (e.g., add, subtract, multiply) and then applied to an array of numbers to perform the calculation."
+        }
     ]
 }
