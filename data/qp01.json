@@ -1,0 +1,36 @@
+{
+    "mcqs": [
+        {
+            "id": 1,
+            "question": "What is the output of the following code?",
+            "code": "console.log(typeof typeof 1);",
+            "options": {
+                "a": "\"number\"",
+                "b": "\"string\"",
+                "c": "\"undefined\"",
+                "d": "TypeError"
+            }
+        },
+        {
+            "id": 2,
+            "question": "Which event occurs first in the DOM event flow?",
+            "options": {
+                "a": "Target phase",
+                "b": "Bubbling phase",
+                "c": "Capturing phase",
+                "d": "None of these"
+            }
+        },
+        {
+            "id": 3,
+            "question": "What is the output of the following code?",
+            "code": "let x = 10;\nlet y = x++;\nconsole.log(y);",
+            "options": {
+                "a": "10",
+                "b": "11",
+                "c": "undefined",
+                "d": "TypeError"
+            }
+        }
+    ]
+}

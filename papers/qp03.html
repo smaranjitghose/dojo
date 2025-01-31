@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PracticeDojo - HTML and CSS</title>
+    <title>PracticeDojo - JavaScript Question Paper</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,7 +19,10 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="../assets/css/papers.css">
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 </head>
 <body class="bg-[#020817] text-gray-100 min-h-screen">
     <!-- Back Button -->
@@ -37,35 +40,54 @@
         <!-- Paper Title Section -->
         <div class="mb-16 animate-title">
             <h1 class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
-                HTML and CSS
+                JavaScript Question Paper
             </h1>
             <p class="text-gray-400 text-lg">
-                Questions and solutions for HTML and CSS.
+                Questions and solutions for JavaScript.
             </p>
         </div>
 
-        <!-- Questions and Solutions Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Questions -->
-            <div class="paper-card">
-                <div class="bg-[#1E293B] rounded-xl p-6">
-                    <h3 class="text-2xl font-bold mb-6">Questions</h3>
-                    <div class="space-y-4">
-                        <p class="text-gray-400">Question 1: What is the box model in CSS?</p>
-                        <p class="text-gray-400">Question 2: How do you center a div horizontally and vertically?</p>
-                        <!-- Add more questions as needed -->
+        <!-- Questions Section -->
+        <div class="space-y-8">
+            <!-- Q.1: Multiple Choice Questions -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Q.1 (A) Multiple Choice Questions</h3>
+                <div class="space-y-4">
+                    <!-- Question 1 -->
+                    <div>
+                        <p class="text-gray-400">
+                            <strong>(1)</strong> What is the output of the following code?
+                        </p>
+                        <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">console.log(typeof typeof 1);</code></pre>
+                        <p class="text-gray-400">
+                            a) "number"    b) "string"<br>
+                            c) "undefined"    d) TypeError
+                        </p>
                     </div>
-                </div>
-            </div>
 
-            <!-- Solutions -->
-            <div class="paper-card">
-                <div class="bg-[#1E293B] rounded-xl p-6">
-                    <h3 class="text-2xl font-bold mb-6">Solutions</h3>
-                    <div class="space-y-4">
-                        <p class="text-gray-400">Solution 1: The box model consists of content, padding, border, and margin.</p>
-                        <p class="text-gray-400">Solution 2: Use flexbox or grid to center a div.</p>
-                        <!-- Add more solutions as needed -->
+                    <!-- Question 2 -->
+                    <div>
+                        <p class="text-gray-400">
+                            <strong>(2)</strong> Which event occurs first in the DOM event flow?
+                        </p>
+                        <p class="text-gray-400">
+                            a) Target phase    b) Bubbling phase<br>
+                            c) Capturing phase    d) None of these
+                        </p>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div>
+                        <p class="text-gray-400">
+                            <strong>(3)</strong> What is the output of the following code?
+                        </p>
+                        <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">let x = 10;
+let y = x++;
+console.log(y);</code></pre>
+                        <p class="text-gray-400">
+                            a) 10    b) 11<br>
+                            c) undefined    d) TypeError
+                        </p>
                     </div>
                 </div>
             </div>
