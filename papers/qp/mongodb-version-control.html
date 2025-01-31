@@ -63,7 +63,98 @@
                 </div>
             </div>
             <div class="section-content p-6">
-                <!-- Dummy content -->
+                <ol class="list-decimal pl-5 space-y-6">
+                    <li class="space-y-2">
+                        <p>How do you sort documents in descending order by age?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) db.users.find().sort({ age: 0 })</p>
+                            <p>b) db.users.find().sort({ age: -1 })</p>
+                            <p>c) db.users.find().sort({ age: 'desc' })</p>
+                            <p>d) db.users.find().orderBy({ age: 'down' })</p>
+                        </div>
+                    </li>
+                    <li class="space-y-2">
+                        <p>What operator updates if document exists, inserts if not?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) $set</p>
+                            <p>b) $update</p>
+                            <p>c) $upsert</p>
+                            <p>d) $setOrInsert</p>
+                        </div>
+                    </li>
+                    <li class="space-y-2">
+                        <p>Which operator matches values in an array?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) $array</p>
+                            <p>b) $in</p>
+                            <p>c) $contains</p>
+                            <p>d) $has</p>
+                        </div>
+                    </li>
+                    <li class="space-y-2">
+                        <p>What tool is used to import JSON/CSV data?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) mongoimport</p>
+                            <p>b) mongorestore</p>
+                            <p>c) mongoload</p>
+                            <p>d) mongofetch</p>
+                        </div>
+                    </li>
+                    <li class="space-y-2">
+                        <p>What is the minimum number of nodes needed for a replica set?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) 1</p>
+                            <p>b) 2</p>
+                            <p>c) 3</p>
+                            <p>d) 4</p>
+                        </div>
+                    </li>
+                    <li class="space-y-2">
+                        <p>What is the maximum number of indexes per collection?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) 32</p>
+                            <p>b) 64</p>
+                            <p>c) 128</p>
+                            <p>d) 256</p>
+                        </div>
+                    </li>
+                    <li class="space-y-2">
+                        <p>You need to temporarily switch tasks but aren't ready to commit. What should you do?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) Commit incomplete changes</p>
+                            <p>b) Use git stash</p>
+                            <p>c) Create a new branch</p>
+                            <p>d) Copy files manually</p>
+                        </div>
+                    </li>
+                    <li class="space-y-2">
+                        <p>You need to modify your last commit message. What command should you use?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) git commit --amend</p>
+                            <p>b) git modify</p>
+                            <p>c) git message</p>
+                            <p>d) git update</p>
+                        </div>
+                    </li>
+                    <li class="space-y-2">
+                        <p>You accidentally committed to main branch instead of feature branch. What's the best action?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) Delete the repository and clone again</p>
+                            <p>b) Create a new branch from the current state</p>
+                            <p>c) git reset to move commit to correct branch</p>
+                            <p>d) Ignore it and continue working</p>
+                        </div>
+                    </li>
+                    <li class="space-y-2">
+                        <p>What's the purpose of SSH keys in Git?</p>
+                        <div class="pl-5 space-y-1">
+                            <p>a) Encrypt commits</p>
+                            <p>b) Secure authentication with remote</p>
+                            <p>c) Encrypt repository</p>
+                            <p>d) Sign commits</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
@@ -75,7 +166,16 @@
                 </div>
             </div>
             <div class="section-content p-6">
-                <!-- Dummy content -->
+                <p class="mb-4 text-gray-300">Attempt any five:</p>
+                <ol class="list-decimal pl-5 space-y-6">
+                    <li>What is a capped collection in MongoDB? Explain with example</li>
+                    <li>Explain the concept of Sharding in MongoDB? List the different sharding strategies.</li>
+                    <li>Discuss about different types of indexes in MongoDB using code examples</li>
+                    <li>What are embedded documents in MongoDB? Give an example</li>
+                    <li>What is a Git tag? Explain the difference between lightweight and annotated tags.</li>
+                    <li>What is Git Reflog? How is it different from git reset?</li>
+                    <li>Explain the difference between git rebase and git merge</li>
+                </ol>
             </div>
         </section>
 
@@ -87,7 +187,49 @@
                 </div>
             </div>
             <div class="section-content p-6">
-                <!-- Dummy content -->
+                <p class="mb-4 text-gray-300">Attempt any three:</p>
+                <ol class="list-decimal pl-5 space-y-8">
+                    <li class="space-y-4">
+                        <p>You are working with a MongoDB database called social_media with collections posts, users, and comments. Perform the following tasks:</p>
+                        <ol class="list-[lower-alpha] pl-5 space-y-2">
+                            <li>Insert five documents into the posts collection with fields: content (string), author (string), likes (number), tags (array of strings), createdAt (date)</li>
+                            <li>Find all posts containing the tag "technology" and sort by likes in descending order</li>
+                            <li>Update all posts with more than 100 likes by adding a field trending set to true</li>
+                            <li>Calculate the average number of likes per author</li>
+                            <li>Delete all posts older than 30 days</li>
+                        </ol>
+                    </li>
+                    <li class="space-y-4">
+                        <p>You are working with a MongoDB database called blog that contains the collections articles, authors, and comments. Perform the following tasks:</p>
+                        <ol class="list-[lower-alpha] pl-5 space-y-2">
+                            <li>Insert five documents into the articles collection with the fields: title (string), content (string), author (string), tags (array of strings), createdAt (date)</li>
+                            <li>Create a text index on the title and content fields of the articles collection.</li>
+                            <li>Find all articles containing the word "JavaScript" in either the title or content fields, sorted by createdAt in descending order.</li>
+                            <li>Update all articles containing the word "database" in the content field by adding a new field category with the value "Database".</li>
+                            <li>Delete all articles that do not contain any tags</li>
+                        </ol>
+                    </li>
+                    <li class="space-y-4">
+                        <p>Imagine you are working on the clone of an open-source project in your local system. How will you achieve the following tasks using Git CLI commands:</p>
+                        <ol class="list-[lower-alpha] pl-5 space-y-2">
+                            <li>Set remotes for your forked remote (origin) and the upstream remote (upstream).</li>
+                            <li>Fetch all feature branches from the upstream remote.</li>
+                            <li>Create a feature branch feat6 linked to upstream/feat6.</li>
+                            <li>Stage and commit a change with the message "Completed Task 6" on the feat6 branch.</li>
+                            <li>Push the feat6 branch to your forked remote</li>
+                        </ol>
+                    </li>
+                    <li class="space-y-4">
+                        <p>Imagine you are working on a feature branch and want to clean up your commit history by squashing multiple commits into one. How will you achieve the following tasks using Git CLI commands:</p>
+                        <ol class="list-[lower-alpha] pl-5 space-y-2">
+                            <li>View the commit history to identify the commits to squash.</li>
+                            <li>Start an interactive rebase for the last 4 commits.</li>
+                            <li>Squash the last 3 commits into the first commit, keeping the first commit's message.</li>
+                            <li>Force-push the squashed branch to the remote repository.</li>
+                            <li>Verify the commit history after squashing</li>
+                        </ol>
+                    </li>
+                </ol>
             </div>
         </section>
     </main>

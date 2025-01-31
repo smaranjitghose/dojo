@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML and CSS Solutions</title>
+    <title>HTML and CSS Solutions - Parul Impact A Batch</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
@@ -24,7 +24,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="../paper-styles.css">
+    <link rel="stylesheet" href="../../assets/css/papers.css">
     <style>
         .solution {
             border-left: 4px solid #4299E1;
@@ -49,16 +49,6 @@
         .answer {
             color: #10B981;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        .copy-button {
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 0.25rem;
-            padding: 0.25rem 0.5rem;
         }
     </style>
 </head>
@@ -74,9 +64,6 @@
                 <a href="../../papers.html" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors">
                     <i class="fas fa-arrow-left mr-2"></i>Back
                 </a>
-                <button onclick="toggleSearch()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors">
-                    <i class="fas fa-search mr-2"></i>Search
-                </button>
                 <button onclick="window.print()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors">
                     <i class="fas fa-print mr-2"></i>Print
                 </button>
@@ -84,57 +71,30 @@
         </div>
     </header>
 
-    <!-- Search Bar (Hidden by default) -->
-    <div id="searchBar" class="hidden">
-        <div class="container mx-auto px-4 py-4">
-            <input type="text" id="searchInput" 
-                   class="w-full bg-white/10 text-white border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:border-primary"
-                   placeholder="Search within solutions...">
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Section 1: MCQs Solutions -->
-        <section class="mb-8 paper-section">
-            <div class="section-header bg-gradient-to-r from-blue-600 to-purple-600 p-1 rounded-lg cursor-pointer" onclick="toggleSection(this)">
-                <div class="bg-dark p-4 rounded-lg flex justify-between items-center">
-                    <h2 class="text-2xl font-bold">Q.1 Multiple Choice Questions Solutions</h2>
-                    <i class="fas fa-chevron-down transition-transform"></i>
-                </div>
-            </div>
-            <div class="section-content hidden bg-dark p-4 rounded-lg">
-                <!-- Dummy solutions -->
+    <!-- Solutions -->
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Multiple Choice Questions</h2>
+            <div class="solution">
+                <!-- Add MCQ solutions here -->
             </div>
         </section>
 
-        <!-- Section 2: Short Questions Solutions -->
-        <section class="mb-8 paper-section">
-            <div class="section-header bg-gradient-to-r from-blue-600 to-purple-600 p-1 rounded-lg cursor-pointer" onclick="toggleSection(this)">
-                <div class="bg-dark p-4 rounded-lg flex justify-between items-center">
-                    <h2 class="text-2xl font-bold">Q.2 Short Questions Solutions</h2>
-                    <i class="fas fa-chevron-down transition-transform"></i>
-                </div>
-            </div>
-            <div class="section-content hidden bg-dark p-4 rounded-lg">
-                <!-- Dummy solutions -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Short Questions</h2>
+            <div class="solution">
+                <!-- Add short question solutions here -->
             </div>
         </section>
 
-        <!-- Section 3: Long Questions Solutions -->
-        <section class="mb-8 paper-section">
-            <div class="section-header bg-gradient-to-r from-blue-600 to-purple-600 p-1 rounded-lg cursor-pointer" onclick="toggleSection(this)">
-                <div class="bg-dark p-4 rounded-lg flex justify-between items-center">
-                    <h2 class="text-2xl font-bold">Q.3 Long Questions Solutions</h2>
-                    <i class="fas fa-chevron-down transition-transform"></i>
-                </div>
-            </div>
-            <div class="section-content hidden bg-dark p-4 rounded-lg">
-                <!-- Dummy solutions -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Long Questions</h2>
+            <div class="solution">
+                <!-- Add long question solutions here -->
             </div>
         </section>
     </main>
 
-    <script src="../solution-script.js"></script>
+    <script src="../../assets/js/papers.js"></script>
 </body>
 </html>
