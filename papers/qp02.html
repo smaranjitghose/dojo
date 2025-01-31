@@ -52,7 +52,10 @@
 
                     if (mcq.code) {
                         questionHTML += `
-                            <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code}</code></pre>
+                            <div class="relative">
+                                <button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.nextElementSibling.textContent)">Copy</button>
+                                <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code.replace(/`/g, '')}</code></pre>
+                            </div>
                         `;
                     }
 
@@ -103,7 +106,10 @@
                                 <li class="text-gray-400 mb-2">
                                     ${subpart}
                                     ${longQuestion.code && index === longQuestion.subparts.length - 1 ? `
-                                        <pre class="bg-[#1E293B] p-4 rounded-md mt-2"><code class="language-javascript">${longQuestion.code}</code></pre>
+                                        <div class="relative">
+                                            <button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.nextElementSibling.textContent)">Copy</button>
+                                            <pre class="bg-[#1E293B] p-4 rounded-md mt-2"><code class="language-javascript">${longQuestion.code.replace(/`/g, '')}</code></pre>
+                                        </div>
                                     ` : ''}
                                 </li>
                             `;
@@ -122,6 +128,14 @@
                 const mcqsContainer = document.getElementById('mcqs-container');
                 mcqsContainer.innerHTML = '<p class="text-red-500">Error loading questions. Please try again later.</p>';
             }
+        }
+
+        function copyToClipboard(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
         }
 
         // Load questions when the page loads

@@ -52,7 +52,10 @@
 
                     if (mcq.code) {
                         questionHTML += `
-                            <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code}</code></pre>
+                            <div class="relative">
+                                <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code}</code></pre>
+                                <button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.parentNode.querySelector('pre').textContent)">Copy</button>
+                            </div>
                         `;
                     }
 
@@ -103,7 +106,10 @@
                                 <li class="text-gray-400 mb-2">
                                     ${subpart}
                                     ${longQuestion.code && index === longQuestion.subparts.length - 1 ? `
-                                        <pre class="bg-[#1E293B] p-4 rounded-md mt-2"><code class="language-javascript">${longQuestion.code}</code></pre>
+                                        <div class="relative">
+                                            <pre class="bg-[#1E293B] p-4 rounded-md mt-2"><code class="language-javascript">${longQuestion.code}</code></pre>
+                                            <button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.parentNode.querySelector('pre').textContent)">Copy</button>
+                                        </div>
                                     ` : ''}
                                 </li>
                             `;
