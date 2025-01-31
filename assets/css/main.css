@@ -1,19 +1,29 @@
+/* CSS Variables */
+:root {
+    --dojo-dark: #020817;
+    --dojo-card: #0F172A;
+    --dojo-accent: #38BDF8;
+    --dojo-accent-hover: #0EA5E9;
+    --dojo-text: #F1F5F9;
+    --dojo-gray: #94A3B8;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0F172A;
+    background: var(--dojo-card);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #38BDF8;
+    background: var(--dojo-accent);
     border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0EA5E9;
+    background: var(--dojo-accent-hover);
 }
 
 /* Hero animations */
@@ -46,7 +56,6 @@
     }
 }
 
-/* Hero section animations */
 @keyframes slideFromTop {
     0% {
         opacity: 0;
@@ -67,15 +76,7 @@
     }
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
+/* Hero section animations */
 .animate-title {
     animation: slideFromTop 1s ease-out forwards;
 }
@@ -93,7 +94,7 @@
 }
 
 .hero-gradient {
-    background: linear-gradient(to bottom, #0F172A, #020817);
+    background: linear-gradient(to bottom, var(--dojo-card), var(--dojo-dark));
     position: relative;
 }
 
@@ -110,27 +111,33 @@
 }
 
 /* Tech card styles */
-.tech-card {
+.tech-card, .practice-card {
     position: relative;
     overflow: hidden;
     opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
+    transition: all 0.3s ease;
 }
 
-.tech-card::before {
+.tech-card::before, .practice-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+    background: linear-gradient(90deg, transparent, var(--dojo-accent), transparent);
     transform: translateX(-100%);
     transition: transform 0.6s ease;
 }
 
-.tech-card:hover::before {
+.tech-card:hover::before, .practice-card:hover::before {
     transform: translateX(100%);
+}
+
+.tech-card:hover, .practice-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1);
 }
 
 /* Tech item styles */
@@ -138,6 +145,7 @@
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+    will-change: transform, background;
 }
 
 .tech-item::after {
@@ -147,12 +155,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255, 255, 255, 0.03),
-        transparent
-    );
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
     transform: rotate(45deg);
     animation: shine 3s ease-in-out infinite;
     opacity: 0;
@@ -170,35 +173,12 @@
 
 .tech-item img {
     transition: all 0.3s ease;
+    will-change: transform, filter;
 }
 
 .tech-item:hover img {
     transform: scale(1.1);
     filter: brightness(1.1);
-}
-
-/* Practice card styles */
-.practice-card {
-    position: relative;
-    overflow: hidden;
-}
-
-.practice-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(56, 189, 248, 0.1),
-        transparent
-    );
-    transform: rotate(45deg);
-    transition: all 0.6s ease;
-    animation: shine 3s ease-in-out infinite;
 }
 
 /* Grid animations */
@@ -214,60 +194,6 @@
 .grid > div:nth-child(5) { animation-delay: 0.5s; }
 .grid > div:nth-child(6) { animation-delay: 0.6s; }
 
-/* Button styles */
-.btn-primary {
-    background: #38BDF8;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
-}
-
-.btn-primary::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255, 255, 255, 0.1),
-        transparent
-    );
-    transform: rotate(45deg);
-    transition: all 0.6s ease;
-}
-
-.btn-primary:hover::after {
-    animation: shine 1.5s ease-in-out;
-}
-
-/* Loading animation for images */
-img {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-img.loaded {
-    opacity: 1;
-}
-
-/* Card hover effects */
-.tech-card {
-    transition: all 0.3s ease;
-}
-
-.tech-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1);
-}
-
 /* Footer animation */
 footer {
     position: relative;
@@ -281,6 +207,14 @@ footer::before {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+    background: linear-gradient(90deg, transparent, var(--dojo-accent), transparent);
     opacity: 0.2;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
 }
