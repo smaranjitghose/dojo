@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PracticeDojo - JavaScript Question Paper</title>
+    <title>PracticeDojo - Express and API Testing</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,6 +23,56 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script>
+        // Function to load and display MCQs
+        async function loadMCQs() {
+            try {
+                const response = await fetch('../data/qp01.json');
+                const data = await response.json();
+                const mcqsContainer = document.getElementById('mcqs-container');
+                
+                data.mcqs.forEach(mcq => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'mb-6';
+                    
+                    let questionHTML = `
+                        <p class="text-gray-400">
+                            <strong>(${mcq.id})</strong> ${mcq.question}
+                        </p>
+                    `;
+                    
+                    if (mcq.code) {
+                        questionHTML += `
+                            <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code}</code></pre>
+                        `;
+                    }
+                    
+                    const options = Object.entries(mcq.options)
+                        .map(([key, value]) => `${key}) ${value}`)
+                        .join('    ');
+                    
+                    questionHTML += `
+                        <p class="text-gray-400">
+                            ${options}
+                        </p>
+                    `;
+                    
+                    questionDiv.innerHTML = questionHTML;
+                    mcqsContainer.appendChild(questionDiv);
+                });
+                
+                // Highlight code blocks after adding them
+                Prism.highlightAll();
+            } catch (error) {
+                console.error('Error loading MCQs:', error);
+                const mcqsContainer = document.getElementById('mcqs-container');
+                mcqsContainer.innerHTML = '<p class="text-red-500">Error loading questions. Please try again later.</p>';
+            }
+        }
+
+        // Load MCQs when the page loads
+        window.addEventListener('load', loadMCQs);
+    </script>
 </head>
 <body class="bg-[#020817] text-gray-100 min-h-screen">
     <!-- Back Button -->
@@ -40,10 +90,10 @@
         <!-- Paper Title Section -->
         <div class="mb-16 animate-title">
             <h1 class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
-                JavaScript Question Paper
+                Express and API Testing
             </h1>
             <p class="text-gray-400 text-lg">
-                Questions and solutions for JavaScript.
+                Date: 31st January 2025
             </p>
         </div>
 
@@ -51,51 +101,15 @@
         <div class="space-y-8">
             <!-- Q.1: Multiple Choice Questions -->
             <div>
-                <h3 class="text-2xl font-bold mb-6">Q.1 (A) Multiple Choice Questions</h3>
-                <div class="space-y-4">
-                    <!-- Question 1 -->
-                    <div>
-                        <p class="text-gray-400">
-                            <strong>(1)</strong> What is the output of the following code?
-                        </p>
-                        <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">console.log(typeof typeof 1);</code></pre>
-                        <p class="text-gray-400">
-                            a) "number"    b) "string"<br>
-                            c) "undefined"    d) TypeError
-                        </p>
-                    </div>
-
-                    <!-- Question 2 -->
-                    <div>
-                        <p class="text-gray-400">
-                            <strong>(2)</strong> Which event occurs first in the DOM event flow?
-                        </p>
-                        <p class="text-gray-400">
-                            a) Target phase    b) Bubbling phase<br>
-                            c) Capturing phase    d) None of these
-                        </p>
-                    </div>
-
-                    <!-- Question 3 -->
-                    <div>
-                        <p class="text-gray-400">
-                            <strong>(3)</strong> What is the output of the following code?
-                        </p>
-                        <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">let x = 10;
-let y = x++;
-console.log(y);</code></pre>
-                        <p class="text-gray-400">
-                            a) 10    b) 11<br>
-                            c) undefined    d) TypeError
-                        </p>
-                    </div>
+                <h3 class="text-2xl font-bold mb-6">Q.1 Multiple Choice Questions</h3>
+                <div id="mcqs-container" class="space-y-4">
                 </div>
             </div>
         </div>
     </main>
 
     <footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800">
-        <p>&copy; 2025 Practice Questions Hub by Smaranjit Ghose. All rights reserved.</p>
+        <p>&copy; 2025 PracticeDojo. All rights reserved.</p>
     </footer>
 </body>
 </html>

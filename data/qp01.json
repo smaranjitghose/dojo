@@ -24,12 +24,86 @@
         {
             "id": 3,
             "question": "What is the output of the following code?",
-            "code": "let x = 10;\nlet y = x++;\nconsole.log(y);",
+            "code": "class Rocket {\n  constructor() { this.payload = 1; }\n  getPayload() { return this.payload; }\n}\nconst starship = Rocket();\nconsole.log(starship.payload);",
             "options": {
-                "a": "10",
-                "b": "11",
-                "c": "undefined",
+                "a": "1",
+                "b": "null",
+                "c": "TypeError",
+                "d": "ReferenceError"
+            }
+        },
+        {
+            "id": 4,
+            "question": "What is the output of the following code?",
+            "code": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');",
+            "options": {
+                "a": "1, 2, 3, 4",
+                "b": "1, 4, 3, 2",
+                "c": "1, 4, 2, 3",
+                "d": "1, 3, 4, 2"
+            }
+        },
+        {
+            "id": 5,
+            "question": "What is the output of the following code?",
+            "code": "console.log(1 + +\"2\" + \"2\");",
+            "options": {
+                "a": "\"122\"",
+                "b": "\"14\"",
+                "c": "\"32\"",
                 "d": "TypeError"
+            }
+        },
+        {
+            "id": 6,
+            "question": "Which array method doesn't modify the original array?",
+            "options": {
+                "a": "push()",
+                "b": "splice()",
+                "c": "map()",
+                "d": "sort()"
+            }
+        },
+        {
+            "id": 7,
+            "question": "What is the output of the following code?",
+            "code": "const book = { title: \"Autobiography of a Yogi\" };\nconst { title: bookName = \"Unknown\" } = book;\nconsole.log(bookName);",
+            "options": {
+                "a": "\"Autobiography of a Yogi\"",
+                "b": "\"Unknown\"",
+                "c": "undefined",
+                "d": "{ title: \"Autobiography of a Yogi\" }"
+            }
+        },
+        {
+            "id": 8,
+            "question": "What's the best way to handle asynchronous errors?",
+            "options": {
+                "a": "try/catch",
+                "b": ".catch()",
+                "c": "window.onerror",
+                "d": "Error event listener"
+            }
+        },
+        {
+            "id": 9,
+            "question": "What's the difference between Object.freeze() and Object.seal()?",
+            "options": {
+                "a": "No difference",
+                "b": "freeze prevents modifications, seal allows property value changes",
+                "c": "seal prevents modifications, freeze allows property value changes",
+                "d": "Both allow adding new properties"
+            }
+        },
+        {
+            "id": 10,
+            "question": "What is the output of the following code?",
+            "code": "const sym1 = Symbol(\"key\");\nconst sym2 = Symbol(\"key\");\nconsole.log(sym1 === sym2);",
+            "options": {
+                "a": "true",
+                "b": "false",
+                "c": "TypeError",
+                "d": "undefined"
             }
         }
     ]

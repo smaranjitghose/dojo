@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PracticeDojo - HTML and CSS</title>
+    <title>PracticeDojo - Node and Intro to Backend</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,7 +19,60 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="../assets/css/papers.css">
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script>
+        // Function to load and display MCQs
+        async function loadMCQs() {
+            try {
+                const response = await fetch('../data/qp01.json');
+                const data = await response.json();
+                const mcqsContainer = document.getElementById('mcqs-container');
+                
+                data.mcqs.forEach(mcq => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'mb-6';
+                    
+                    let questionHTML = `
+                        <p class="text-gray-400">
+                            <strong>(${mcq.id})</strong> ${mcq.question}
+                        </p>
+                    `;
+                    
+                    if (mcq.code) {
+                        questionHTML += `
+                            <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code}</code></pre>
+                        `;
+                    }
+                    
+                    const options = Object.entries(mcq.options)
+                        .map(([key, value]) => `${key}) ${value}`)
+                        .join('    ');
+                    
+                    questionHTML += `
+                        <p class="text-gray-400">
+                            ${options}
+                        </p>
+                    `;
+                    
+                    questionDiv.innerHTML = questionHTML;
+                    mcqsContainer.appendChild(questionDiv);
+                });
+                
+                // Highlight code blocks after adding them
+                Prism.highlightAll();
+            } catch (error) {
+                console.error('Error loading MCQs:', error);
+                const mcqsContainer = document.getElementById('mcqs-container');
+                mcqsContainer.innerHTML = '<p class="text-red-500">Error loading questions. Please try again later.</p>';
+            }
+        }
+
+        // Load MCQs when the page loads
+        window.addEventListener('load', loadMCQs);
+    </script>
 </head>
 <body class="bg-[#020817] text-gray-100 min-h-screen">
     <!-- Back Button -->
@@ -37,36 +90,19 @@
         <!-- Paper Title Section -->
         <div class="mb-16 animate-title">
             <h1 class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
-                HTML and CSS
+                NodeJS and Intro to Backend
             </h1>
             <p class="text-gray-400 text-lg">
-                Questions and solutions for HTML and CSS.
+                Date: 31st January 2025
             </p>
         </div>
 
-        <!-- Questions and Solutions Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Questions -->
-            <div class="paper-card">
-                <div class="bg-[#1E293B] rounded-xl p-6">
-                    <h3 class="text-2xl font-bold mb-6">Questions</h3>
-                    <div class="space-y-4">
-                        <p class="text-gray-400">Question 1: What is the box model in CSS?</p>
-                        <p class="text-gray-400">Question 2: How do you center a div horizontally and vertically?</p>
-                        <!-- Add more questions as needed -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Solutions -->
-            <div class="paper-card">
-                <div class="bg-[#1E293B] rounded-xl p-6">
-                    <h3 class="text-2xl font-bold mb-6">Solutions</h3>
-                    <div class="space-y-4">
-                        <p class="text-gray-400">Solution 1: The box model consists of content, padding, border, and margin.</p>
-                        <p class="text-gray-400">Solution 2: Use flexbox or grid to center a div.</p>
-                        <!-- Add more solutions as needed -->
-                    </div>
+        <!-- Questions Section -->
+        <div class="space-y-8">
+            <!-- Q.1: Multiple Choice Questions -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Q.1 Multiple Choice Questions</h3>
+                <div id="mcqs-container" class="space-y-4">
                 </div>
             </div>
         </div>
