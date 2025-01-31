@@ -1,0 +1,190 @@
+{
+  "title": "JavaScript Question Paper",
+  "date": "31st January 2025",
+    "mcqs": [
+      {
+        "id": 1,
+        "question": "What is the output of the following code?\n\n```javascript\nconsole.log(typeof typeof 1);\n```",
+        "code": "console.log(typeof typeof 1);",
+        "options": {
+          "a": "\"number\"",
+          "b": "\"string\"",
+          "c": "\"undefined\"",
+          "d": "TypeError"
+        }
+      },
+      {
+        "id": 2,
+        "question": "Which event occurs first in the DOM event flow?",
+        "code": null,
+        "options": {
+          "a": "Target phase",
+          "b": "Bubbling phase",
+          "c": "Capturing phase",
+          "d": "None of these"
+        }
+      },
+      {
+        "id": 3,
+        "question": "What is the output of the following code?\n\n```javascript\nclass Rocket {\n  constructor() { this.payload = 1; }\n  getPayload() { return this.payload; }\n}\nconst starship = Rocket();\nconsole.log(starship.payload);\n```",
+        "code": "class Rocket {\n  constructor() { this.payload = 1; }\n  getPayload() { return this.payload; }\n}\nconst starship = Rocket();\nconsole.log(starship.payload);",
+        "options": {
+          "a": "1",
+          "b": "null",
+          "c": "TypeError",
+          "d": "ReferenceError"
+        }
+      },
+      {
+        "id": 4,
+        "question": "What is the output of the following code?\n\n```javascript\nconsole.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');\n```",
+        "code": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');",
+        "options": {
+          "a": "1, 2, 3, 4",
+          "b": "1, 4, 3, 2",
+          "c": "1, 4, 2, 3",
+          "d": "1, 3, 4, 2"
+        }
+      },
+      {
+        "id": 5,
+        "question": "What is the output of the following code?\n\n```javascript\nconsole.log(1 + +\"2\" + \"2\");\n```",
+        "code": "console.log(1 + +\"2\" + \"2\");",
+        "options": {
+          "a": "\"122\"",
+          "b": "\"14\"",
+          "c": "\"32\"",
+          "d": "TypeError"
+        }
+      },
+      {
+        "id": 6,
+        "question": "Which array method doesn't modify the original array?",
+        "code": null,
+        "options": {
+          "a": "push()",
+          "b": "splice()",
+          "c": "map()",
+          "d": "sort()"
+        }
+      },
+      {
+        "id": 7,
+        "question": "What is the output of the following code?\n\n```javascript\nconst book = { title: \"Autobiography of a Yogi\" };\nconst { title: bookName = \"Unknown\" } = book;\nconsole.log(bookName);\n```",
+        "code": "const book = { title: \"Autobiography of a Yogi\" };\nconst { title: bookName = \"Unknown\" } = book;\nconsole.log(bookName);",
+        "options": {
+          "a": "\"Autobiography of a Yogi\"",
+          "b": "\"Unknown\"",
+          "c": "undefined",
+          "d": "{ title: \"Autobiography of a Yogi\" }"
+        }
+      },
+      {
+        "id": 8,
+        "question": "What's the best way to handle asynchronous errors?",
+        "code": null,
+        "options": {
+          "a": "try/catch",
+          "b": ".catch()",
+          "c": "window.onerror",
+          "d": "Error event listener"
+        }
+      },
+      {
+        "id": 9,
+        "question": "What's the difference between Object.freeze() and Object.seal()?",
+        "code": null,
+        "options": {
+          "a": "No difference",
+          "b": "freeze prevents modifications, seal allows property value changes",
+          "c": "seal prevents modifications, freeze allows property value changes",
+          "d": "Both allow adding new properties"
+        }
+      },
+      {
+        "id": 10,
+        "question": "What is the output of the following code?\n\n```javascript\nconst sym1 = Symbol(\"key\");\nconst sym2 = Symbol(\"key\");\nconsole.log(sym1 === sym2);\n```",
+        "code": "const sym1 = Symbol(\"key\");\nconst sym2 = Symbol(\"key\");\nconsole.log(sym1 === sym2);",
+        "options": {
+          "a": "true",
+          "b": "false",
+          "c": "TypeError",
+          "d": "undefined"
+        }
+      }
+    ],
+    "shortQuestions": [
+      {
+        "id": 1,
+        "question": "Devise a JavaScript function `organizePlaylist(songs)` that takes an array of song objects. Each song object has properties `title`, `artist`, and `genre`. The function should return an object where keys are genres, and the values are arrays of song titles for that genre, sorted alphabetically. Assume all input is valid (i.e., the songs array exists and each song object has the required properties)."
+      },
+      {
+        "id": 2,
+        "question": "You're implementing a comment system. Given a string representing a comment, write a function to truncate it to a maximum length of 150 characters and add an ellipsis (\"...\") if it was truncated. Handle cases where the comment is already shorter than 150 characters."
+      },
+      {
+        "id": 3,
+        "question": "Create a function `createLogger(prefix)` that takes a string prefix as an argument. It should return a new function that takes a string message as an argument and logs the prefix followed by the message to the console."
+      },
+      {
+        "id": 4,
+        "question": "You are building a calendar application. You need to represent different types of calendar events. Create a base `Event` object with properties like `title`, `date`, and `time`. Then, using prototypal inheritance, create two specific event types: `Meeting` (which adds an `attendees` property) and `Appointment` (which adds a `location` property). Ensure that both `Meeting` and `Appointment` inherit the common properties from `Event`. Implement a `getDescription()` method on each object that returns a string describing the event, including its specific properties."
+      },
+      {
+        "id": 5,
+        "question": "You are building a library for data analysis. You need to create a flexible function for performing mathematical operations on arrays of numbers. Use currying to create a function that can be partially applied to specify the operation (e.g., add, subtract, multiply) and then applied to an array of numbers to perform the calculation."
+      },
+      {
+        "id": 6,
+        "question": "DeepSeek, a newly funded AI startup, is launching multiple services: a main website at deepseek.com, an API at api.deepseek.com, and will be using Google Workspace for email. List the necessary DNS record types and their specific values to achieve it."
+      },
+      {
+        "id": 7,
+        "question": "You are building tests for a tax calculation function `calculateTax(income)` present inside a `income.js` file. Perform the following:\na) Set up a testing framework (Vitest, Cypress, or Jest) in your project.\nb) Create and structure your test file.\nc) Write unit tests to verify different income brackets using the chosen testing framework."
+      }
+    ],
+    "longQuestions": [
+      {
+        "id": 1,
+        "question": "Create a webpage with:",
+        "subparts": [
+          "An input field for password.",
+          "A div to display a strength message.",
+          "Now, write JavaScript code to show \"Weak\", \"Medium\", or \"Strong\" in different colors as user types based on password length (less than 6, less than 10, 10 or more characters)."
+        ]
+      },
+      {
+        "id": 2,
+        "question": "Using JavaScript and HTML, Create a form system that:",
+        "subparts": [
+          "Has three steps (personal info, address, payment)",
+          "Validates each step before allowing next",
+          "Allows going back to previous steps",
+          "Saves progress in local storage",
+          "Submits all data at final step"
+        ]
+      },
+      {
+        "id": 3,
+        "question": "You are building a task management system using JavaScript. Implement the following:",
+        "subparts": [
+          "Create a class `TaskManager` with a private property `#tasks` (array of task objects with `{id, title, status, createdAt}`).",
+          "Add methods `addTask(title)`, `editTask(id, newTitle)`, and `toggleStatus(id)`, maintaining an operations history array for undo/redo.",
+          "Implement `undoLastAction()` and `redoLastAction()` methods using the operations history.",
+          "Add methods `saveToStorage()` and `loadFromStorage()` using `localStorage` to persist tasks.",
+          "Implement a method `syncTabs()` using the 'storage' event listener to sync state when changes occur in other tabs."
+        ]
+      },
+      {
+        "id": 4,
+        "question": "You are building a vehicle speed monitoring system.",
+        "subparts": [
+          "Create a class `SpeedLimiter` with private properties `#currentSpeed` and `#maxSpeed`.",
+          "Add a getter `speed` that returns current speed in km/h.",
+          "Add a setter `speed` that prevents exceeding `maxSpeed`, throwing an error if attempted.",
+          "Add a getter `speedMPH` that converts and returns speed in miles per hour.",
+          "Add methods `accelerate(amount)` and `brake(amount)` using the setter."
+        ]
+      }
+    ]
+  }

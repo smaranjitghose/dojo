@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PracticeDojo - Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dojo-dark': '#020817',
+                        'dojo-card': '#0F172A',
+                        'dojo-accent': '#38BDF8',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <style>
+        @media print {
+            body {
+                background-color: white !important;
+                color: black !important;
+            }
+            
+            .dark * {
+                color: black !important;
+                background-color: white !important;
+            }
+
+            #search-input, button {
+                display: none !important;
+            }
+
+            pre, code {
+                border: 1px solid #ddd !important;
+                page-break-inside: avoid;
+            }
+
+            @page {
+                margin: 2cm;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#020817] text-gray-100 min-h-screen">
+    <!-- Back Button -->
+    <div class="container mx-auto px-4 py-6">
+        <a href="../../papers.html" class="inline-flex items-center text-dojo-accent hover:text-dojo-accent/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Papers
+        </a>
+    </div>
+
+    <!-- Search bar and print button -->
+    <div class="container mx-auto px-4 flex justify-end items-center mb-6">
+        <button onclick="window.location.href='../../papers/qp01.html'" class="ml-4 px-4 py-2 bg-dojo-accent text-white rounded-lg hover:bg-blue-500 transition-colors">
+            <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+            Question Paper
+        </button>
+        <button onclick="window.print()" class="ml-4 px-4 py-2 bg-dojo-accent text-white rounded-lg hover:bg-blue-500 transition-colors">
+            <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            Print
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Paper Title Section -->
+        <div class="mb-16 animate-title">
+            <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
+                <!-- Title will be dynamically inserted here -->
+            </h1>
+            <p id="paper-date" class="text-gray-400 text-lg">
+                <!-- Date will be dynamically inserted here -->
+            </p>
+        </div>
+
+        <!-- Solutions Section -->
+        <div class="space-y-12">
+            <!-- Q.1: Multiple Choice Solutions -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Q.1 Multiple Choice Solutions</h3>
+                <div id="mcqs-container" class="space-y-8">
+                </div>
+            </div>
+
+            <!-- Q.2: Short Questions Solutions -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Q.2 Short Questions Solutions</h3>
+                <div id="short-questions-container" class="space-y-8">
+                </div>
+            </div>
+
+            <!-- Q.3: Long Questions Solutions -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Q.3 Long Questions Solutions</h3>
+                <div id="long-questions-container" class="space-y-8">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800">
+        <p>&copy; 2025 PracticeDojo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to load and display solutions
+        async function loadSolutions() {
+            try {
+                // Fetch solutions
+                const response = await fetch('../../data/sol01.json');
+                const data = await response.json();
+
+                // Set paper title and date
+                document.getElementById('paper-title').textContent = data.title;
+                document.getElementById('paper-date').textContent = `Date: ${data.date}`;
+
+                const mcqsContainer = document.getElementById('mcqs-container');
+                const shortQuestionsContainer = document.getElementById('short-questions-container');
+                const longQuestionsContainer = document.getElementById('long-questions-container');
+
+                // Load MCQ Solutions
+                data.mcqs.forEach(mcq => {
+                    const solutionDiv = document.createElement('div');
+                    solutionDiv.className = 'p-6 bg-dojo-card rounded-lg';
+
+                    let solutionHTML = `
+                        <div class="mb-4">
+                            <h4 class="text-lg font-semibold text-gray-300 mb-2">Question ${mcq.id}</h4>
+                            <p class="text-gray-400">${mcq.question}</p>
+                        </div>
+                    `;
+
+                    if (mcq.code) {
+                        solutionHTML += `
+                            <pre class="mb-4 bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code}</code></pre>
+                        `;
+                    }
+
+                    solutionHTML += `
+                        <div class="mb-4">
+                            <h5 class="text-md font-semibold text-green-400 mb-2">Answer: ${mcq.answer}</h5>
+                        </div>
+                        <div>
+                            <h5 class="text-md font-semibold text-blue-400 mb-2">Explanation:</h5>
+                            <p class="text-gray-400">${mcq.explanation}</p>
+                        </div>
+                    `;
+
+                    solutionDiv.innerHTML = solutionHTML;
+                    mcqsContainer.appendChild(solutionDiv);
+                });
+
+                // Load Short Question Solutions
+                data.shortQuestions.forEach(question => {
+                    const solutionDiv = document.createElement('div');
+                    solutionDiv.className = 'p-6 bg-dojo-card rounded-lg';
+
+                    let solutionHTML = `
+                        <div class="mb-4">
+                            <h4 class="text-lg font-semibold text-gray-300 mb-2">Question ${question.id}</h4>
+                            <p class="text-gray-400">${question.question}</p>
+                        </div>
+                        <div>
+                            <h5 class="text-md font-semibold text-blue-400 mb-2">Solution:</h5>
+                            <p class="text-gray-400 whitespace-pre-line">${question.solution}</p>
+                        </div>
+                    `;
+
+                    if (question.code) {
+                        solutionHTML += `
+                            <div class="mt-4">
+                                <h5 class="text-md font-semibold text-blue-400 mb-2">Example Code:</h5>
+                                <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${question.code}</code></pre>
+                            </div>
+                        `;
+                    }
+
+                    solutionDiv.innerHTML = solutionHTML;
+                    shortQuestionsContainer.appendChild(solutionDiv);
+                });
+
+                // Load Long Question Solutions
+                data.longQuestions.forEach(question => {
+                    const solutionDiv = document.createElement('div');
+                    solutionDiv.className = 'p-6 bg-dojo-card rounded-lg';
+
+                    let solutionHTML = `
+                        <div class="mb-4">
+                            <h4 class="text-lg font-semibold text-gray-300 mb-2">Question ${question.id}</h4>
+                            <p class="text-gray-400">${question.question}</p>
+                        </div>
+                    `;
+
+                    if (question.subparts) {
+                        question.subparts.forEach((subpart, index) => {
+                            solutionHTML += `
+                                <div class="mt-6">
+                                    <h5 class="text-md font-semibold text-gray-300 mb-2">${String.fromCharCode(97 + index)}) ${subpart.question}</h5>
+                                    <div class="ml-4">
+                                        <p class="text-gray-400 whitespace-pre-line">${subpart.solution}</p>
+                                        ${subpart.code ? `
+                                            <div class="mt-4">
+                                                <h6 class="text-sm font-semibold text-blue-400 mb-2">Example Code:</h6>
+                                                <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${subpart.code}</code></pre>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        solutionHTML += `
+                            <div>
+                                <h5 class="text-md font-semibold text-blue-400 mb-2">Solution:</h5>
+                                <p class="text-gray-400 whitespace-pre-line">${question.solution}</p>
+                                ${question.code ? `
+                                    <div class="mt-4">
+                                        <h6 class="text-sm font-semibold text-blue-400 mb-2">Example Code:</h6>
+                                        <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${question.code}</code></pre>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `;
+                    }
+
+                    solutionDiv.innerHTML = solutionHTML;
+                    longQuestionsContainer.appendChild(solutionDiv);
+                });
+
+                // Initialize Prism.js syntax highlighting
+                Prism.highlightAll();
+
+            } catch (error) {
+                console.error('Error loading solutions:', error);
+            }
+        }
+
+        // Load solutions when the page loads
+        window.addEventListener('load', () => {
+            loadSolutions();
+        });
+    </script>
+</body>
+</html>

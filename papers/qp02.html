@@ -24,11 +24,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script>
-        // Function to load and display MCQs, short questions, and long questions
+        // Function to load and display paper details, MCQs, short questions, and long questions
         async function loadQuestions() {
             try {
-                const response = await fetch('../data/qp01.json');
+                // Fetch questions and paper details
+                const response = await fetch('../data/qp02.json');
                 const data = await response.json();
+
+                // Set paper title and date
+                document.getElementById('paper-title').textContent = data.title;
+                document.getElementById('paper-date').textContent = `Date: ${data.date}`;
+
                 const mcqsContainer = document.getElementById('mcqs-container');
                 const shortQuestionsContainer = document.getElementById('short-questions-container');
                 const longQuestionsContainer = document.getElementById('long-questions-container');
@@ -137,11 +143,11 @@
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <!-- Paper Title Section -->
         <div class="mb-16 animate-title">
-            <h1 class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
-                JavaScript Question Paper
+            <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
+                <!-- Title will be dynamically inserted here -->
             </h1>
-            <p class="text-gray-400 text-lg">
-                Date: 31st January 2025
+            <p id="paper-date" class="text-gray-400 text-lg">
+                <!-- Date will be dynamically inserted here -->
             </p>
         </div>
 

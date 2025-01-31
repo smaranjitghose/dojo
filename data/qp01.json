@@ -1,42 +1,191 @@
 {
+  "title": "HTML and CSS Paper",
+  "date": "29th January 2025",
     "mcqs": [
       {
         "id": 1,
-        "question": "What is the output of the following code?",
-        "code": "console.log(2 + '2');",
+        "question": "You are designing a button that changes color when hovered. Which CSS property should you use?",
+        "code": null,
         "options": {
-          "a": "22",
-          "b": "4",
-          "c": "NaN",
-          "d": "Error"
+          "a": "hover",
+          "b": "transition",
+          "c": "transform",
+          "d": "animation"
+        }
+      },
+      {
+        "id": 2,
+        "question": "You want to create a parallax scrolling effect. Which CSS property is essential for this effect?",
+        "code": null,
+        "options": {
+          "a": "background-attachment: fixed;",
+          "b": "position: sticky;",
+          "c": "z-index: 1;",
+          "d": "transform: translateY();"
+        }
+      },
+      {
+        "id": 3,
+        "question": "Which of the following is a best practice for improving SEO in HTML?",
+        "code": null,
+        "options": {
+          "a": "Using <div> for all elements",
+          "b": "Using semantic HTML elements like <header>, <main>, and <footer>",
+          "c": "Adding as many <meta> tags as possible",
+          "d": "Using inline styles for all elements"
+        }
+      },
+      {
+        "id": 4,
+        "question": "Which of the following is a valid way to lazy-load images in HTML?",
+        "code": null,
+        "options": {
+          "a": "<img src=\"image.jpg\" loading=\"lazy\">",
+          "b": "<img src=\"image.jpg\" lazy=\"true\">",
+          "c": "<img src=\"image.jpg\" defer>",
+          "d": "<img src=\"image.jpg\" async>"
+        }
+      },
+      {
+        "id": 5,
+        "question": "You want to embed a YouTube video with specific start and end times. What should you add to the iframe src URL?",
+        "code": null,
+        "options": {
+          "a": "start=X&end=Y parameters",
+          "b": "from=X&to=Y parameters",
+          "c": "begin=X&stop=Y parameters",
+          "d": "s=X&e=Y parameters"
+        }
+      },
+      {
+        "id": 6,
+        "question": "You're building a form that uploads a file to the server when submitted. What should the enctype of the form be?",
+        "code": null,
+        "options": {
+          "a": "text/plain",
+          "b": "multipart/form-data",
+          "c": "application/x-www-form-urlencoded",
+          "d": "application/json"
+        }
+      },
+      {
+        "id": 7,
+        "question": "You want to prefetch a resource (e.g. a web page) that the user is likely to navigate to, to improve performance. What rel attribute value should you use on the link?",
+        "code": null,
+        "options": {
+          "a": "prefetch",
+          "b": "preload",
+          "c": "prerender",
+          "d": "precache"
+        }
+      },
+      {
+        "id": 8,
+        "question": "What's the most semantically correct way to mark up a famous quote from an author in HTML?",
+        "code": null,
+        "options": {
+          "a": "<p>",
+          "b": "<quote>",
+          "c": "<blockquote>",
+          "d": "<q>"
+        }
+      },
+      {
+        "id": 9,
+        "question": "Which CSS property is used to create a smooth scrolling effect on a webpage?",
+        "code": null,
+        "options": {
+          "a": "scroll-behavior",
+          "b": "smooth-scroll",
+          "c": "scroll-snap",
+          "d": "scroll-transition"
+        }
+      },
+      {
+        "id": 10,
+        "question": "Which CSS property is used to create a shadow effect around an element?",
+        "code": null,
+        "options": {
+          "a": "box-shadow",
+          "b": "text-shadow",
+          "c": "element-shadow",
+          "d": "shadow-effect"
         }
       }
     ],
     "shortQuestions": [
       {
         "id": 1,
-        "question": "Explain the difference between `let` and `var` in JavaScript."
+        "question": "Explain the purpose of semantic HTML elements. Provide three examples of semantic elements and their use cases"
+      },
+      {
+        "id": 2,
+        "question": "What is the difference between the <div> and <span> elements in HTML? Provide an example of when you would use each"
+      },
+      {
+        "id": 3,
+        "question": "Write the HTML code to embed a video with controls, autoplay, and a fallback message for browsers that do not support the video tag"
+      },
+      {
+        "id": 4,
+        "question": "Write the HTML code to create a webpage where the content is displayed in Hindi, Gujarati, or Telugu. The page should display the equivalent of \"Hello friends\" in the selected language"
+      },
+      {
+        "id": 5,
+        "question": "Write the CSS code to create a sticky footer that stays at the bottom of the viewport if the content is short, but moves down with the content if it is long"
+      },
+      {
+        "id": 6,
+        "question": "Write the CSS code to center a <div> horizontally and vertically within its parent container"
+      },
+      {
+        "id": 7,
+        "question": "What is the purpose of the box-sizing property in CSS? Explain the difference between content-box and border-box"
       }
     ],
     "longQuestions": [
       {
         "id": 1,
-        "question": "Create a webpage with:",
+        "question": "Using only HTML, create a student registration form titled \"Student Enrollment 2024\" that includes:",
         "subparts": [
-          "An input field for password.",
-          "A div to display a strength message.",
-          "Now, write JavaScript code to show 'Weak', 'Medium', or 'Strong' in different colors as user types based on password length (less than 6, less than 10, 10 or more characters)."
+          "A personal information section with fields for name, DOB, and gender (radio buttons)",
+          "A dropdown for selecting 3 course preferences",
+          "An address section with fields for street, city, and postal code",
+          "A file upload for supporting documents",
+          "A checkbox group for selecting extracurricular activities"
         ]
-         },
+      },
       {
         "id": 2,
-        "question": "Using JavaScript and HTML, create a form system that:",
+        "question": "Using HTML, create a smartphone comparison table that:",
         "subparts": [
-          "Has three steps (personal info, address, payment).",
-          "Validates each step before allowing next.",
-          "Allows going back to previous steps.",
-          "Saves progress in local storage.",
-          "Submits all data at final step."
+          "Uses proper table structure (thead, tbody, tfoot)",
+          "Sets up column groups for styling features, iPhone specs, and Android specs",
+          "Includes a nested table for camera specifications",
+          "Adds scope attributes to all header cells",
+          "Implements a summary of price comparisons in the footer"
+        ]
+      },
+      {
+        "id": 3,
+        "question": "You are given the following HTML structure for a parallax section. <section class=\"parallax\">    <h2>Parallax Section</h2></section> Write the CSS code to",
+        "subparts": [
+          "Create a parallax scrolling effect using a background image.",
+          "Ensure the background image is fixed and covers the entire section.",
+          "Add a semi-transparent overlay to improve text readability.",
+          "Center the text vertically and horizontally.",
+          "Set the section height to 500px."
+        ]
+      },
+      {
+        "id": 4,
+        "question": "You are given the following HTML structure for an image gallery. <div class=\"gallery\">    <img src=\"image1.jpg\" alt=\"Image 1\">    <img src=\"image2.jpg\" alt=\"Image 2\">    <img src=\"image3.jpg\" alt=\"Image 3\"></div> Write the CSS code to:",
+        "subparts": [
+          "Display the images in a responsive flexbox layout.",
+          "Ensure the images wrap to the next line when the container width is exceeded.",
+          "Add a gap of 10px between the images.",
+          "Make the images scale proportionally to fit the container.",
+          "Add a hover effect that slightly enlarges the images"
         ]
       }
     ]

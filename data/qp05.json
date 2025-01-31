@@ -1,0 +1,192 @@
+{
+  "title": "NodeJS and Version Control Paper",
+  "date": "30th January 2025",
+  "mcqs": [
+    {
+      "id": 1,
+      "question": "What's the correct way to handle file uploads in NodeJS while considering memory efficiency?",
+      "code": null,
+      "options": {
+        "a": "Read entire file into memory using readFile",
+        "b": "Use streams with pipe()",
+        "c": "Use async/await with readFileSync",
+        "d": "Store file in temporary memory buffer"
+      }
+    },
+    {
+      "id": 2,
+      "question": "Which of the following is TRUE about the Node.js Event Loop?",
+      "code": null,
+      "options": {
+        "a": "It runs on multiple threads",
+        "b": "It executes I/O operations synchronously",
+        "c": "It processes the event queue after the call stack is empty",
+        "d": "It blocks during CPU-intensive tasks"
+      }
+    },
+    {
+      "id": 3,
+      "question": "Which of the following statements is true about require() and import in Node.js?",
+      "code": null,
+      "options": {
+        "a": "They are identical in functionality.",
+        "b": "require() is synchronous, while import is asynchronous.",
+        "c": "import only works with TypeScript.",
+        "d": "require() is part of CommonJS, while import is part of ES modules"
+      }
+    },
+    {
+      "id": 4,
+      "question": "What is the purpose of a buffer in Node.js?",
+      "code": null,
+      "options": {
+        "a": "To store binary data",
+        "b": "To store JSON data",
+        "c": "To store HTTP requests",
+        "d": "To store file paths"
+      }
+    },
+    {
+      "id": 5,
+      "question": "What is the underlying JavaScript engine for NodeJS?",
+      "code": null,
+      "options": {
+        "a": "SpiderMonkey",
+        "b": "Chakra",
+        "c": "V8",
+        "d": "JavaScriptCore"
+      }
+    },
+    {
+      "id": 6,
+      "question": "Which of the following is NOT a feature of Node.js?",
+      "code": null,
+      "options": {
+        "a": "Asynchronous I/O",
+        "b": "Single-threaded",
+        "c": "Blocking operations",
+        "d": "Event-driven architecture"
+      }
+    },
+    {
+      "id": 7,
+      "question": "Which of these is NOT a valid HTTP status code?",
+      "code": null,
+      "options": {
+        "a": "101",
+        "b": "601",
+        "c": "201",
+        "d": "501"
+      }
+    },
+    {
+      "id": 8,
+      "question": "How should you handle file paths in Node.js?",
+      "code": null,
+      "options": {
+        "a": "String concatenation",
+        "b": "Use path module",
+        "c": "Manual formatting",
+        "d": "Relative paths only"
+      }
+    },
+    {
+      "id": 9,
+      "question": "Which method is used to delete a file in Node.js?",
+      "code": null,
+      "options": {
+        "a": "fs.unlink()",
+        "b": "fs.deleteFile()",
+        "c": "fs.removeFile()",
+        "d": "fs.rmdir()"
+      }
+    },
+    {
+      "id": 10,
+      "question": "Which of the following is NOT a core module in Node.js?",
+      "code": null,
+      "options": {
+        "a": "fs",
+        "b": "http",
+        "c": "chalk",
+        "d": "crypto"
+      }
+    }
+  ],
+  "shortQuestions": [
+    {
+      "id": 1,
+      "question": "What is semantic versioning in NodeJS? Explain the meaning of ^, ~, and * in version numbers"
+    },
+    {
+      "id": 2,
+      "question": "What are environment variables? How do you read them in Node.js, and how do you specify an environment variable file using the CLI?"
+    },
+    {
+      "id": 3,
+      "question": "Write the NPM commands to: a) Initialize a NodeJS project with defaults b) install the modules “chalk” and “ollama” c) globally install the “zod” module"
+    },
+    {
+      "id": 4,
+      "question": "Briefly explain the five categories of HTTP status codes"
+    },
+    {
+      "id": 5,
+      "question": "What are the different types of modules in NodeJS? Explain with example for each"
+    },
+    {
+      "id": 6,
+      "question": "Explain the concept of the Event Loop in Node.js with a diagram. How does it handle asynchronous operations"
+    },
+    {
+      "id": 7,
+      "question": "Write a Node.js program that creates a readable stream to read a large file named input.txt in chunks and pipes the data to a writable stream, saving it as transactions.txt."
+    }
+  ],
+  "longQuestions": [
+    {
+      "id": 1,
+      "question": "Using NodeJS, build a web server for a blog that achieves the following:",
+      "subparts": [
+        "An HTTP server that listens on port 3000.",
+        "Log every incoming request (method and URL) to a file called request_logs.txt.",
+        "Respond with an HTML page (<h1>Welcome to BitVanguard</h1>) for the root route (/).",
+        "Implement a /contact route that responds to all GET requests with the json {“email”: “editor@bitvanguard.com”}",
+        "Respond with a 404 status and a message \"Page not found\" for all other routes"
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Using Node.js, create a program that performs the following operations asynchronously:",
+      "subparts": [
+        "Create a folder called vaccine_research",
+        "Inside the folder, create a file trial_notes.txt and write the text: \"Phase 1 clinical trials show 85% efficacy rate with minimal side effects\"",
+        "Append the following line to trial_notes.txt: \"Follow-up studies indicate sustained immunity levels after 6 months\"",
+        "Rename the file trial_notes.txt to phase1_results.txt",
+        "Read the phase1_results.txt file and display its contents in the console"
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Using Node.js, construct a program that performs the following operations:",
+      "subparts": [
+        "Compress a file called student_records.txt using gzip compression",
+        "Save the compressed file as student_records.txt.gz",
+        "Log the original and compressed file sizes",
+        "Create a log entry in compression_log.txt with timestamp of compression",
+        "Log \"Student records archived successfully!\" upon completion"
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Using Node.js, forge a command-line application that:",
+      "subparts": [
+        "Use contacts.txt to store contact information",
+        "Implement command node contact.js add <name> <phone> to add new contact",
+        "Implement command node contact.js list to show all contacts",
+        "Implement command node contact.js search <name> to find a contact",
+        "Ensure phone numbers are valid and names are not empty"
+      ]
+    }
+  ]
+}
