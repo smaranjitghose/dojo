@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Questions Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4299E1',
+                        secondary: '#0F3460',
+                        dark: '#1A1A2E',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-dark text-gray-100 min-h-screen">
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
+                Practice Questions Hub
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in" style="animation-delay: 0.2s">
+                Master your skills with comprehensive practice materials
+            </p>
+            <div class="animate-float mt-8">
+                <img src="https://img.icons8.com/clouds/200/000000/learning.png" alt="Education" class="mx-auto w-32 h-32">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Main Sections Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Web Development Foundations -->
+            <div class="card-gradient-1 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow glow-on-hover">
+                <h2 class="text-xl font-bold mb-4 text-primary">Foundations of Web Development</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">HTML</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">CSS</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg col-span-full">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">JavaScript</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backend Development -->
+            <div class="card-gradient-2 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow glow-on-hover">
+                <h2 class="text-xl font-bold mb-4 text-primary">Backend Development with JS</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">Node.js</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" class="w-16 h-16 mx-auto mb-2 invert">
+                        <h3 class="text-center font-semibold">Express.js</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frontend Development -->
+            <div class="card-gradient-1 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow glow-on-hover">
+                <h2 class="text-xl font-bold mb-4 text-primary">Frontend Development with JS</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">React</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">Tailwind CSS</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DevSecOps -->
+            <div class="card-gradient-2 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow glow-on-hover">
+                <h2 class="text-xl font-bold mb-4 text-primary">DevSecOps and Deployment</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">Git</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">Docker</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://vitest.dev/logo.svg" alt="Vitest" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">Vitest</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="k8s" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">k8s</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">Postman</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux CLI" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">Linux CLI</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="card-gradient-1 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow glow-on-hover">
+                <h2 class="text-xl font-bold mb-4 text-primary">Databases</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">SQL</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">MongoDB</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GenAI -->
+            <div class="card-gradient-2 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow glow-on-hover">
+                <h2 class="text-xl font-bold mb-4 text-primary">GenAI</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://ollama.ai/public/ollama.png" alt="Ollama" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">Ollama</h3>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <img src="https://img.icons8.com/color/96/000000/artificial-intelligence.png" alt="LLMs" class="w-16 h-16 mx-auto mb-2">
+                        <h3 class="text-center font-semibold">Intro to LLMs</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question Papers Section -->
+        <div class="mt-12">
+            <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow glow-on-hover">
+                <h2 class="text-2xl font-bold mb-4 text-white">Question Papers</h2>
+                <p class="text-gray-100">Access all practice question papers in one place</p>
+                <button onclick="window.location.href='papers.html'" class="mt-4 bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    View Papers
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 px-4 sm:px-6 lg:px-8 border-t border-gray-700 mt-12">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2025 Practice Questions Hub by Smaranjit Ghose. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

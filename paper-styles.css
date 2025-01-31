@@ -1,0 +1,101 @@
+/* Paper styles */
+.paper-section {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.paper-section:nth-child(1) { animation-delay: 0.1s; }
+.paper-section:nth-child(2) { animation-delay: 0.2s; }
+.paper-section:nth-child(3) { animation-delay: 0.3s; }
+
+/* Section animations */
+.section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.section-header i {
+    transition: transform 0.3s ease;
+}
+
+.section-header.active i {
+    transform: rotate(-180deg);
+}
+
+.paper-section.active .section-content {
+    max-height: 5000px; /* Adjust based on content */
+}
+
+/* Question styling */
+.question-item {
+    @apply bg-gray-800/50 p-6 rounded-lg;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.option {
+    @apply bg-gray-700/50 p-3 rounded-lg hover:bg-gray-600/50 cursor-pointer transition-colors;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Search highlight */
+.highlight {
+    background-color: rgba(66, 153, 225, 0.3);
+    padding: 2px;
+    border-radius: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4B5563;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6B7280;
+}
+
+/* Hero gradient */
+.hero-gradient {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+body {
+    padding-top: 80px; /* Adjust based on navbar height */
+}
+
+/* Print styles */
+@media print {
+    .section-content {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    
+    .no-print {
+        display: none !important;
+    }
+}

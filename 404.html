@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-spin-slow {
+            animation: spin 20s linear infinite;
+        }
+
+        .glow {
+            box-shadow: 0 0 40px rgba(66, 153, 225, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+    <div class="text-center">
+        <!-- Animated 404 Icon -->
+        <div class="relative w-48 h-48 mx-auto mb-8">
+            <div class="absolute inset-0 bg-blue-500 rounded-full opacity-20 glow animate-spin-slow"></div>
+            <div class="relative animate-float">
+                <svg class="w-48 h-48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" 
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Text Content -->
+        <h1 class="text-5xl font-bold mb-4">404</h1>
+        <p class="text-xl text-gray-400 mb-8" id="message">Oops! This content hasn't been released yet.</p>
+        
+        <!-- Back Button -->
+        <a href="javascript:history.back()" 
+           class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Go Back
+        </a>
+    </div>
+
+    <script>
+        // Custom 404 messages based on URL
+        const messages = {
+            'question-paper': "This question paper hasn't been released yet.",
+            'solution': "The solution will be available soon.",
+            'default': "Oops! The page you're looking for doesn't exist."
+        };
+
+        function updateMessage() {
+            const path = window.location.pathname.toLowerCase();
+            const messageEl = document.getElementById('message');
+            
+            if (path.includes('question-paper')) {
+                messageEl.textContent = messages['question-paper'];
+            } else if (path.includes('solution')) {
+                messageEl.textContent = messages['solution'];
+            } else {
+                messageEl.textContent = messages['default'];
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateMessage);
+    </script>
+</body>
+</html>

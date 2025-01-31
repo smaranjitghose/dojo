@@ -1,0 +1,104 @@
+{
+    "mcq": [
+        {
+            "question": "What is the output of the following code?",
+            "code": "console.log(typeof typeof 1);",
+            "answer": "b) \"string\"",
+            "explanation": "typeof 1 returns \"number\", and typeof \"number\" returns \"string\"."
+        },
+        {
+            "question": "Which event occurs first in the DOM event flow?",
+            "answer": "c) Capturing phase",
+            "explanation": "The DOM event flow starts with the capturing phase, followed by the target phase, and ends with the bubbling phase."
+        },
+        {
+            "question": "What is the output of the following code?",
+            "code": "class Rocket {\n  constructor() { this.payload = 1; }\n  getPayload() { return this.payload; }\n}\nconst starship = Rocket();\nconsole.log(starship.payload);",
+            "answer": "c) TypeError",
+            "explanation": "Rocket() is called without new, which throws a TypeError because class constructors cannot be invoked without new."
+        },
+        {
+            "question": "What is the output of the following code?",
+            "code": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');",
+            "answer": "b) 1, 4, 3, 2",
+            "explanation": "Promise microtasks run before setTimeout macrotasks, so the order is 1, 4, 3, 2."
+        },
+        {
+            "question": "What is the output of the following code?",
+            "code": "console.log(1 + +\"2\" + \"2\");",
+            "answer": "c) \"32\"",
+            "explanation": "+\"2\" converts \"2\" to 2, so 1 + 2 = 3, and 3 + \"2\" results in \"32\"."
+        },
+        {
+            "question": "Which array method doesn't modify the original array?",
+            "answer": "c) map()",
+            "explanation": "map() returns a new array without modifying the original array."
+        },
+        {
+            "question": "What is the output of the following code?",
+            "code": "const book = { title: \"Autobiography of a Yogi\" };\nconst { title: bookName = \"Unknown\" } = book;\nconsole.log(bookName);",
+            "answer": "a) \"Autobiography of a Yogi\"",
+            "explanation": "Destructuring assigns the value of title to bookName, so bookName is \"Autobiography of a Yogi\"."
+        },
+        {
+            "question": "What's the best way to handle asynchronous errors?",
+            "answer": "b) .catch()",
+            "explanation": ".catch() is used to handle errors in asynchronous code, especially with Promises."
+        },
+        {
+            "question": "What's the difference between Object.freeze() and Object.seal()?",
+            "answer": "b) freeze prevents modifications, seal allows property value changes",
+            "explanation": "Object.freeze() prevents any changes to the object, while Object.seal() allows changes to existing properties but prevents adding or removing properties."
+        },
+        {
+            "question": "What is the output of the following code?",
+            "code": "const sym1 = Symbol(\"key\");\nconst sym2 = Symbol(\"key\");\nconsole.log(sym1 === sym2);",
+            "answer": "b) false",
+            "explanation": "Symbols are unique, so sym1 and sym2 are not equal."
+        }
+    ],
+    "short": [
+        {
+            "question": "Devise a JavaScript function organizePlaylist(songs)",
+            "solution": "function organizePlaylist(songs) {\n  const organized = {};\n  songs.forEach(song => {\n    if (!organized[song.genre]) {\n      organized[song.genre] = [];\n    }\n    organized[song.genre].push(song.title);\n  });\n  for (const genre in organized) {\n    organized[genre].sort();\n  }\n  return organized;\n}",
+            "explanation": "This solution creates an object where each key is a genre and its value is a sorted array of song titles."
+        },
+        {
+            "question": "Truncate a comment string",
+            "solution": "function truncateComment(comment) {\n  if (comment.length <= 150) return comment;\n  return comment.slice(0, 147) + \"...\";\n}",
+            "explanation": "This solution checks if the comment length exceeds 150 characters. If it does, it truncates it to 147 characters and adds '...'."
+        },
+        {
+            "question": "Create a function createLogger(prefix)",
+            "solution": "function createLogger(prefix) {\n  return function(message) {\n    console.log(`${prefix}: ${message}`);\n  };\n}",
+            "explanation": "This solution uses closure to create a function that prepends a prefix to logged messages."
+        },
+        {
+            "question": "Calendar application with Event, Meeting, and Appointment",
+            "solution": "function Event(title, date, time) {\n  this.title = title;\n  this.date = date;\n  this.time = time;\n}\nEvent.prototype.getDescription = function() {\n  return `${this.title} on ${this.date} at ${this.time}`;\n};\n\nfunction Meeting(title, date, time, attendees) {\n  Event.call(this, title, date, time);\n  this.attendees = attendees;\n}\nMeeting.prototype = Object.create(Event.prototype);\nMeeting.prototype.getDescription = function() {\n  return `${Event.prototype.getDescription.call(this)} with ${this.attendees.join(', ')}`;\n};\n\nfunction Appointment(title, date, time, location) {\n  Event.call(this, title, date, time);\n  this.location = location;\n}\nAppointment.prototype = Object.create(Event.prototype);\nAppointment.prototype.getDescription = function() {\n  return `${Event.prototype.getDescription.call(this)} at ${this.location}`;\n};",
+            "explanation": "This solution demonstrates prototypal inheritance with Event as the base class and Meeting and Appointment as derived classes."
+        },
+        {
+            "question": "Curried function for mathematical operations",
+            "solution": "function createMathOperation(operation) {\n  return function(numbers) {\n    return numbers.reduce((acc, num) => {\n      if (operation === 'add') return acc + num;\n      if (operation === 'subtract') return acc - num;\n      if (operation === 'multiply') return acc * num;\n      return acc;\n    });\n  };\n}",
+            "explanation": "This solution uses currying to create a function that takes an operation and returns a new function that performs that operation on an array of numbers."
+        }
+    ],
+    "long": [
+        {
+            "question": "Password strength checker",
+            "solution": "<input type=\"password\" id=\"password\" placeholder=\"Enter password\">\n<div id=\"strength\"></div>\n\n<script>\n  const passwordInput = document.getElementById('password');\n  const strengthDiv = document.getElementById('strength');\n\n  passwordInput.addEventListener('input', () => {\n    const length = passwordInput.value.length;\n    let strength = '';\n    let color = '';\n    if (length < 6) {\n      strength = 'Weak';\n      color = 'red';\n    } else if (length < 10) {\n      strength = 'Medium';\n      color = 'orange';\n    } else {\n      strength = 'Strong';\n      color = 'green';\n    }\n    strengthDiv.textContent = strength;\n    strengthDiv.style.color = color;\n  });\n</script>",
+            "explanation": "This solution demonstrates DOM manipulation and event handling to create a real-time password strength indicator."
+        },
+        {
+            "question": "Task management system",
+            "solution": "class TaskManager {\n  #tasks = [];\n  #history = [];\n\n  addTask(title) {\n    const task = { id: Date.now(), title, status: 'pending', createdAt: new Date() };\n    this.#tasks.push(task);\n    this.#history.push({ type: 'add', task });\n  }\n\n  editTask(id, newTitle) {\n    const task = this.#tasks.find(t => t.id === id);\n    if (task) {\n      this.#history.push({ type: 'edit', oldTitle: task.title, newTitle });\n      task.title = newTitle;\n    }\n  }\n\n  toggleStatus(id) {\n    const task = this.#tasks.find(t => t.id === id);\n    if (task) {\n      this.#history.push({ type: 'toggle', oldStatus: task.status, newStatus: task.status === 'pending' ? 'completed' : 'pending' });\n      task.status = task.status === 'pending' ? 'completed' : 'pending';\n    }\n  }\n\n  undoLastAction() {\n    const lastAction = this.#history.pop();\n    if (lastAction) {\n      if (lastAction.type === 'add') {\n        this.#tasks = this.#tasks.filter(t => t.id !== lastAction.task.id);\n      } else if (lastAction.type === 'edit') {\n        const task = this.#tasks.find(t => t.id === lastAction.task.id);\n        if (task) task.title = lastAction.oldTitle;\n      } else if (lastAction.type === 'toggle') {\n        const task = this.#tasks.find(t => t.id === lastAction.task.id);\n        if (task) task.status = lastAction.oldStatus;\n      }\n    }\n  }\n\n  saveToStorage() {\n    localStorage.setItem('tasks', JSON.stringify(this.#tasks));\n  }\n\n  loadFromStorage() {\n    const tasks = JSON.parse(localStorage.getItem('tasks'));\n    if (tasks) this.#tasks = tasks;\n  }\n\n  syncTabs() {\n    window.addEventListener('storage', (e) => {\n      if (e.key === 'tasks') {\n        this.#tasks = JSON.parse(e.newValue);\n      }\n    });\n  }\n}",
+            "explanation": "This solution demonstrates class implementation with private fields, state management, and browser storage integration."
+        },
+        {
+            "question": "Vehicle speed monitoring system",
+            "solution": "class SpeedLimiter {\n  #currentSpeed = 0;\n  #maxSpeed;\n\n  constructor(maxSpeed) {\n    this.#maxSpeed = maxSpeed;\n  }\n\n  get speed() {\n    return this.#currentSpeed;\n  }\n\n  set speed(newSpeed) {\n    if (newSpeed > this.#maxSpeed) {\n      throw new Error('Speed exceeds maximum limit');\n    }\n    this.#currentSpeed = newSpeed;\n  }\n\n  get speedMPH() {\n    return this.#currentSpeed * 0.621371;\n  }\n\n  accelerate(amount) {\n    this.speed = this.#currentSpeed + amount;\n  }\n\n  brake(amount) {\n    this.speed = this.#currentSpeed - amount;\n  }\n}",
+            "explanation": "This solution demonstrates encapsulation, getters/setters, and unit conversion in a class-based implementation."
+        }
+    ]
+}

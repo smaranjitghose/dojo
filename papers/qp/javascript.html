@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Question Paper - Parul Impact A Batch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4299E1',
+                        secondary: '#0F3460',
+                        dark: '#1A1A2E',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../paper-styles.css">
+</head>
+<body class="bg-dark text-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="hero-gradient py-8 px-4 sm:px-6 lg:px-8 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold">JavaScript Question Paper</h1>
+                <p class="text-gray-300 mt-2">Parul Impact A Batch</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="../../papers.html" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>Back
+                </a>
+                <button onclick="toggleSearch()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-search mr-2"></i>Search
+                </button>
+                <button onclick="window.print()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-print mr-2"></i>Print
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Bar (Hidden by default) -->
+    <div id="searchBar" class="hidden">
+        <div class="container mx-auto px-4 py-4">
+            <input type="text" id="searchInput" 
+                   class="w-full bg-white/10 text-white border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:border-primary"
+                   placeholder="Search within question paper...">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Section 1: MCQs -->
+        <section class="mb-8 paper-section">
+            <div class="section-header bg-gradient-to-r from-blue-600 to-purple-600 p-1 rounded-lg cursor-pointer" onclick="toggleSection(this)">
+                <div class="bg-dark p-4 rounded-lg flex justify-between items-center">
+                    <h2 class="text-2xl font-bold">Q.1 Multiple Choice Questions</h2>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </div>
+            </div>
+            <div class="section-content mt-4 space-y-6">
+                <div class="space-y-4">
+                    <p class="font-semibold">(A) Multiple Choice Questions</p>
+                    
+                    <div class="space-y-6">
+                        <!-- Question 1 -->
+                        <div class="question-item">
+                            <p class="mb-2">(1) What is the output of the following code?</p>
+                            <pre class="bg-gray-800 p-4 rounded-lg mb-2 overflow-x-auto">console.log(typeof typeof 1);</pre>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) "number"</div>
+                                <div class="option">b) "string"</div>
+                                <div class="option">c) "undefined"</div>
+                                <div class="option">d) TypeError</div>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="question-item">
+                            <p class="mb-2">(2) Which event occurs first in the DOM event flow?</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) Target phase</div>
+                                <div class="option">b) Bubbling phase</div>
+                                <div class="option">c) Capturing phase</div>
+                                <div class="option">d) None of these</div>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="question-item">
+                            <p class="mb-2">(3) What is the output of the following code?</p>
+                            <pre class="bg-gray-800 p-4 rounded-lg mb-2 overflow-x-auto">class Rocket {
+  constructor() { this.payload = 1; }
+  getPayload() { return this.payload; }
+}
+const starship = Rocket();
+console.log(starship.payload);</pre>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) 1</div>
+                                <div class="option">b) null</div>
+                                <div class="option">c) TypeError</div>
+                                <div class="option">d) ReferenceError</div>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="question-item">
+                            <p class="mb-2">(4) What is the output of the following code?</p>
+                            <pre class="bg-gray-800 p-4 rounded-lg mb-2 overflow-x-auto">console.log('1');
+setTimeout(() => console.log('2'), 0);
+Promise.resolve().then(() => console.log('3'));
+console.log('4');</pre>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) 1, 2, 3, 4</div>
+                                <div class="option">b) 1, 4, 3, 2</div>
+                                <div class="option">c) 1, 4, 2, 3</div>
+                                <div class="option">d) 1, 3, 4, 2</div>
+                            </div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="question-item">
+                            <p class="mb-2">(5) What is the output of the following code?</p>
+                            <pre class="bg-gray-800 p-4 rounded-lg mb-2 overflow-x-auto">console.log(1 + +"2" + "2");</pre>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) "122"</div>
+                                <div class="option">b) "14"</div>
+                                <div class="option">c) "32"</div>
+                                <div class="option">d) TypeError</div>
+                            </div>
+                        </div>
+
+                        <!-- Questions 6-10 -->
+                        <div class="question-item">
+                            <p class="mb-2">(6) Which array method doesn't modify the original array?</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) push()</div>
+                                <div class="option">b) splice()</div>
+                                <div class="option">c) map()</div>
+                                <div class="option">d) sort()</div>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <p class="mb-2">(7) What is the output of the following code?</p>
+                            <pre class="bg-gray-800 p-4 rounded-lg mb-2 overflow-x-auto">const book = { title: "Autobiography of a Yogi" };
+const { title: bookName = "Unknown" } = book;
+console.log(bookName);</pre>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) "Autobiography of a Yogi"</div>
+                                <div class="option">b) "Unknown"</div>
+                                <div class="option">c) undefined</div>
+                                <div class="option">d) { title: "Autobiography of a Yogi" }</div>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <p class="mb-2">(8) What's the best way to handle asynchronous errors?</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) try/catch</div>
+                                <div class="option">b) .catch()</div>
+                                <div class="option">c) window.onerror</div>
+                                <div class="option">d) Error event listener</div>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <p class="mb-2">(9) What's the difference between Object.freeze() and Object.seal()?</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) No difference</div>
+                                <div class="option">b) freeze prevents modifications, seal allows property value changes</div>
+                                <div class="option">c) seal prevents modifications, freeze allows property value changes</div>
+                                <div class="option">d) Both allow adding new properties</div>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <p class="mb-2">(10) What is the output of the following code?</p>
+                            <pre class="bg-gray-800 p-4 rounded-lg mb-2 overflow-x-auto">const sym1 = Symbol("key");
+const sym2 = Symbol("key");
+console.log(sym1 === sym2);</pre>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="option">a) true</div>
+                                <div class="option">b) false</div>
+                                <div class="option">c) TypeError</div>
+                                <div class="option">d) undefined</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Short Questions -->
+        <section class="mb-8 paper-section">
+            <div class="section-header bg-gradient-to-r from-blue-600 to-purple-600 p-1 rounded-lg cursor-pointer" onclick="toggleSection(this)">
+                <div class="bg-dark p-4 rounded-lg flex justify-between items-center">
+                    <h2 class="text-2xl font-bold">Q.2 Short Questions (Attempt any five)</h2>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </div>
+            </div>
+            <div class="section-content mt-4 space-y-6">
+                <div class="space-y-6">
+                    <div class="question-item">
+                        <p class="mb-4">(1) Devise a JavaScript function organizePlaylist(songs) that takes an array of song objects. Each song object has properties title, artist, and genre. The function should return an object where keys are genres, and the values are arrays of song titles for that genre, sorted alphabetically. Assume all input is valid (i.e., the songs array exists and each song object has the required properties)</p>
+                    </div>
+
+                    <div class="question-item">
+                        <p class="mb-4">(2) You're implementing a comment system. Given a string representing a comment, write a function to truncate it to a maximum length of 150 characters and add an ellipsis ("...") if it was truncated. Handle cases where the comment is already shorter than 150 characters.</p>
+                    </div>
+
+                    <div class="question-item">
+                        <p class="mb-4">(3) Create a function createLogger(prefix) that takes a string prefix as an argument. It should return a new function that takes a string message as an argument and logs the prefix followed by the message to the console</p>
+                    </div>
+
+                    <div class="question-item">
+                        <p class="mb-4">(4) You are building a calendar application. You need to represent different types of calendar events. Create a base Event object with properties like title, date, and time. Then, using prototypal inheritance, create two specific event types: Meeting (which adds an attendees property) and Appointment (which adds a location property). Ensure that both Meeting and Appointment inherit the common properties from Event. Implement a getDescription() method on each object that returns a string describing the event, including its specific properties</p>
+                    </div>
+
+                    <div class="question-item">
+                        <p class="mb-4">(5) You are building a library for data analysis. You need to create a flexible function for performing mathematical operations on arrays of numbers. Use currying to create a function that can be partially applied to specify the operation (e.g., add, subtract, multiply) and then applied to an array of numbers to perform the calculation.</p>
+                    </div>
+
+                    <div class="question-item">
+                        <p class="mb-4">(6) DeepSeek, a newly funded AI startup, is launching multiple services: a main website at deepseek.com, an API at api.deepseek.com, and will be using Google Workspace for email. List the necessary DNS record types and their specific values to achieve it</p>
+                    </div>
+
+                    <div class="question-item">
+                        <p class="mb-4">(7) You are building tests for a tax calculation function calculateTax(income) present inside a income.js file. Perform the following:</p>
+                        <ul class="list-disc list-inside space-y-2 ml-4">
+                            <li>Set up a testing framework (Vitest, Cypress, or Jest) in your project.</li>
+                            <li>Create and structure your test file.</li>
+                            <li>Write unit tests to verify different income brackets using the chosen testing framework</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Long Questions -->
+        <section class="mb-8 paper-section">
+            <div class="section-header bg-gradient-to-r from-blue-600 to-purple-600 p-1 rounded-lg cursor-pointer" onclick="toggleSection(this)">
+                <div class="bg-dark p-4 rounded-lg flex justify-between items-center">
+                    <h2 class="text-2xl font-bold">Q.3 Long Questions (Attempt any three)</h2>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </div>
+            </div>
+            <div class="section-content mt-4 space-y-6">
+                <div class="space-y-6">
+                    <div class="question-item">
+                        <p class="mb-4">(1) Create a webpage with:</p>
+                        <ul class="list-disc list-inside space-y-2 ml-4 mb-4">
+                            <li>An input field for password.</li>
+                            <li>A div to display a strength message.</li>
+                        </ul>
+                        <p>Now, write JavaScript code to show "Weak", "Medium", or "Strong" in different colors as user types based on password length (less than 6, less than 10, 10 or more characters)</p>
+                    </div>
+
+                    <div class="question-item">
+                        <p class="mb-4">(2) Using JavaScript and HTML, Create a form system that:</p>
+                        <ul class="list-disc list-inside space-y-2 ml-4">
+                            <li>Has three steps (personal info, address, payment)</li>
+                            <li>Validates each step before allowing next</li>
+                            <li>Allows going back to previous steps</li>
+                            <li>Saves progress in local storage</li>
+                            <li>Submits all data at final step</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-item">
+                        <p class="mb-4">(3) You are building a task management system using JavaScript. Implement the following:</p>
+                        <ul class="list-disc list-inside space-y-2 ml-4">
+                            <li>Create a class TaskManager with a private property #tasks (array of task objects with {id, title, status, createdAt}).</li>
+                            <li>Add methods addTask(title), editTask(id, newTitle), and toggleStatus(id), maintaining an operations history array for undo/redo.</li>
+                            <li>Implement undoLastAction() and redoLastAction() methods using the operations history.</li>
+                            <li>Add methods saveToStorage() and loadFromStorage() using localStorage to persist tasks.</li>
+                            <li>Implement a method syncTabs() using the 'storage' event listener to sync state when changes occur in other tabs.</li>
+                        </ul>
+                    </div>
+
+                    <div class="question-item">
+                        <p class="mb-4">(4) You are building a vehicle speed monitoring system.</p>
+                        <ul class="list-disc list-inside space-y-2 ml-4">
+                            <li>Create a class SpeedLimiter with private properties #currentSpeed and #maxSpeed.</li>
+                            <li>Add a getter speed that returns current speed in km/h.</li>
+                            <li>Add a setter speed that prevents exceeding maxSpeed, throwing an error if attempted.</li>
+                            <li>Add a getter speedMPH that converts and returns speed in miles per hour.</li>
+                            <li>Add methods accelerate(amount) and brake(amount) using the setter</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 px-4 sm:px-6 lg:px-8 border-t border-gray-700 mt-12">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2025 Practice Questions Hub by Smaranjit Ghose. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../paper-script.js"></script>
+</body>
+</html>
