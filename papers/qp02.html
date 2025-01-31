@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PracticeDojo - HTML and CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dojo-dark': '#020817',
+                        'dojo-card': '#0F172A',
+                        'dojo-accent': '#38BDF8',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/papers.css">
+</head>
+<body class="bg-[#020817] text-gray-100 min-h-screen">
+    <!-- Back Button -->
+    <div class="container mx-auto px-4 py-6">
+        <a href="../papers.html" class="inline-flex items-center text-dojo-accent hover:text-dojo-accent/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Papers
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Paper Title Section -->
+        <div class="mb-16 animate-title">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
+                HTML and CSS
+            </h1>
+            <p class="text-gray-400 text-lg">
+                Questions and solutions for HTML and CSS.
+            </p>
+        </div>
+
+        <!-- Questions and Solutions Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Questions -->
+            <div class="paper-card">
+                <div class="bg-[#1E293B] rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-6">Questions</h3>
+                    <div class="space-y-4">
+                        <p class="text-gray-400">Question 1: What is the box model in CSS?</p>
+                        <p class="text-gray-400">Question 2: How do you center a div horizontally and vertically?</p>
+                        <!-- Add more questions as needed -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solutions -->
+            <div class="paper-card">
+                <div class="bg-[#1E293B] rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-6">Solutions</h3>
+                    <div class="space-y-4">
+                        <p class="text-gray-400">Solution 1: The box model consists of content, padding, border, and margin.</p>
+                        <p class="text-gray-400">Solution 2: Use flexbox or grid to center a div.</p>
+                        <!-- Add more solutions as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800">
+        <p>&copy; 2025 Practice Questions Hub by Smaranjit Ghose. All rights reserved.</p>
+    </footer>
+</body>
+</html>
