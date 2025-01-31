@@ -46,7 +46,7 @@
 
                     let questionHTML = `
                         <p class="text-gray-400">
-                            <strong>(${mcq.id})</strong> ${mcq.question}
+                            <strong>(${mcq.id})</strong> ${mcq.question.replace(/```javascript.*```/gs, '')}
                         </p>
                     `;
 
@@ -80,7 +80,7 @@
 
                     const questionHTML = `
                         <p class="text-gray-400">
-                            <strong>(${shortQuestion.id})</strong> ${shortQuestion.question}
+                            <strong>(${shortQuestion.id})</strong> ${shortQuestion.question.replace(/```javascript.*```/gs, '')}
                         </p>
                     `;
 
@@ -95,7 +95,7 @@
 
                     let questionHTML = `
                         <p class="text-gray-400">
-                            <strong>(${longQuestion.id})</strong> ${longQuestion.question}
+                            <strong>(${longQuestion.id})</strong> ${longQuestion.question.replace(/```javascript.*```/gs, '')}
                         </p>
                     `;
 
