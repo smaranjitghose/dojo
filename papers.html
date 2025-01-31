@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Question Papers</title>
+    <title>PracticeDojo - Papers</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -11,99 +11,155 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#4299E1',
-                        secondary: '#0F3460',
-                        dark: '#1A1A2E',
+                        'dojo-dark': '#020817',
+                        'dojo-card': '#0F172A',
+                        'dojo-accent': '#38BDF8',
                     }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="assets/css/papers.css">
+    <link rel="stylesheet" href="./assets/css/papers.css">
 </head>
-<body class="bg-dark text-gray-100 min-h-screen">
-    <!-- Header -->
-    <header class="hero-gradient py-16 px-4 sm:px-6 lg:px-8">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Practice Question Papers</h1>
-            <p class="text-xl text-gray-300 mb-8 animate-fade-in" style="animation-delay: 0.2s">
-                Comprehensive practice materials for your learning journey
-            </p>
-        </div>
-    </header>
+<body class="bg-[#020817] text-gray-100 min-h-screen">
+    <!-- Back Button -->
+    <div class="container mx-auto px-4 py-6">
+        <a href="index.html" class="inline-flex items-center text-dojo-accent hover:text-dojo-accent/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Home
+        </a>
+    </div>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Parul Impact A Batch Section -->
-        <section class="mb-16 animate-fade-in" style="animation-delay: 0.3s">
-            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-1 rounded-lg mb-8">
-                <div class="bg-dark p-6 rounded-lg">
-                    <h2 class="text-3xl font-bold mb-2">Parul Impact A Batch</h2>
-                    <p class="text-gray-400">Comprehensive question papers covering web development fundamentals to advanced concepts</p>
-                </div>
-            </div>
+        <!-- Batch Title Section -->
+        <div class="mb-16 animate-title">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
+                Parul Impact A Batch
+            </h1>
+            <p class="text-gray-400 text-lg">
+                Comprehensive question papers covering web development fundamentals to advanced concepts
+            </p>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Paper 1 -->
-                <div class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-6 rounded-lg backdrop-blur-sm border border-gray-700 hover:border-primary transition-colors">
-                    <h3 class="text-xl font-semibold mb-4">HTML and CSS</h3>
-                    <p class="text-gray-400 mb-6">Fundamentals of web structure and styling</p>
-                    <div class="flex gap-4">
-                        <a href="papers/qp/html-css.html" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700 transition-colors">Question Paper</a>
-                        <a href="papers/sol/html-css-solution.html" class="flex-1 bg-purple-600 text-white px-4 py-2 rounded-lg text-center hover:bg-purple-700 transition-colors">Solution</a>
-                    </div>
-                </div>
-
-                <!-- Paper 2 -->
-                <div class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-6 rounded-lg backdrop-blur-sm border border-gray-700 hover:border-primary transition-colors">
-                    <h3 class="text-xl font-semibold mb-4">JavaScript and Unit Testing</h3>
-                    <p class="text-gray-400 mb-6">Core JavaScript concepts and testing fundamentals</p>
-                    <div class="flex gap-4">
-                        <a href="papers/qp/javascript.html" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700 transition-colors">Question Paper</a>
-                        <a href="papers/sol/javascript-solution.html" class="flex-1 bg-purple-600 text-white px-4 py-2 rounded-lg text-center hover:bg-purple-700 transition-colors">Solution</a>
-                    </div>
-                </div>
-
-                <!-- Paper 3 -->
-                <div class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-6 rounded-lg backdrop-blur-sm border border-gray-700 hover:border-primary transition-colors">
-                    <h3 class="text-xl font-semibold mb-4">Express and API Testing</h3>
-                    <p class="text-gray-400 mb-6">Building APIs and testing them effectively</p>
-                    <div class="flex gap-4">
-                        <a href="papers/qp/express-api-testing.html" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700 transition-colors">Question Paper</a>
-                        <a href="papers/sol/express-api-testing-solution.html" class="flex-1 bg-purple-600 text-white px-4 py-2 rounded-lg text-center hover:bg-purple-700 transition-colors">Solution</a>
-                    </div>
-                </div>
-
-                <!-- Paper 4 -->
-                <div class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-6 rounded-lg backdrop-blur-sm border border-gray-700 hover:border-primary transition-colors">
-                    <h3 class="text-xl font-semibold mb-4">MongoDB and Version Control</h3>
-                    <p class="text-gray-400 mb-6">Database operations and Git fundamentals</p>
-                    <div class="flex gap-4">
-                        <a href="papers/qp/mongodb-version-control.html" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700 transition-colors">Question Paper</a>
-                        <a href="papers/sol/mongodb-version-control-solution.html" class="flex-1 bg-purple-600 text-white px-4 py-2 rounded-lg text-center hover:bg-purple-700 transition-colors">Solution</a>
-                    </div>
-                </div>
-
-                <!-- Paper 5 -->
-                <div class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-6 rounded-lg backdrop-blur-sm border border-gray-700 hover:border-primary transition-colors">
-                    <h3 class="text-xl font-semibold mb-4">NodeJS and Intro to Backend</h3>
-                    <p class="text-gray-400 mb-6">Server-side JavaScript and backend basics</p>
-                    <div class="flex gap-4">
-                        <a href="#" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700 transition-colors">Question Paper</a>
-                        <a href="#" class="flex-1 bg-purple-600 text-white px-4 py-2 rounded-lg text-center hover:bg-purple-700 transition-colors">Solution</a>
+        <!-- Papers Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- HTML and CSS -->
+            <div class="paper-card">
+                <div class="bg-[#1E293B] rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-6">HTML and CSS</h3>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">📝</span>
+                                Questions
+                            </span>
+                        </a>
+                        <div class="text-gray-600">•</div>
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">✨</span>
+                                Solutions
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- JavaScript and Unit Testing -->
+            <div class="paper-card">
+                <div class="bg-[#1E293B] rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-6">JavaScript and Unit Testing</h3>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">📝</span>
+                                Questions
+                            </span>
+                        </a>
+                        <div class="text-gray-600">•</div>
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">✨</span>
+                                Solutions
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Express and API Testing -->
+            <div class="paper-card">
+                <div class="bg-[#1E293B] rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-6">Express and API Testing</h3>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">📝</span>
+                                Questions
+                            </span>
+                        </a>
+                        <div class="text-gray-600">•</div>
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">✨</span>
+                                Solutions
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MongoDB and Version Control -->
+            <div class="paper-card">
+                <div class="bg-[#1E293B] rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-6">MongoDB and Version Control</h3>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">📝</span>
+                                Questions
+                            </span>
+                        </a>
+                        <div class="text-gray-600">•</div>
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">✨</span>
+                                Solutions
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NodeJS and Intro to Backend -->
+            <div class="paper-card">
+                <div class="bg-[#1E293B] rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-6">NodeJS and Intro to Backend</h3>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">📝</span>
+                                Questions
+                            </span>
+                        </a>
+                        <div class="text-gray-600">•</div>
+                        <a href="#" class="text-link">
+                            <span class="inline-flex items-center">
+                                <span class="text-lg mr-2">✨</span>
+                                Solutions
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="py-6 px-4 sm:px-6 lg:px-8 border-t border-gray-700 mt-12">
-        <div class="container mx-auto text-center text-gray-400">
-            <p>&copy; 2025 Practice Questions Hub by Smaranjit Ghose. All rights reserved.</p>
-        </div>
+    <footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800">
+        <p>&copy; 2025 Practice Questions Hub by Smaranjit Ghose. All rights reserved.</p>
     </footer>
-
-    <script src="assets/js/papers.js"></script>
 </body>
 </html>
