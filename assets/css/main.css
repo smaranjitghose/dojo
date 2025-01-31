@@ -1,100 +1,210 @@
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a1a2e;
+    background: #0F172A;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #4B5563;
-    border-radius: 4px;
+    background: #38BDF8;
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #6B7280;
+    background: #0EA5E9;
 }
 
-/* Card hover effects */
-.hover\:shadow-xl {
-    transition: transform 0.2s ease-in-out;
-}
-
-.hover\:shadow-xl:hover {
-    transform: translateY(-4px);
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Hero animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
-.animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+/* Hero section animations */
+@keyframes slideFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.animate-title {
+    animation: slideFromTop 1s ease-out forwards;
+}
+
+.animate-subtitle {
     opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.5s;
 }
 
 .animate-float {
-    animation: float 3s ease-in-out infinite;
-}
-
-/* Hero section gradient */
-.hero-gradient {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-}
-
-/* Card gradients */
-.card-gradient-1 {
-    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
-}
-
-.card-gradient-2 {
-    background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
-}
-
-/* Glow effects */
-.glow-on-hover:hover {
-    box-shadow: 0 0 15px rgba(66, 153, 225, 0.5);
-}
-
-/* Loading animation for images */
-img {
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    filter: brightness(1.2) contrast(1.1);
+    animation: float 3s ease-in-out infinite, fadeIn 1s ease-out forwards;
+    animation-delay: 0s, 1s;
 }
 
-img.loaded {
+.hero-gradient {
+    background: linear-gradient(to bottom, #0F172A, #020817);
+    position: relative;
+}
+
+/* Optional: Add a subtle gradient overlay */
+.hero-gradient::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 50%);
+    pointer-events: none;
+}
+
+/* Tech card styles */
+.tech-card {
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.tech-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.tech-card:hover::before {
+    transform: translateX(100%);
+}
+
+/* Tech item styles */
+.tech-item {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.tech-item::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.03),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tech-item:hover::after {
     opacity: 1;
 }
 
-/* Technology icons specific styles */
-.bg-dark\/50 img {
-    filter: brightness(1.2) contrast(1.1);
-    transition: transform 0.2s ease-in-out;
+.tech-item:hover {
+    transform: translateY(-2px);
+    background: rgba(30, 41, 59, 0.8);
 }
 
-.bg-dark\/50:hover img {
+.tech-item img {
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover img {
     transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
-/* Paper cards */
-.backdrop-blur-sm {
-    backdrop-filter: blur(8px);
+/* Practice card styles */
+.practice-card {
+    position: relative;
+    overflow: hidden;
 }
 
-/* Staggered animation delays for grid items */
+.practice-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(56, 189, 248, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    animation: shine 3s ease-in-out infinite;
+}
+
+/* Grid animations */
 .grid > div {
     opacity: 0;
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .grid > div:nth-child(1) { animation-delay: 0.1s; }
@@ -103,3 +213,74 @@ img.loaded {
 .grid > div:nth-child(4) { animation-delay: 0.4s; }
 .grid > div:nth-child(5) { animation-delay: 0.5s; }
 .grid > div:nth-child(6) { animation-delay: 0.6s; }
+
+/* Button styles */
+.btn-primary {
+    background: #38BDF8;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+}
+
+.btn-primary:hover::after {
+    animation: shine 1.5s ease-in-out;
+}
+
+/* Loading animation for images */
+img {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* Card hover effects */
+.tech-card {
+    transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1);
+}
+
+/* Footer animation */
+footer {
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+    opacity: 0.2;
+}
