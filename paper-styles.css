@@ -84,6 +84,21 @@ pre {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 }
 
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff; /* Adjust as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add margin to content to avoid overlap */
+.main-content {
+    margin-top: 60px; /* Adjust based on navbar height */
+}
+
 body {
     padding-top: 80px; /* Adjust based on navbar height */
 }
