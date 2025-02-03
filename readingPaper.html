@@ -35,117 +35,119 @@
                 // Fetch questions and paper details
                 const response = await fetch(`../readingPapers/${subject}.json`);
                 const data = await response.json();
-                console.log(data)
-                console.log(data.mcqs)
-                console.log(data.mcqs[0])
-
+                
                 // Set paper title and date
-                document.getElementById('paper-title').textContent = data.title;
-                document.getElementById('paper-date').textContent = `Date: ${data.date}`;
+                document.getElementById('paper-title').textContent = data.title || 'Paper Title Not Available';
+                document.getElementById('paper-date').textContent = data.date ? `Date: ${data.date}` : '';
 
                 const mcqsContainer = document.getElementById('mcqs-container');
                 const fillInTheBlanksContainer = document.getElementById('fill-in-the-blanks-container');
                 const theoryQuestionsContainer = document.getElementById('theory-questions-container');
                 const practicalImplementationContainer = document.getElementById('practical-implementation-container');
 
-                // Load MCQs
-                data.mcqs.forEach((mcq, index) => {
-                    console.log('Processing MCQ:', mcq);  // Debug log
-                    const questionDiv = document.createElement('div');
-                    questionDiv.className = 'mb-6';
+                // Hide all containers by default
+                mcqsContainer.style.display = 'none';
+                fillInTheBlanksContainer.style.display = 'none';
+                theoryQuestionsContainer.style.display = 'none';
+                practicalImplementationContainer.style.display = 'none';
 
-                    let questionHTML = `
-                        <p class="text-gray-400">
-                            <strong>(${mcq.id || index + 1})</strong> ${mcq.question || 'Question not available'}
-                        </p>
-                    `;
+                // Load MCQs if they exist
+                if (data.mcqs && Array.isArray(data.mcqs) && data.mcqs.length > 0) {
+                    console.log('in mcq block');
+                    mcqsContainer.style.display = 'block';
+                    data.mcqs.forEach((mcq, index) => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'mb-6';
 
-                    if (mcq.options && typeof mcq.options === 'object') {
-                        const options = Object.entries(mcq.options)
-                            .map(([key, value]) => `${key}) ${value}`)
-                            .join('    ');
-
-                        questionHTML += `
+                        let questionHTML = `
                             <p class="text-gray-400">
-                                ${options}
+                                <strong>(${mcq.id || index + 1})</strong> ${mcq.question || 'Question not available'}
+                            </p>
+                        `;
+
+                        if (mcq.options && typeof mcq.options === 'object') {
+                            const options = Object.entries(mcq.options)
+                                .map(([key, value]) => `${key}) ${value}`)
+                                .join('    ');
+
+                            questionHTML += `
+                                <p class="text-gray-400">
+                                    ${options}
+                                </p>
+                                <p class="text-blue-400">
+                                    Answer: ${mcq.answer || 'Not provided'}
+                                </p>
+                            `;
+                        }
+
+                        questionDiv.innerHTML = questionHTML;
+                        mcqsContainer.appendChild(questionDiv);
+                    });
+                }
+
+                // Load Fill in the Blanks if they exist
+                if (data.fillInTheBlanks && Array.isArray(data.fillInTheBlanks) && data.fillInTheBlanks.length > 0) {
+                    fillInTheBlanksContainer.style.display = 'block';
+                    data.fillInTheBlanks.forEach(fillInTheBlank => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'mb-6';
+                        questionDiv.innerHTML = `
+                            <p class="text-gray-400">
+                                <strong>(${fillInTheBlank.id})</strong> ${fillInTheBlank.question}
                             </p>
                             <p class="text-blue-400">
-                                Answer: ${mcq.answer || 'Not provided'}
+                                Answer: ${fillInTheBlank.answer}
                             </p>
                         `;
-                    } else {
-                        console.error('Invalid options for MCQ:', mcq);
-                        questionHTML += `
-                            <p class="text-red-400">
-                                Error: Options not available for this question
+                        fillInTheBlanksContainer.appendChild(questionDiv);
+                    });
+                }
+
+                // Load Theory Questions if they exist
+                if (data.theoryQuestions && Array.isArray(data.theoryQuestions) && data.theoryQuestions.length > 0) {
+                    theoryQuestionsContainer.style.display = 'block';
+                    data.theoryQuestions.forEach(theory => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'mb-6';
+                        questionDiv.innerHTML = `
+                            <p class="text-gray-400">
+                                <strong>(${theory.id})</strong> ${theory.question}
+                            </p>
+                            <p class="text-gray-400">
+                                Answer: 
+                            </p>
+                            <p class="text-blue-400">
+                                ${theory.answer}
                             </p>
                         `;
-                    }
+                        theoryQuestionsContainer.appendChild(questionDiv);
+                    });
+                }
 
-                    questionDiv.innerHTML = questionHTML;
-                    mcqsContainer.appendChild(questionDiv);
-                });
-
-                // Load Fill in the Blanks
-                data.fillInTheBlanks.forEach(fillInTheBlank => {
-                    const questionDiv = document.createElement('div');
-                    questionDiv.className = 'mb-6';
-
-                    const questionHTML = `
-                        <p class="text-gray-400">
-                            <strong>(${fillInTheBlank.id})</strong> ${fillInTheBlank.question}
-                        </p>
-                        <p class="text-blue-400">
-                            Answer: ${fillInTheBlank.answer}
-                        </p>
-                    `;
-
-                    questionDiv.innerHTML = questionHTML;
-                    fillInTheBlanksContainer.appendChild(questionDiv);
-                });
-
-                // Load Theory Questions
-                data.theoryQuestions.forEach(theoryQuestion => {
-                    const questionDiv = document.createElement('div');
-                    questionDiv.className = 'mb-6';
-
-                    const questionHTML = `
-                        <p class="text-gray-400">
-                            <strong>(${theoryQuestion.id})</strong> ${theoryQuestion.question}
-                        </p>
-                    `;
-
-                    questionDiv.innerHTML = questionHTML;
-                    theoryQuestionsContainer.appendChild(questionDiv);
-                });
-
-                // Load Practical Implementation Questions
-                data.practicalImplementationQuestions.forEach(practicalQuestion => {
-                    const questionDiv = document.createElement('div');
-                    questionDiv.className = 'mb-6';
-
-                    let questionHTML = `
-                        <p class="text-gray-400">
-                            <strong>(${practicalQuestion.id})</strong> ${practicalQuestion.question}
-                        </p>
-                    `;
-
-                    if (practicalQuestion.subparts) {
-                        questionHTML += `<ol class="list-decimal list-inside mt-2">`;
-                        practicalQuestion.subparts.forEach(subpart => {
-                            questionHTML += `
-                                <li class="text-gray-400 mb-2">
-                                    ${subpart}
-                                </li>
-                            `;
-                        });
-                        questionHTML += `</ol>`;
-                    }
-
-                    questionDiv.innerHTML = questionHTML;
-                    practicalImplementationContainer.appendChild(questionDiv);
-                });
-
+                // Load Practical Implementation Questions if they exist
+                if (data.practicalImplementationQuestions && Array.isArray(data.practicalImplementationQuestions) && data.practicalImplementationQuestions.length > 0) {
+                    practicalImplementationContainer.style.display = 'block';
+                    data.practicalImplementationQuestions.forEach(practical => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'mb-6';
+                        let subpartsHTML = '';
+                        if (practical.subparts && Array.isArray(practical.subparts)) {
+                            subpartsHTML = practical.subparts.map(subpart => `<li class="text-gray-400">- ${subpart}</li>`).join('');
+                        }
+                        questionDiv.innerHTML = `
+                            <p class="text-gray-400">
+                                <strong>(${practical.id})</strong> ${practical.question}
+                            </p>
+                            <ul class="mt-2 list-inside">
+                                ${subpartsHTML}
+                            </ul>
+                            <p class="text-blue-400">
+                                Answer: ${practical.answer}
+                            </p>
+                        `;
+                        practicalImplementationContainer.appendChild(questionDiv);
+                    });
+                }
             } catch (error) {
                 console.error('Error loading questions:', error);
                 const mcqsContainer = document.getElementById('mcqs-container');
@@ -169,7 +171,7 @@
     </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 p-4">
         <!-- Paper Title Section -->
         <div class="mb-16 animate-title">
             <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
@@ -184,28 +186,28 @@
         <div class="space-y-8">
             <!-- Q.1: Multiple Choice Questions -->
             <div>
-                <h3 class="text-2xl font-bold mb-6">Q.1 Multiple Choice Questions</h3>
+                <h3 class="text-2xl font-bold mb-6 " id="mcqs-container">Multiple Choice Questions</h3>
                 <div id="mcqs-container" class="space-y-4">
                 </div>
             </div>
 
             <!-- Q.2: Fill in the Blanks -->
             <div>
-                <h3 class="text-2xl font-bold mb-6">Q.2 Fill in the Blanks</h3>
+                <h3 class="text-2xl font-bold mb-6" id="fill-in-the-blanks-container">Fill in the Blanks</h3>
                 <div id="fill-in-the-blanks-container" class="space-y-4">
                 </div>
             </div>
 
             <!-- Q.3: Theory Questions -->
             <div>
-                <h3 class="text-2xl font-bold mb-6">Q.3 Theory Questions</h3>
+                <h3 class="text-2xl font-bold mb-6" id="theory-questions-container">Theory Questions</h3>
                 <div id="theory-questions-container" class="space-y-4">
                 </div>
             </div>
 
             <!-- Q.4: Practical Implementation -->
             <div>
-                <h3 class="text-2xl font-bold mb-6">Q.4 Practical Implementation Questions</h3>
+                <h3 class="text-2xl font-bold mb-6" id="practical-implementation-container">Practical Implementation Questions</h3>
                 <div id="practical-implementation-container" class="space-y-4">
                 </div>
             </div>

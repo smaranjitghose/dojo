@@ -1,0 +1,83 @@
+{
+    "title": "HTML Questions",
+    "date": "3rd February 2025",
+    "mcqs": [
+      {
+        "id": 1,
+        "question": "In HTML5, which tag is used to embed audio files?",
+        "options": {
+          "a": "audio",
+          "b": "sound",
+          "c": "music",
+          "d": "mp3"
+        },
+        "answer": "a) audio"
+      },
+      {
+        "id": 2,
+        "question": "Which HTML tag is used to create an unordered list?",
+        "options": {
+          "a": "ul",
+          "b": "ol",
+          "c": "list",
+          "d": "dl"
+        },
+        "answer": "a) ul"
+      },
+      {
+        "id": 3,
+        "question": "What does DOM stand for in HTML?",
+        "options": {
+          "a": "Document Object Model",
+          "b": "Data Object Model",
+          "c": "Document Oriented Module",
+          "d": "Digital Object Model"
+        },
+        "answer": "a) Document Object Model"
+      }
+      
+    ],
+    "fillInTheBlanks": [
+      {
+        "id": 1,
+        "question": "The HTML `________` attribute is used to specify an alternate text for an image.",
+        "answer": "alt"
+      },
+      {
+        "id": 2,
+        "question": "The `________` selector in CSS is used to select elements with a specific id attribute.",
+        "answer": "# (ID Selector)"
+      },
+      {
+        "id": 3,
+        "question": "HTML `________` tags are used to define the structure of a table.",
+        "answer": "table"
+      }
+    ],
+    "theoryQuestions": [
+      {
+        "id": 1,
+        "question": "What is the purpose of semantic HTML? List three semantic elements and explain their appropriate usage."
+      },
+      {
+        "id": 2,
+        "question": "Describe the difference between `localStorage` and `sessionStorage` in HTML5."
+      },
+      {
+        "id": 3,
+        "question": "What is the role of the viewport meta tag in HTML5?"
+      }
+    ],
+    "practicalImplementationQuestions": [
+      {
+        "id": 1,
+        "question": "Create a responsive image gallery with the following requirements:",
+        "subparts": [
+          "Grid layout with proper spacing",
+          "Hover effects showing image captions",
+          "Responsive breakpoints for different screen sizes"
+        ]
+      }
+    ]
+  }
+  
