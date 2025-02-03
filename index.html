@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PracticeDojo</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -79,7 +81,7 @@
                         />
                     </div>
                 <di
-                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300" onclick="navigateToChoice('web-dev')"
+                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300 cursor-pointer" onclick="navigateToChoice('web-dev')"
                 >
                   Learn More
                 </di>
@@ -116,7 +118,7 @@
                 </div>
 
                 <di
-                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300"onclick="navigateToChoice('backend')"
+                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300 cursor-pointer"onclick="navigateToChoice('backend')"
                 >
                   Learn More
                 </a>
@@ -147,7 +149,7 @@
 
                 </div>
                 <di
-                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300"
+                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300 cursor-pointer"
                 >
                   Learn More
                 </a>
@@ -197,7 +199,7 @@
                     />
                 </div>
                 <di 
-                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300" onclick="navigateToChoice('javascript')"
+                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300 cursor-pointer" onclick="navigateToChoice('javascript')"
                 >
                   Learn More
                 </a>
@@ -225,7 +227,7 @@
                     />
                 </div>
                 <di
-                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300"
+                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300 cursor-pointer"
                 >
                   Learn More
                 </a>
@@ -252,7 +254,7 @@
                     />
                 </div>
                 <di
-                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300"
+                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300 cursor-pointer"
                 >
                   Learn More
                 </a>
@@ -278,21 +280,39 @@
             </div>
           </div>
         </main>
-
-        <footer
-          class="py-8 px-4 text-center text-gray-400 border-t border-gray-800"
-        >
-          <p>&copy; 2025 PracticeDojo. All rights reserved.</p>
-        </footer>
-
-
-
+        
         <script>
             function navigateToChoice(subject) {
         window.location.href = `choice.html?type=${encodeURIComponent(subject)}`;
     }
     
         </script>
+        <!-- <footer class="py-8 px-4 text-gray-400 border-t border-gray-800">
+          <div class="flex justify-center items-center space-x-8">
+              <a
+                  href="https://www.linkedin.com/in/smaranjitghose/?originalSubdomain=in"
+                  class="flex flex-col items-center text-gray-400 hover:text-blue-700"
+              >
+                  <i class="fa-brands fa-linkedin-in text-3xl mb-2"></i>
+              </a>
+              <a
+                  href="https://github.com/smaranjitghose"
+                  class="flex flex-col items-center text-gray-400 hover:text-gray-600"
+              >
+                  <i class="fa-brands fa-github text-3xl mb-2"></i>
+              </a>
+              <a
+                  href="https://smaranjitghose.com/"  
+                  class="flex flex-col items-center text-gray-400 hover:text-green-500"
+              >
+                  <i class="fa-solid fa-briefcase text-3xl mb-2"></i>
+              </a>
+          </div>
+          <div class="flex justify-center mt-4">
+              <p>&copy; 2025 PracticeDojo. All rights reserved.</p>
+          </div>
+      </footer> -->
+        <script src="/assets/js/footer.js"></script>
           
       </body>
     </html>
