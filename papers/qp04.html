@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PracticeDojo - JavaScript Question Paper</title>
+    <title>PracticeDojo - Question Paper 04</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -19,189 +21,68 @@
             }
         }
     </script>
-    <style>
-        @media print {
-            .no-print {
-                display: none !important;
-            }
-        }
-    </style>
-    <!-- Prism.js for code highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    <script>
-        // Function to load and display paper details, MCQs, short questions, and long questions
-        async function loadQuestions() {
-    try {
-        console.log("Fetching JSON data...");
-
-        const response = await fetch('../data/qp04.json');
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("Fetched JSON Data:", data); // Log entire JSON to debug
-
-        // Verify keys exist
-        if (!data.mcqs || !data.shortQuestions || !data.longQuestions) {
-            throw new Error("Invalid JSON structure: Missing required keys.");
-        }
-
-        // Set paper title and date
-        document.getElementById('paper-title').textContent = data.title || "Unknown Title";
-        document.getElementById('paper-date').textContent = `Date: ${data.date || "N/A"}`;
-
-        const mcqsContainer = document.getElementById('mcqs-container');
-        const shortQuestionsContainer = document.getElementById('short-questions-container');
-        const longQuestionsContainer = document.getElementById('long-questions-container');
-
-        mcqsContainer.innerHTML = '';
-        shortQuestionsContainer.innerHTML = '';
-        longQuestionsContainer.innerHTML = '';
-
-        /*** Load MCQs ***/
-        function escapeHTML(str) {
-            return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        }
-        data.mcqs.forEach(mcq => {
-            console.log("Processing MCQ:", mcq); // Debug individual MCQ
-
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'mb-6';
-
-            let questionHTML = `<p class="text-gray-400"><strong>(${mcq.id})</strong> ${mcq.question}</p>`;
-
-            if (mcq.code) {
-                questionHTML += `<pre class="bg-[#1E293B] p-4 rounded-md relative">
-                    <code class="language-javascript">${mcq.code}</code></pre>`;
-            }
-
-            if (mcq.options && Object.keys(mcq.options).length > 0) {
-                let optionsHTML = '<ul class="list-disc pl-6 mt-2 text-gray-400">';
-                Object.entries(mcq.options).forEach(([key, value]) => {
-                    optionsHTML += `<p>${key}) ${escapeHTML(value)}</p>`;
-                });
-                optionsHTML += '</ul>';
-                questionHTML += optionsHTML;
-            } else {
-                console.warn(`MCQ (${mcq.id}) has no options.`);
-            }
-
-            questionDiv.innerHTML = questionHTML;
-            mcqsContainer.appendChild(questionDiv);
-        });
-
-        /*** Load Short Questions ***/
-        data.shortQuestions.forEach(sq => {
-            console.log("Processing Short Question:", sq);
-
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'mb-6';
-            questionDiv.innerHTML = `<p class="text-gray-400"><strong>(${sq.id})</strong> ${sq.question}</p>`;
-            shortQuestionsContainer.appendChild(questionDiv);
-        });
-
-        /*** Load Long Questions ***/
-        data.longQuestions.forEach(lq => {
-            console.log("Processing Long Question:", lq);
-
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'mb-6';
-
-            let questionHTML = `<p class="text-gray-400"><strong>(${lq.id})</strong> ${lq.question}</p>`;
-
-            if (lq.subparts) {
-                questionHTML += `<ol class="list-decimal list-inside mt-2">`;
-                lq.subparts.forEach(subpart => {
-                    questionHTML += `<li class="text-gray-400 mb-2">${subpart}</li>`;
-                });
-                questionHTML += `</ol>`;
-            }
-
-            if (lq.code) {
-                questionHTML += `<pre class="bg-[#1E293B] p-4 rounded-md relative">
-                                    <code class="language-javascript">${lq.code}</code>
-                                 </pre>`;
-            }
-
-            questionDiv.innerHTML = questionHTML;
-            longQuestionsContainer.appendChild(questionDiv);
-        });
-
-        // Highlight all code blocks
-        Prism.highlightAll();
-    } catch (error) {
-        console.error('Error loading questions:', error);
-        document.getElementById('mcqs-container').innerHTML = `<p class="text-red-500">${error.message}</p>`;
-    }
-}
-
-// Load questions when the page loads
-window.addEventListener('load', loadQuestions);
-    </script>
+    <link href="../assets/css/qp.css" rel="stylesheet">
 </head>
-<body class="bg-[#020817] text-gray-100 min-h-screen">
-    <!-- Back Button -->
-    <div class="container mx-auto px-4 py-6 no-print">
-        <a href="../papers.html" class="inline-flex items-center text-dojo-accent hover:text-dojo-accent/80 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Papers
-        </a>
-    </div>
-    
-    <div class="container mx-auto px-4 flex justify-end items-center mb-6 no-print">
-        <button onclick="window.print()" class="ml-4 px-4 py-2 bg-dojo-accent text-white rounded-lg hover:bg-blue-500 transition-colors">
-            <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-            </svg>
-            Print
-        </button>
-    </div>
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Paper Title Section -->
-        <div class="mb-16 animate-title">
-            <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
-                <!-- Title will be dynamically inserted here -->
-            </h1>
-            <p id="paper-date" class="text-gray-400 text-lg">
-                <!-- Date will be dynamically inserted here -->
-            </p>
+<body class="bg-dojo-dark text-gray-100 min-h-screen">
+    <nav class="sticky top-0 bg-dojo-dark/80 backdrop-blur-sm border-b border-gray-800 z-50 no-print">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../papers.html" class="flex items-center text-dojo-accent hover:text-dojo-accent/80 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back
+            </a>
+            <div class="flex gap-4">
+                <a href="../solutions/sol02.html" class="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    Solutions
+                </a>
+                <button onclick="window.print()" class="flex items-center px-4 py-2 bg-dojo-accent text-white rounded-lg hover:bg-blue-500 transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    Print
+                </button>
+            </div>
         </div>
+    </nav>
 
-        <!-- Questions Section -->
-        <div class="space-y-8">
-            <!-- Q.1: Multiple Choice Questions -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6">Q.1 Multiple Choice Questions</h3>
-                <div id="mcqs-container" class="space-y-4">
-                </div>
-            </div>
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="mb-12 fade-in">
+            <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-dojo-accent mb-4"></h1>
+            <p id="paper-date" class="text-xl text-gray-400"></p>
+        </header>
 
-            <!-- Q.2: Short Questions -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6">Q.2 Attempt any five (Short Questions)</h3>
-                <div id="short-questions-container" class="space-y-4">
-                </div>
-            </div>
+        <div class="space-y-12">
+            <section class="question-section fade-in">
+                <h2 class="question-title">Q.1 Multiple Choice Questions</h2>
+                <div id="mcqs-container" class="space-y-6"></div>
+            </section>
 
-            <!-- Q.3: Long Questions -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6">Q.3 Long Questions</h3>
-                <div id="long-questions-container" class="space-y-4">
-                </div>
-            </div>
+            <section class="question-section fade-in">
+                <h2 class="question-title">Q.2 Attempt any five (Short Questions)</h2>
+                <div id="short-questions-container" class="space-y-6"></div>
+            </section>
+
+            <section class="question-section fade-in">
+                <h2 class="question-title">Q.3 Long Questions</h2>
+                <div id="long-questions-container" class="space-y-8"></div>
+            </section>
         </div>
     </main>
 
-    <footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800 no-print">
+    <footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800 mt-12 no-print">
         <p>&copy; 2025 PracticeDojo. All rights reserved.</p>
     </footer>
+
+    <script src="../assets/js/qp.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const renderer = new QuestionPaperRenderer('04');
+            renderer.loadQuestions();
+        });
+    </script>
 </body>
 </html>
