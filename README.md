@@ -1,41 +1,70 @@
-![Awesome Portfolio Website](./readme_assets/HomePage.png)
+# Dojo
+
+
+
 <div align="center">
 
-<a href="https://github.com/smaranjitghose/dojo"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
-<a href="https://github.com/smaranjitghose/dojo"><img src="https://img.shields.io/badge/Built%20by-developers%20%3C%2F%3E-0059b3"></a>
-<a href="https://github.com/smaranjitghose/dojo"><img src="https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=yellow"></a>
-<a href="https://github.com/smaranjitghose/"><img src="https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?v=103"></a>
-<a href="https://github.com/smaranjitghose/dojo/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?v=103"></a>
-
-<a href="https://github.com/smaranjitghose/dojo/graphs/contributors"><img src="https://img.shields.io/github/contributors/smaranjitghose/awesome-portfolio-websites?color=brightgreen"></a>
-<a href="https://github.com/smaranjitghose/dojo/stargazers"><img src="https://img.shields.io/github/stars/smaranjitghose/awesome-portfolio-websites?color=0059b3"></a>
-<a href="https://github.com/smaranjitghose/dojo/forks"><img src="https://img.shields.io/github/forks/smaranjitghose/awesome-portfolio-websites?color=yellow"></a>
-<a href="https://github.com/smaranjitghose/dojo/issues"><img src="https://img.shields.io/github/issues/smaranjitghose/awesome-portfolio-websites?color=0059b3"></a>
-<a href="https://github.com/smaranjitghose/dojo/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/smaranjitghose/awesome-portfolio-websites?color=yellow"></a>
-<a href="https://github.com/smaranjitghose/dojo/pulls"><img src="https://img.shields.io/github/issues-pr/smaranjitghose/awesome-portfolio-websites?color=brightgreen"></a>
-<a href="https://github.com/smaranjitghose/dojo/pulls?q=is%3Apr+is%3Aclosed"><img src="https://img.shields.io/github/issues-pr-closed-raw/smaranjitghose/awesome-portfolio-websites?color=0059b3"></a>
+<a href="https://dojo-steel.vercel.app/papers.html"><img src="https://img.shields.io/badge/Live%20Project-Visit%20Now-brightgreen"></a>
+<a href="https://github.com/your-repo-link"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
+<a href="https://github.com/your-repo-link/issues"><img src="https://img.shields.io/github/issues/your-repo-link?color=0059b3"></a>
+<a href="https://github.com/your-repo-link/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?v=103"></a>
 
 </div>
 
-# **DOJO - Your Ultimate Resource for Development Learning!** 🚀
+## About Dojo 🏆
+Dojo is a platform designed to streamline access to research papers and academic materials. Our goal is to make knowledge easily accessible and organized for students, researchers, and enthusiasts.
 
-This repository provides a comprehensive collection of **question papers, study materials, and resources** for various **programming languages, frameworks, and development topics**. Whether you're preparing for exams, interviews, or just expanding your knowledge, DOJO has got you covered! 📚
+## Features ✨
+- 📚 **Access a wide range of research papers**
+- 🔍 **Easy search and filtering options**
+- 🚀 **Fast and user-friendly interface**
+- 🌐 **Accessible from anywhere with an internet connection**
 
-## **What You Will Find:**
-- Question papers on popular development languages and frameworks. 📝
-- Study materials to help you grasp complex concepts. 📖
-- Resources for preparing for technical interviews. 🔧
-- A repository of tutorials and examples for hands-on learning. 👨‍💻
+## Live Demo 🌍
+Check out Dojo in action: [Dojo Website](https://dojo-steel.vercel.app/papers.html)
 
-Feel free to contribute and add resources to help others learn and grow! 🌱
-
-## A Quick Tour of Our Resources 🚀
-
-### Home Page:
-
-<p align="center"><video src="./readme_assets/HomePage.mp4"></p>
-
-### Question Paper Section:
+## Screenshots 🖼️
+### Home Page
+![Homepagegif](./asset_readme/Homepagegif.gif)
 
 
-<p align="center"><video src="./readme_assets/QuestionPaperSection.mp4"></p>
+
+### Papers Listing Page
+![TestpageGif](./asset_readme/TestpageGif.gif)
+
+
+## Getting Started 🚀
+### Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repo-link.git
+   cd dojo
+   ```
+
+## Contributing 🤝
+We welcome contributions! If you’d like to contribute, please follow these steps:
+1. Fork the repository
+2. Create a new branch (`feature-xyz`)
+3. Make your changes and commit them
+4. Push to your fork and submit a Pull Request
+
+For detailed guidelines, check our [Contribution Guide](./CONTRIBUTING.md).
+aedb6e4c8fa4
+## License 📜
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+## Maintainers 👨‍💻
+| <img src="./asset_readme/Mentor.png" width="250px"> |
+| :------------------------------------------: |
+| [Smaranjit Ghose](https://github.com/smaranjitghose/) |
+
+## Contributors 🌟
+A huge thanks to our contributors!
+<a href="https://github.com/smaranjitghose/dojo/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=smaranjitghose/dojo" />
+</a>
+
+---
+
+Enjoy using Dojo? Give us a ⭐ on GitHub!
+
