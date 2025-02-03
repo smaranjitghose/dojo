@@ -131,6 +131,50 @@
             }
         }
 
+        function searchQuestions() {
+    const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+    const contentElements = document.querySelectorAll('body *:not(script):not(style):not(meta):not(title):not(link)'); // Select all text-containing elements
+
+    let firstMatch = null;
+
+    contentElements.forEach(element => {
+        if (element.children.length === 0 || element.tagName === 'P' || element.tagName === 'H3') { 
+            const originalText = element.getAttribute('data-original-text') || element.innerHTML;
+            
+            if (!element.getAttribute('data-original-text')) {
+                element.setAttribute('data-original-text', originalText);
+            }
+
+            if (searchTerm === "") {
+                element.innerHTML = element.getAttribute('data-original-text'); // Reset original text
+            } else if (originalText.toLowerCase().includes(searchTerm)) {
+                const regex = new RegExp(`(${searchTerm})`, 'gi');  // Corrected line here
+                element.innerHTML = originalText.replace(regex, '<span class="bg-yellow-300 text-black">$1</span>');
+
+                if (!firstMatch) {
+                    firstMatch = element;
+                }
+            } else {
+                element.innerHTML = originalText;
+            }
+        }
+    });
+
+    // Scroll to the first highlighted result
+    if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+}
+
+// Ensure original text is stored for resetting after search
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('body *:not(script):not(style):not(meta):not(title):not(link)').forEach(element => {
+        if (element.children.length === 0 || element.tagName === 'P' || element.tagName === 'H3') {
+            element.setAttribute('data-original-text', element.innerHTML);
+        }
+    });
+});
+
         // Load questions when the page loads
         window.addEventListener('load', loadQuestions);
     </script>
@@ -147,6 +191,9 @@
     </div>
     
     <div class="container mx-auto px-4 flex justify-end items-center mb-6 no-print">
+        <input type="text" id="search-bar" placeholder="Search questions..." class="bg-[#0F172A] text-gray-100 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-dojo-accent">
+        <button onclick="searchQuestions()" class="bg-dojo-accent text-white px-4 py-2 rounded-md hover:bg-dojo-accent/80 transition-colors">Search</button>
+   
         <button onclick="window.print()" class="ml-4 px-4 py-2 bg-dojo-accent text-white rounded-lg hover:bg-blue-500 transition-colors">
             <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
