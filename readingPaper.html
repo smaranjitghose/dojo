@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PracticeDojo - CSS Questions</title>
+    <title>Reading Paper</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'dojo-dark': '#020817',
-                        'dojo-card': '#0F172A',
-                        'dojo-accent': '#38BDF8',
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Add marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* Add styles for markdown content */
+        .markdown-content h1 { @apply text-3xl font-bold mb-4 text-blue-400; }
+        .markdown-content h2 { @apply text-2xl font-bold mb-3 text-blue-400; }
+        .markdown-content h3 { @apply text-xl font-bold mb-2 text-blue-400; }
+        .markdown-content p { @apply text-gray-400 mb-4; }
+        .markdown-content ul { @apply list-disc list-inside text-gray-400 mb-4; }
+        .markdown-content ol { @apply list-decimal list-inside text-gray-400 mb-4; }
+        .markdown-content code { @apply bg-gray-800 px-2 py-1 rounded; }
+        .markdown-content pre { @apply bg-gray-800 p-4 rounded mb-4; }
+        .markdown-content blockquote { @apply border-l-4 border-blue-400 pl-4 italic mb-4; }
+    </style>
     <!-- Prism.js for code highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
@@ -29,13 +29,69 @@
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
+
+        async function checkFileExists(url) {
+            try {
+                const response = await fetch(url, { method: 'HEAD' });
+                return response.ok;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        async function loadMarkdownContent(subject) {
+            try {
+                const response = await fetch(`../readingPapers/${subject}.md`);
+                if (!response.ok) throw new Error('MD file not found');
+                
+                const mdContent = await response.text();
+                
+                // Set title
+                document.getElementById('paper-title').textContent = subject.charAt(0).toUpperCase() + subject.slice(1);
+                document.getElementById('paper-date').textContent = `Date: ${new Date().toLocaleDateString()}`;
+
+                // Hide all question containers
+                ['mcqs-container', 'fill-in-the-blanks-container', 'theory-questions-container', 'practical-implementation-container']
+                    .forEach(id => {
+                        const container = document.getElementById(id);
+                        if (container) container.style.display = 'none';
+                    });
+
+                // Create markdown container if it doesn't exist
+                let markdownContainer = document.getElementById('markdown-container');
+                if (!markdownContainer) {
+                    markdownContainer = document.createElement('div');
+                    markdownContainer.id = 'markdown-container';
+                    markdownContainer.className = 'markdown-content text-gray-400';
+                    document.querySelector('main .space-y-8').appendChild(markdownContainer);
+                }
+
+                // Render markdown content
+                markdownContainer.innerHTML = marked.parse(mdContent);
+                return true;
+            } catch (error) {
+                console.log('No markdown file found, trying JSON...');
+                return false;
+            }
+        }
+
         async function loadQuestions() {
             try {
-                let subject = getQueryParam('subject');
-                // Fetch questions and paper details
+                const subject = getQueryParam('subject');
+                if (!subject) throw new Error('No subject specified');
+
+                // First try to load markdown file
+                const mdLoaded = await loadMarkdownContent(subject);
+                if (mdLoaded) return;
+
+                // If no markdown file, try JSON
                 const response = await fetch(`../readingPapers/${subject}.json`);
                 const data = await response.json();
                 
+                // Hide markdown container if it exists
+                const markdownContainer = document.getElementById('markdown-container');
+                if (markdownContainer) markdownContainer.style.display = 'none';
+
                 // Set paper title and date
                 document.getElementById('paper-title').textContent = data.title || 'Paper Title Not Available';
                 document.getElementById('paper-date').textContent = data.date ? `Date: ${data.date}` : '';
