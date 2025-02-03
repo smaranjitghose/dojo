@@ -29,10 +29,10 @@
         "question": "Which of the following is a best practice for improving SEO in HTML?",
         "code": null,
         "options": {
-          "a": "Using <div> for all elements",
-          "b": "Using semantic HTML elements like <header>, <main>, and <footer>",
-          "c": "Adding as many <meta> tags as possible",
-          "d": "Using inline styles for all elements"
+          "a":"Using <div> for all elements",
+          "b":"Using semantic HTML elements like <header>, <main>, and <footer>",
+          "c":"Adding as many <meta> tags as possible",
+          "d":"Using inline styles for all elements"
         }
       },
       {
@@ -84,10 +84,10 @@
         "question": "What's the most semantically correct way to mark up a famous quote from an author in HTML?",
         "code": null,
         "options": {
-          "a": "<p>",
-          "b": "<quote>",
-          "c": "<blockquote>",
-          "d": "<q>"
+          "a":"<p>",
+          "b":"<quote>",
+          "c":"<blockquote>",
+          "d":"<q>"
         }
       },
       {

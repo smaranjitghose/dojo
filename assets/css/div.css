@@ -1,0 +1,45 @@
+.container1{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid #fff; */
+    border-radius: 8px;
+    
+}
+.container1 .card{
+    display: flex;
+    margin: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: unset;
+    padding: 10px;
+    background: #1E293B;
+    border-radius: 8px;
+}
+.container1 .card image{
+    width: 200px;
+    height: 200px;
+}
+img{
+    width: 150px; 
+    height: 150px; 
+}
+.container1 .card .content{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.container1 .card .content h1{
+    margin:5px;
+    font-weight: 600;
+    font-size: 2rem;
+}
+.container1 .card .content .btons{
+    display: flex;
+    flex-direction: row;
+}
+button{
+    margin: 5px;
+    padding: 6px;
+    border-radius:  8px;
+    background: #0d1118;
+}

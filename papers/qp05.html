@@ -19,6 +19,10 @@
             }
         }
     </script>
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <style>
         @media print {
             .no-print {
@@ -26,10 +30,6 @@
             }
         }
     </style>
-    <!-- Prism.js for code highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script>
         // Function to load and display paper details, MCQs, short questions, and long questions
         async function loadQuestions() {
@@ -59,10 +59,7 @@
 
                     if (mcq.code) {
                         questionHTML += `
-                            <div class="relative">
-                                <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code}</code></pre>
-                                <button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.parentNode.querySelector('pre').textContent)">Copy</button>
-                            </div>
+                            <pre class="bg-[#1E293B] p-4 rounded-md relative"><button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.parentNode.querySelector('code').textContent)">Copy</button><code class="language-javascript">${mcq.code}</code></pre>
                         `;
                     }
 
@@ -113,10 +110,7 @@
                                 <li class="text-gray-400 mb-2">
                                     ${subpart}
                                     ${longQuestion.code && index === longQuestion.subparts.length - 1 ? `
-                                        <div class="relative">
-                                            <pre class="bg-[#1E293B] p-4 rounded-md mt-2"><code class="language-javascript">${longQuestion.code}</code></pre>
-                                            <button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.parentNode.querySelector('pre').textContent)">Copy</button>
-                                        </div>
+                                        <pre class="bg-[#1E293B] p-4 rounded-md relative mt-2"><button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.parentNode.querySelector('code').textContent)">Copy</button><code class="language-javascript">${longQuestion.code}</code></pre>
                                     ` : ''}
                                 </li>
                             `;
@@ -146,7 +140,7 @@
             section.classList.toggle('hidden');
             arrow.classList.toggle('rotate-180');
         }
-        
+
     </script>
 </head>
 <body class="bg-[#020817] text-gray-100 min-h-screen">
@@ -168,7 +162,7 @@
             Print
         </button>
     </div>
-
+    
     <!-- Main Content -->
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="mb-16">
