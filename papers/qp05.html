@@ -33,112 +33,114 @@
     <script>
         // Function to load and display paper details, MCQs, short questions, and long questions
         async function loadQuestions() {
-            try {
-                // Fetch questions and paper details
-                const response = await fetch('../data/qp05.json');
-                const data = await response.json();
+    try {
+        console.log("Fetching JSON data...");
 
-                // Set paper title and date
-                document.getElementById('paper-title').textContent = data.title;
-                document.getElementById('paper-date').textContent = `Date: ${data.date}`;
+        const response = await fetch('../data/qp05.json');
 
-                const mcqsContainer = document.getElementById('mcqs-container');
-                const shortQuestionsContainer = document.getElementById('short-questions-container');
-                const longQuestionsContainer = document.getElementById('long-questions-container');
-
-                // Load MCQs
-                data.mcqs.forEach(mcq => {
-                    const questionDiv = document.createElement('div');
-                    questionDiv.className = 'mb-6';
-
-                    let questionHTML = `
-                        <p class="text-gray-400">
-                            <strong>(${mcq.id})</strong> ${mcq.question}
-                        </p>
-                    `;
-
-                    if (mcq.code) {
-                        questionHTML += `
-                            <div class="relative">
-                                <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${mcq.code}</code></pre>
-                                <button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.parentNode.querySelector('pre').textContent)">Copy</button>
-                            </div>
-                        `;
-                    }
-
-                    const options = Object.entries(mcq.options)
-                        .map(([key, value]) => `${key}) ${value}`)
-                        .join('    ');
-
-                    questionHTML += `
-                        <p class="text-gray-400">
-                            ${options}
-                        </p>
-                    `;
-
-                    questionDiv.innerHTML = questionHTML;
-                    mcqsContainer.appendChild(questionDiv);
-                });
-
-                // Load Short Questions
-                data.shortQuestions.forEach(shortQuestion => {
-                    const questionDiv = document.createElement('div');
-                    questionDiv.className = 'mb-6';
-
-                    const questionHTML = `
-                        <p class="text-gray-400">
-                            <strong>(${shortQuestion.id})</strong> ${shortQuestion.question}
-                        </p>
-                    `;
-
-                    questionDiv.innerHTML = questionHTML;
-                    shortQuestionsContainer.appendChild(questionDiv);
-                });
-
-                // Load Long Questions
-                data.longQuestions.forEach(longQuestion => {
-                    const questionDiv = document.createElement('div');
-                    questionDiv.className = 'mb-6';
-
-                    let questionHTML = `
-                        <p class="text-gray-400">
-                            <strong>(${longQuestion.id})</strong> ${longQuestion.question}
-                        </p>
-                    `;
-
-                    if (longQuestion.subparts) {
-                        questionHTML += `<ol class="list-decimal list-inside mt-2">`;
-                        longQuestion.subparts.forEach((subpart, index) => {
-                            questionHTML += `
-                                <li class="text-gray-400 mb-2">
-                                    ${subpart}
-                                    ${longQuestion.code && index === longQuestion.subparts.length - 1 ? `
-                                        <div class="relative">
-                                            <pre class="bg-[#1E293B] p-4 rounded-md mt-2"><code class="language-javascript">${longQuestion.code}</code></pre>
-                                            <button class="absolute top-2 right-2 text-gray-400 hover:text-white" onclick="copyToClipboard(this.parentNode.querySelector('pre').textContent)">Copy</button>
-                                        </div>
-                                    ` : ''}
-                                </li>
-                            `;
-                        });
-                        questionHTML += `</ol>`;
-                    }
-
-                    questionDiv.innerHTML = questionHTML;
-                    longQuestionsContainer.appendChild(questionDiv);
-                });
-
-                // Highlight code blocks after adding them
-                Prism.highlightAll();
-            } catch (error) {
-                console.error('Error loading questions:', error);
-                const mcqsContainer = document.getElementById('mcqs-container');
-                mcqsContainer.innerHTML = '<p class="text-red-500">Error loading questions. Please try again later.</p>';
-            }
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        // Load questions when the page loads
-        window.addEventListener('load', loadQuestions);
+        const data = await response.json();
+        console.log("Fetched JSON Data:", data); // Log entire JSON to debug
+
+        // Verify keys exist
+        if (!data.mcqs || !data.shortQuestions || !data.longQuestions) {
+            throw new Error("Invalid JSON structure: Missing required keys.");
+        }
+
+        // Set paper title and date
+        document.getElementById('paper-title').textContent = data.title || "Unknown Title";
+        document.getElementById('paper-date').textContent = `Date: ${data.date || "N/A"}`;
+
+        const mcqsContainer = document.getElementById('mcqs-container');
+        const shortQuestionsContainer = document.getElementById('short-questions-container');
+        const longQuestionsContainer = document.getElementById('long-questions-container');
+
+        mcqsContainer.innerHTML = '';
+        shortQuestionsContainer.innerHTML = '';
+        longQuestionsContainer.innerHTML = '';
+
+        /*** Load MCQs ***/
+        function escapeHTML(str) {
+            return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+        data.mcqs.forEach(mcq => {
+            console.log("Processing MCQ:", mcq); // Debug individual MCQ
+
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'mb-6';
+
+            let questionHTML = `<p class="text-gray-400"><strong>(${mcq.id})</strong> ${mcq.question}</p>`;
+
+            if (mcq.code) {
+                questionHTML += `<pre class="bg-[#1E293B] p-4 rounded-md relative">
+                    <code class="language-javascript">${mcq.code}</code></pre>`;
+            }
+
+            if (mcq.options && Object.keys(mcq.options).length > 0) {
+                let optionsHTML = '<ul class="list-disc pl-6 mt-2 text-gray-400">';
+                Object.entries(mcq.options).forEach(([key, value]) => {
+                    optionsHTML += `<p>${key}) ${escapeHTML(value)}</p>`;
+                });
+                optionsHTML += '</ul>';
+                questionHTML += optionsHTML;
+            } else {
+                console.warn(`MCQ (${mcq.id}) has no options.`);
+            }
+
+            questionDiv.innerHTML = questionHTML;
+            mcqsContainer.appendChild(questionDiv);
+        });
+
+        /*** Load Short Questions ***/
+        data.shortQuestions.forEach(sq => {
+            console.log("Processing Short Question:", sq);
+
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'mb-6';
+            questionDiv.innerHTML = `<p class="text-gray-400"><strong>(${sq.id})</strong> ${sq.question}</p>`;
+            shortQuestionsContainer.appendChild(questionDiv);
+        });
+
+        /*** Load Long Questions ***/
+        data.longQuestions.forEach(lq => {
+            console.log("Processing Long Question:", lq);
+
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'mb-6';
+
+            let questionHTML = `<p class="text-gray-400"><strong>(${lq.id})</strong> ${lq.question}</p>`;
+
+            if (lq.subparts) {
+                questionHTML += `<ol class="list-decimal list-inside mt-2">`;
+                lq.subparts.forEach(subpart => {
+                    questionHTML += `<li class="text-gray-400 mb-2">${subpart}</li>`;
+                });
+                questionHTML += `</ol>`;
+            }
+
+            if (lq.code) {
+                questionHTML += `<pre class="bg-[#1E293B] p-4 rounded-md relative">
+                                    <code class="language-javascript">${lq.code}</code>
+                                 </pre>`;
+            }
+
+            questionDiv.innerHTML = questionHTML;
+            longQuestionsContainer.appendChild(questionDiv);
+        });
+
+        // Highlight all code blocks
+        Prism.highlightAll();
+    } catch (error) {
+        console.error('Error loading questions:', error);
+        document.getElementById('mcqs-container').innerHTML = `<p class="text-red-500">${error.message}</p>`;
+    }
+}
+
+// Load questions when the page loads
+window.addEventListener('load', loadQuestions);
     </script>
 </head>
 <body class="bg-[#020817] text-gray-100 min-h-screen">
