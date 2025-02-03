@@ -48,10 +48,18 @@
                 margin: 2cm;
             }
         }
+
         @media print {
             .no-print {
                 display: none!important;
             }
+        }
+
+        .highlight {
+            background-color: yellow;
+            color: black;
+            padding: 0 4px;
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -68,6 +76,9 @@
 
     <!-- Search bar and print button -->
     <div class="container mx-auto px-4 flex justify-end items-center mb-6">
+        <input type="text" id="search-bar" placeholder="Search questions..." class="bg-[#0F172A] text-gray-100 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-dojo-accent">
+        <button onclick="searchQuestions()" class="bg-dojo-accent text-white px-4 py-2 rounded-md hover:bg-dojo-accent/80 transition-colors ml-4">Search</button>
+       
         <button onclick="window.location.href='../../papers/qp01.html'" class="ml-4 px-4 py-2 bg-dojo-accent text-white rounded-lg hover:bg-blue-500 transition-colors">
             <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
@@ -81,6 +92,7 @@
             Print
         </button>
     </div>
+    
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -188,7 +200,7 @@
                     `;
 
                     if (question.code) {
-                        solutionHTML += `
+                        solutionHTML += ` 
                             <div class="mt-4">
                                 <h5 class="text-md font-semibold text-blue-400 mb-2">Example Code:</h5>
                                 <pre class="bg-[#1E293B] p-4 rounded-md"><code class="language-javascript">${question.code}</code></pre>
@@ -253,6 +265,47 @@
 
             } catch (error) {
                 console.error('Error loading solutions:', error);
+            }
+        }
+
+        function searchQuestions() {
+            const searchTerm = document.getElementById('search-bar').value.trim().toLowerCase();
+            if (!searchTerm) return; // Exit if input is empty
+
+            const contentElements = document.querySelectorAll('#mcqs-container p, #short-questions-container p, #long-questions-container p, h3');
+
+            let firstMatch = null;
+
+            contentElements.forEach(element => {
+                const originalText = element.getAttribute('data-original-text') || element.innerHTML;
+
+                // Store original text if not already done
+                if (!element.getAttribute('data-original-text')) {
+                    element.setAttribute('data-original-text', originalText);
+                }
+
+                // Reset content if no match is found or if searchTerm is empty
+                if (!searchTerm || !originalText.toLowerCase().includes(searchTerm)) {
+                    element.innerHTML = originalText;
+                    return;
+                }
+
+                // Highlight matches
+                const regex = new RegExp(searchTerm, 'gi');
+                const highlightedText = originalText.replace(regex, match => `<span class="highlight">${match}</span>`);
+
+                // Update the element's content with highlighted text
+                element.innerHTML = highlightedText;
+
+                // Scroll to the first match
+                if (!firstMatch) {
+                    firstMatch = element;
+                }
+            });
+
+            // Scroll to first match, if found
+            if (firstMatch) {
+                firstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
             }
         }
 
