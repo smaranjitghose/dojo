@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-<!-- Same structure as sol02.html but with data source changed to sol03.json -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +23,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <style>
+        /* Highlight matches */
+        .highlight {
+            background-color: yellow;
+            color: black;
+            padding: 0 4px;
+            border-radius: 2px;
+        }
+
+        /* Hide search input and buttons while printing */
         @media print {
             body { background-color: white !important; color: black !important; }
             .dark * { color: black !important; background-color: white !important; }
@@ -33,13 +41,13 @@
         }
         @media print {
             .no-print {
-                display: none !important;
+                display: none!important;
             }
         }
     </style>
 </head>
 <body class="bg-[#020817] text-gray-100 min-h-screen">
-    <!-- Rest of the body structure same as sol02.html -->
+    <!-- Back Button -->
     <div class="container mx-auto px-4 py-6 no-print">
         <a href="../papers.html" class="inline-flex items-center text-dojo-accent hover:text-dojo-accent/80 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,8 +57,12 @@
         </a>
     </div>
 
+    <!-- Search bar and print button -->
     <div class="container mx-auto px-4 flex justify-end items-center mb-6">
-        <button onclick="window.location.href='../../papers/qp03.html'" class="ml-4 px-4 py-2 bg-dojo-accent text-white rounded-lg hover:bg-blue-500 transition-colors">
+        <input type="text" id="search-bar" placeholder="Search questions..." class="bg-[#0F172A] text-gray-100 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-dojo-accent">
+        <button onclick="searchQuestions()" class="bg-dojo-accent text-white px-4 py-2 rounded-md hover:bg-dojo-accent/80 transition-colors ml-4">Search</button>
+       
+        <button onclick="window.location.href='../../papers/qp01.html'" class="ml-4 px-4 py-2 bg-dojo-accent text-white rounded-lg hover:bg-blue-500 transition-colors">
             <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
             </svg>
@@ -58,12 +70,14 @@
         </button>
         <button onclick="window.print()" class="ml-4 px-4 py-2 bg-dojo-accent text-white rounded-lg hover:bg-blue-500 transition-colors">
             <svg class="w-5 h-5 inline-block mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
             </svg>
             Print
         </button>
     </div>
+    
 
+    <!-- Main Content -->
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="mb-16 animate-title">
             <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-blue-400 mb-4"></h1>
@@ -93,10 +107,10 @@
     </footer>
 
     <script>
-        // Same JavaScript as sol02.html but with data source changed to sol03.json
+        // Function to load and display solutions
         async function loadSolutions() {
             try {
-                const response = await fetch('../../data/sol03.json');
+                const response = await fetch('../../data/sol02.json');
                 const data = await response.json();
 
                 document.getElementById('paper-title').textContent = data.title;
@@ -226,6 +240,48 @@
         window.addEventListener('load', () => {
             loadSolutions();
         });
+
+        function searchQuestions() {
+            const searchTerm = document.getElementById('search-bar').value.trim().toLowerCase();
+            if (!searchTerm) return; // Exit if input is empty
+
+            const contentElements = document.querySelectorAll('#mcqs-container p, #short-questions-container p, #long-questions-container p, h3');
+
+            let firstMatch = null;
+
+            contentElements.forEach(element => {
+                const originalText = element.getAttribute('data-original-text') || element.innerHTML;
+
+                // Store original text if not already done
+                if (!element.getAttribute('data-original-text')) {
+                    element.setAttribute('data-original-text', originalText);
+                }
+
+                // Reset content if no match is found or if searchTerm is empty
+                if (!searchTerm || !originalText.toLowerCase().includes(searchTerm)) {
+                    element.innerHTML = originalText;
+                    return;
+                }
+
+                // Highlight matches
+                const regex = new RegExp(searchTerm, 'gi');
+                const highlightedText = originalText.replace(regex, match => `<span class="highlight">${match}</span>`);
+
+                // Update the element's content with highlighted text
+                element.innerHTML = highlightedText;
+
+                // Scroll to the first match
+                if (!firstMatch) {
+                    firstMatch = element;
+                }
+            });
+
+            // Scroll to first match, if found
+            if (firstMatch) {
+                firstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        }
+
     </script>
 </body>
 </html>
