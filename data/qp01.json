@@ -29,10 +29,10 @@
         "question": "Which of the following is a best practice for improving SEO in HTML?",
         "code": null,
         "options": {
-          "a": "Using <div> for all elements",
-          "b": "Using semantic HTML elements like <header>, <main>, and <footer>",
-          "c": "Adding as many <meta> tags as possible",
-          "d": "Using inline styles for all elements"
+          "a":"Using <div> for all elements",
+          "b":"Using semantic HTML elements like <header>, <main>, and <footer>",
+          "c":"Adding as many <meta> tags as possible",
+          "d":"Using inline styles for all elements"
         }
       },
       {
@@ -84,10 +84,10 @@
         "question": "What's the most semantically correct way to mark up a famous quote from an author in HTML?",
         "code": null,
         "options": {
-          "a": "<p>",
-          "b": "<quote>",
-          "c": "<blockquote>",
-          "d": "<q>"
+          "a":"<p>",
+          "b":"<quote>",
+          "c":"<blockquote>",
+          "d":"<q>"
         }
       },
       {
@@ -168,7 +168,9 @@
       },
       {
         "id": 3,
-        "question": "You are given the following HTML structure for a parallax section. <section class=\"parallax\">    <h2>Parallax Section</h2></section> Write the CSS code to",
+        "question": "You are given the following HTML structure for a parallax section.\n",
+        "code":"\n<section class=\"parallax\">\n<h2>Parallax Section</h2>\n</section>",
+        "question1":"Write the CSS code to",
         "subparts": [
           "Create a parallax scrolling effect using a background image.",
           "Ensure the background image is fixed and covers the entire section.",
@@ -179,7 +181,9 @@
       },
       {
         "id": 4,
-        "question": "You are given the following HTML structure for an image gallery. <div class=\"gallery\">    <img src=\"image1.jpg\" alt=\"Image 1\">    <img src=\"image2.jpg\" alt=\"Image 2\">    <img src=\"image3.jpg\" alt=\"Image 3\"></div> Write the CSS code to:",
+        "question": "You are given the following HTML structure for an image gallery.",
+        "code":"\n<div class=\"gallery\">\n<img src=\"image1.jpg\" alt=\"Image 1\">\n<img src=\"image2.jpg\" alt=\"Image 2\">\n<img src=\"image3.jpg\" alt=\"Image 3\">\n</div>",
+        "question1":"Write the CSS code to:",
         "subparts": [
           "Display the images in a responsive flexbox layout.",
           "Ensure the images wrap to the next line when the container width is exceeded.",
