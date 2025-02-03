@@ -1,0 +1,149 @@
+
+/* CSS Variables */
+:root {
+    --dojo-dark: #020817;
+    --dojo-card: #0F172A;
+    --dojo-accent: #38BDF8;
+    --dojo-accent-hover: #0EA5E9;
+    --dojo-text: #F1F5F9;
+    --dojo-gray: #94A3B8;
+}
+
+/* Base Styles */
+body {
+    background-color: var(--dojo-dark);
+    color: var(--dojo-text);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+main {
+    margin: 30px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dojo-text);
+}
+
+a {
+    color: var(--dojo-accent);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--dojo-accent-hover);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dojo-card);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dojo-accent);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dojo-accent-hover);
+}
+
+/* Hero Section */
+.hero-gradient {
+    background: linear-gradient(to bottom, var(--dojo-card), var(--dojo-dark));
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--dojo-text);
+}
+
+.hero-gradient h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dojo-accent);
+}
+
+.hero-gradient p {
+    font-size: 1.2rem;
+    color: var(--dojo-gray);
+}
+
+/* Horizontal Line */
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--dojo-gray);
+    margin: 1rem 0;
+}
+
+/* content styles */
+.content h2 {
+    color: var(--dojo-accent);
+}
+
+/* Tech Card Styles */
+.tech-card {
+    background: var(--dojo-card);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    color: var(--dojo-text);
+    transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1);
+}
+
+.tech-card h2 {
+    color: var(--dojo-accent);
+    margin-bottom: 1rem;
+}
+
+.tech-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tech-card ul li {
+    padding: 0.5rem 0;
+    color: var(--dojo-gray); /* Text inside cards uses --dojo-gray */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--dojo-gray);
+}
+
+table th {
+    background-color: var(--dojo-card);
+    color: var(--dojo-accent);
+}
+
+/* Footer */
+footer {
+    background: var(--dojo-card);
+    color: var(--dojo-text);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0;
+    color: var(--dojo-gray);
+}
