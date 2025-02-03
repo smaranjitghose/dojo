@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #38bdf8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .back-to-home:hover {
+            background-color: #0ea5e9;
+        }
+
+        .testimonials {
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #38bdf8;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+        }
+
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .testimonial-card {
+            background: #1e293b;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .testimonial-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .links {
+            margin-top: 5px;
+        }
+
+        .links a {
+            color: #38bdf8;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .timestamp {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        .comment {
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home">Back to Home</a>
+    
+
+    <section class="testimonials">
+        <h1>Testimonials</h1>
+        <p>Here are few Testimonials...</p>
+
+        <div id="testimonial-container" class="testimonial-container">
+            <!-- Testimonials will be added here dynamically -->
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const testimonials = [
+                {
+                    name: "Vishang Lad",
+                    picture: "https://avatars.githubusercontent.com/u/161571588?v=4",
+                    linkedin: "https://www.linkedin.com/in/vishang-lad",
+                    github: "https://github.com/vishangl",
+                    timestamp: "January 10, 2024",
+                    comment: "Amazing experience! Learned so much in just a few months."
+                },
+                {
+                    name: "Rutuja Waghchaure",
+                    picture: "https://avatars.githubusercontent.com/u/166581953?v=4",
+                    linkedin: "https://www.linkedin.com/in/rutuja-waghchaure",
+                    github: "https://github.com/rutujaWaghchaure",
+                    timestamp: "December 15, 2023",
+                    comment: "The course structure was excellent. Highly recommended!"
+                },
+                {
+                    name: "Hani Vaghani",
+                    picture: "https://avatars.githubusercontent.com/u/166581899?v=4",
+                    linkedin: "https://www.linkedin.com/in/hani-vaghani",
+                    github: "https://github.com/haniVaghani",
+                    timestamp: "November 5, 2023",
+                    comment: "I gained valuable hands-on experience and built real projects."
+                },
+                {
+                    name: "Neeti Darji",
+                    picture: "https://avatars.githubusercontent.com/u/166581896?v=4",
+                    linkedin: "https://www.linkedin.com/in/neeti-darji",
+                    github: "https://github.com/Neetidarji",
+                    timestamp: "August 8, 2023",
+                    comment: "The exercises were challenging but rewarding. Would do it again!"
+                },
+                {
+                    name: "shubham karvariya ",
+                    picture: "https://avatars.githubusercontent.com/u/161571588?v=4",
+                    linkedin: "https://www.linkedin.com/in/shubham-karvariya",
+                    github: "https://github.com/5hubhm",
+                    timestamp: "February 3, 2025",
+                    comment: "Great collaboration on multiple open-source projects!"
+                },
+                {
+                    name: "Mansha Soni",
+                    picture: "https://avatars.githubusercontent.com/u/172370779?v=4",
+                    linkedin: "www.linkedin.com/in/mansha-soni",
+                    github: "https://github.com/mansha-6",
+                    timestamp: "February 3, 2025",
+                    comment: "Innovative problem solver and active contributor."
+                },
+                {
+                    name: "Ashish Yadav",
+                    picture: "https://avatars.githubusercontent.com/u/190152614?v=4",
+                    linkedin: "https://www.linkedin.com/in/ashish-yadav",
+                    github: "https://github.com/AshishIT611",
+                    timestamp: "February 3, 2025",
+                    comment: "Consistently produces clean and well-documented code."
+                },
+                {
+                    name: "Vinit Patel",
+                    picture: "https://avatars.githubusercontent.com/u/189599326?v=4",
+                    linkedin: "https://www.linkedin.com/in/vinitpatel28",
+                    github: "https://github.com/Vinitpatel28",
+                    timestamp: "February 3, 2025",
+                    comment: "Strong technical skills and an awesome mentor."
+                },
+                {
+                    name: "Utsav Hirapra",
+                    picture: "https://avatars.githubusercontent.com/u/160399966?v=4",
+                    linkedin: "https://www.linkedin.com/in/utsav-hirapra",
+                    github: "https://github.com/utsav1213",
+                    timestamp: "February 3, 2025",
+                    comment: "Great passion for development and innovative solutions."
+                },
+                    {
+                    name: "Pranav Faladu",
+                    picture: "https://avatars.githubusercontent.com/u/172353910?v=4",
+                    linkedin: "https://www.linkedin.com/in/pranav-faladu",
+                    github: "https://github.com/PranavFaladu",
+                    timestamp: "February 3, 2025",
+                    comment: "Creative developer with a keen eye for details."
+                },
+                {
+                    name: "Bharvi Valand",
+                    picture: "https://avatars.githubusercontent.com/u/189818066?v=4",
+                    linkedin: "https://www.linkedin.com/in/bharvi-valand",
+                    github: "https://github.com/bharvivaland",
+                    timestamp: "February 3, 2025",
+                    comment: "Excellent at building scalable solutions and optimizing code."
+                },
+                {
+                    name: "Suhani Tandel",
+                    picture: "https://avatars.githubusercontent.com/u/161571596?v=4",
+                    linkedin: "https://www.linkedin.com/in/suhanitandel",
+                    github: "https://github.com/SuhaniTandel",
+                    timestamp: "February 3, 2025",
+                    comment: "Dedicated developer with a passion for learning new technologies."
+                },
+                {
+                    name: "Rishabh Rai",
+                    picture: "https://avatars.githubusercontent.com/u/173483205?v=4",
+                    linkedin: "https://www.linkedin.com/in/rishabh-rai",
+                    github: "https://github.com/Rishabhrai29",
+                    timestamp: "February 3, 2025",
+                    comment: "Versatile programmer and a collaborative team member."
+                }, 
+                {
+                    name: "Surani Harsh",
+                    picture: "https://avatars.githubusercontent.com/u/55034141?v=4",
+                    linkedin: "https://www.linkedin.com/in/harsh-surani/",
+                    github: "https://github.com/suraniharsh",
+                    timestamp: "February 3, 2025",
+                    comment:" Dedicated developer with a strong focus on backend technologies."
+                },
+                {
+                    name: "Yash Sakhareliya",
+                    picture: "https://avatars.githubusercontent.com/u/160346294?v=4",
+                    linkedin: "https://www.linkedin.com/in/yash-sakhareliya",
+                    github: "https://github.com/YashSakhareliya",
+                    timestamp: "February 3, 2025",
+                    comment: "A passionate coder who loves exploring new frameworks and tools."
+                },
+                {
+                    name: "Vrushangi Mistry",
+                    picture:"https://avatars.githubusercontent.com/u/161571600?v=4",
+                    linkedin: "https://www.linkedin.com/in/vrushangimistry",
+                    github: "https://github.com/Vrushi14",
+                    timestamp:" February 10, 2025",
+                    comment: "Versatile programmer and a collaborative team member."
+                }
+            ]
+
+
+            const container = document.getElementById("testimonial-container");
+
+            testimonials.forEach(testimonial => {
+                const card = document.createElement("div");
+                card.classList.add("testimonial-card");
+
+                card.innerHTML = `
+                    <img src="${testimonial.picture}" alt="${testimonial.name}">
+                    <div class="name">${testimonial.name}</div>
+                    <div class="links">
+                        <a href="${testimonial.linkedin}" target="_blank">LinkedIn</a>
+                        <a href="${testimonial.github}" target="_blank">GitHub</a>
+                    </div>
+                    <div class="timestamp">${testimonial.timestamp}</div>
+                    <div class="comment">"${testimonial.comment}"</div>
+                `;
+
+                container.appendChild(card);
+            });
+        });
+    </script>
+
+<footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800">
+    <p>&copy; 2025 PracticeDojo. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
