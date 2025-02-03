@@ -1,0 +1,48 @@
+[
+    {
+      "task": "Create a function to reverse a given string without using built-in methods.",
+      "description": "Write a function that takes a string as input and returns the reversed string. Avoid using built-in reverse methods.",
+      "example": {
+        "input": "hello",
+        "output": "olleh"
+      },
+      "solution": "```javascript\nfunction reverseString(str) {\n  let reversed = '';\n  for (let i = str.length - 1; i >= 0; i--) {\n    reversed += str[i];\n  }\n  return reversed;\n}\nconsole.log(reverseString('hello')); // Output: 'olleh'```"
+    },
+    {
+      "task": "Implement a function that removes duplicate values from an array.",
+      "description": "Write a function that takes an array and removes duplicate elements, returning a new array with only unique values.",
+      "example": {
+        "input": "[1, 2, 2, 3, 4, 4, 5]",
+        "output": "[1, 2, 3, 4, 5]"
+      },
+      "solution": "```javascript\nfunction removeDuplicates(arr) {\n  return [...new Set(arr)];\n}\nconsole.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])); // Output: [1, 2, 3, 4, 5]```"
+    },
+    {
+      "task": "Create a countdown timer that updates every second.",
+      "description": "Write a JavaScript function that takes a number (seconds) as input and logs the countdown to zero in the console.",
+      "example": {
+        "input": "5",
+        "output": "5, 4, 3, 2, 1, Time's up!"
+      },
+      "solution": "```javascript\nfunction countdown(seconds) {\n  let timer = setInterval(() => {\n    if (seconds > 0) {\n      console.log(seconds);\n      seconds--;\n    } else {\n      console.log(\"Time's up!\");\n      clearInterval(timer);\n    }\n  }, 1000);\n}\ncountdown(5); // Output: 5, 4, 3, 2, 1, Time's up!```"
+    },
+    {
+      "task": "Fetch data from an API and display it in the console.",
+      "description": "Use the Fetch API to get data from a public API and log it to the console.",
+      "example": {
+        "input": "Fetch users from JSONPlaceholder API",
+        "output": "Array of user objects"
+      },
+      "solution": "```javascript\nfetch('https://jsonplaceholder.typicode.com/users')\n  .then(response => response.json())\n  .then(data => console.log(data))\n  .catch(error => console.error('Error fetching data:', error));```"
+    },
+    {
+      "task": "Implement a simple to-do list using JavaScript.",
+      "description": "Create an interactive to-do list where users can add, remove, and mark tasks as completed using JavaScript DOM manipulation.",
+      "example": {
+        "input": "Add a task 'Learn JavaScript'",
+        "output": "Task added to the list"
+      },
+      "solution": "```html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>To-Do List</title>\n</head>\n<body>\n  <input type='text' id='task' placeholder='Enter task'>\n  <button onclick='addTask()'>Add Task</button>\n  <ul id='taskList'></ul>\n  <script>\n    function addTask() {\n      let task = document.getElementById('task').value;\n      if (task) {\n        let li = document.createElement('li');\n        li.textContent = task;\n        document.getElementById('taskList').appendChild(li);\n        document.getElementById('task').value = '';\n      }\n    }\n  </script>\n</body>\n</html>```"
+    }
+  ]
+  
