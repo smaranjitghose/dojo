@@ -1,105 +1,21 @@
 {
-    "title": "CSS Questions",
-    "date": "3rd February 2025",
-    "mcqs": [
-      {
-        "id": 1,
-        "question": "Which CSS property is used to create space between an element's border and inner content?",
-        "options": {
-          "a": "margin",
-          "b": "padding",
-          "c": "spacing",
-          "d": "border-spacing"
-        },
-        "answer": "b) padding"
-      },
-      {
-        "id": 2,
-        "question": "Which CSS property is used to make text bold?",
-        "options": {
-          "a": "text-bold",
-          "b": "font-bold",
-          "c": "font-weight",
-          "d": "bold-text"
-        },
-        "answer": "c) font-weight"
-      },
-      {
-        "id": 3,
-        "question": "Which CSS property is used for text spacing between characters?",
-        "options": {
-          "a": "word-spacing",
-          "b": "letter-spacing",
-          "c": "char-spacing",
-          "d": "text-spacing"
-        },
-        "answer": "b) letter-spacing"
-      },
-      {
-        "id": 4,
-        "question": "What does the CSS Grid property `fr` unit represent?",
-        "options": {
-          "a": "Fixed ratio",
-          "b": "Fractional unit",
-          "c": "Free space",
-          "d": "Frame rate"
-        },
-        "answer": "b) Fractional unit"
-      },
-      {
-        "id": 5,
-        "question": "What does the CSS `border-radius` property do?",
-        "options": {
-          "a": "Creates a shadow around an element",
-          "b": "Creates rounded corners on an element",
-          "c": "Changes the background color of an element",
-          "d": "Makes the element's text bold"
-        },
-        "answer": "b) Creates rounded corners on an element"
-      }
-      
-    ],
-    "fillInTheBlanks": [
-      {
-        "id": 1,
-        "question": "To make an element's position fixed relative to the viewport, use `position: ________`.",
-        "answer": "fixed"
-      },
-      {
-        "id": 2,
-        "question": "CSS `________` properties are used to create animations without using `@keyframes`.",
-        "answer": "transition"
-      },
-      {
-        "id": 3,
-        "question": "The CSS `________` property specifies whether an element is treated as a block or inline element.",
-        "answer": "display"
-      }
-    ],
-    "theoryQuestions": [
-      {
-        "id": 1,
-        "question": "Explain the difference between `position: relative` and `position: absolute` in CSS. Provide examples of when to use each."
-      },
-      {
-        "id": 2,
-        "question": "Describe the CSS specificity hierarchy and how it affects style application."
-      },
-      {
-        "id": 3,
-        "question": "What is the difference between `display: none` and `visibility: hidden` in CSS?"
-      }
-    ],
-    "practicalImplementationQuestions": [
-      {
-        "id": 1,
-        "question": "Implement a CSS-only accordion menu that:",
-        "subparts": [
-          "Works without JavaScript",
-          "Shows/hides content on click",
-          "Includes smooth transitions"
-        ]
-      }
-    ]
-  }
-  
+  "title": "CSS Questions",
+  "date": "3rd February 2025",
+  "theoryQuestions": [
+    {
+      "id": 1,
+      "question": "Explain the difference between `position: relative` and `position: absolute` in CSS. Provide examples of when to use each.",
+      "answer": "`position: relative` and `position: absolute` are used to position elements in CSS, but they behave differently.\n\n- `position: relative`: Moves an element relative to its normal position without affecting other elements. Example:\n```css\n.relative-box {\n  position: relative;\n  top: 20px;\n  left: 10px;\n}\n```\nUse `relative` positioning when you want to shift an element without disturbing the document flow.\n\n- `position: absolute`: Positions an element relative to the nearest positioned (non-static) ancestor. If no ancestor is positioned, it defaults to the document body. Example:\n```css\n.absolute-box {\n  position: absolute;\n  top: 50px;\n  left: 100px;\n}\n```\nUse `absolute` positioning when you need to place an element precisely inside a container or overlay other elements."
+    },
+    {
+      "id": 2,
+      "question": "Describe the CSS specificity hierarchy and how it affects style application.",
+      "answer": "CSS specificity determines which styles are applied when multiple rules target the same element. The specificity hierarchy follows:\n\n1. **Inline styles** (highest specificity) → `style=\"color: red;\"`\n2. **ID selectors** (`#id`) → `#title { color: blue; }`\n3. **Class, attribute, and pseudo-class selectors** (`.class`, `[type]`, `:hover`) → `.box { color: green; }`\n4. **Element selectors** (`div`, `p`, `h1`) → `h1 { color: black; }`\n5. **Universal selector (`*`) and inherited styles** (lowest specificity)\n\nExample:\n```css\nh1 { color: black; } /* Least specific */\n#title { color: blue; } /* More specific */\n```\nThe `#title` rule will override the `h1` rule due to higher specificity."
+    },
+    {
+      "id": 3,
+      "question": "What is the difference between `display: none` and `visibility: hidden` in CSS?",
+      "answer": "`display: none` and `visibility: hidden` both hide elements but work differently:\n\n- `display: none`: Removes the element from the layout entirely, meaning it doesn't take up space. Example:\n```css\n.hidden-element {\n  display: none;\n}\n```\n\n- `visibility: hidden`: Hides the element but keeps its space reserved in the layout. Example:\n```css\n.hidden-element {\n  visibility: hidden;\n}\n```\n\nUse `display: none` when you want to completely remove an element from rendering, and `visibility: hidden` when you need to hide an element while maintaining its space."
+    }
+  ]
+}

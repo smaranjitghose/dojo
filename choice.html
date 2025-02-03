@@ -91,11 +91,21 @@
                     ];
                 } else if (type === "backend") {
                     subjects = [
-                        { name: "node.js", img: "./assets/icons/node.png" },
-                        { name: "python", img: "./assets/icons/python.png" },
-                        { name: "sql", img: "./assets/icons/sql.png" }
+                        { name: "nodejs", img: "./assets/icons/nodejs.svg" },
+                        { name: "expressjs", img: "./assets/icons/express.svg" },
+                        { name: "bunjs", img: "./assets/icons/Bun.svg" }
                     ];
                 }
+                else if(type === "frontend"){
+                    subjects = [
+                        { name: "reactJs", img: "./assets/icons/react.svg" },
+                        { name: "tailwindJs", img: "./assets/icons/tailwind.svg" }
+                    ];
+                }
+                // else if(type === "database"){
+
+                // }
+
                 // document.getElementById(".contai").textContent= type;
                 subjects.forEach(subject => {
                     const card = document.createElement("div");
