@@ -1,0 +1,105 @@
+{
+    "title": "CSS Questions",
+    "date": "3rd February 2025",
+    "mcqs": [
+      {
+        "id": 1,
+        "question": "Which CSS property is used to create space between an element's border and inner content?",
+        "options": {
+          "a": "margin",
+          "b": "padding",
+          "c": "spacing",
+          "d": "border-spacing"
+        },
+        "answer": "b) padding"
+      },
+      {
+        "id": 2,
+        "question": "Which CSS property is used to make text bold?",
+        "options": {
+          "a": "text-bold",
+          "b": "font-bold",
+          "c": "font-weight",
+          "d": "bold-text"
+        },
+        "answer": "c) font-weight"
+      },
+      {
+        "id": 3,
+        "question": "Which CSS property is used for text spacing between characters?",
+        "options": {
+          "a": "word-spacing",
+          "b": "letter-spacing",
+          "c": "char-spacing",
+          "d": "text-spacing"
+        },
+        "answer": "b) letter-spacing"
+      },
+      {
+        "id": 4,
+        "question": "What does the CSS Grid property `fr` unit represent?",
+        "options": {
+          "a": "Fixed ratio",
+          "b": "Fractional unit",
+          "c": "Free space",
+          "d": "Frame rate"
+        },
+        "answer": "b) Fractional unit"
+      },
+      {
+        "id": 5,
+        "question": "What does the CSS `border-radius` property do?",
+        "options": {
+          "a": "Creates a shadow around an element",
+          "b": "Creates rounded corners on an element",
+          "c": "Changes the background color of an element",
+          "d": "Makes the element's text bold"
+        },
+        "answer": "b) Creates rounded corners on an element"
+      }
+      
+    ],
+    "fillInTheBlanks": [
+      {
+        "id": 1,
+        "question": "To make an element's position fixed relative to the viewport, use `position: ________`.",
+        "answer": "fixed"
+      },
+      {
+        "id": 2,
+        "question": "CSS `________` properties are used to create animations without using `@keyframes`.",
+        "answer": "transition"
+      },
+      {
+        "id": 3,
+        "question": "The CSS `________` property specifies whether an element is treated as a block or inline element.",
+        "answer": "display"
+      }
+    ],
+    "theoryQuestions": [
+      {
+        "id": 1,
+        "question": "Explain the difference between `position: relative` and `position: absolute` in CSS. Provide examples of when to use each."
+      },
+      {
+        "id": 2,
+        "question": "Describe the CSS specificity hierarchy and how it affects style application."
+      },
+      {
+        "id": 3,
+        "question": "What is the difference between `display: none` and `visibility: hidden` in CSS?"
+      }
+    ],
+    "practicalImplementationQuestions": [
+      {
+        "id": 1,
+        "question": "Implement a CSS-only accordion menu that:",
+        "subparts": [
+          "Works without JavaScript",
+          "Shows/hides content on click",
+          "Includes smooth transitions"
+        ]
+      }
+    ]
+  }
+  

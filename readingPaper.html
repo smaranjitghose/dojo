@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PracticeDojo - CSS Questions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dojo-dark': '#020817',
+                        'dojo-card': '#0F172A',
+                        'dojo-accent': '#38BDF8',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script>
+        // Function to load and display paper details, MCQs, fill in the blanks, theory, and practical questions
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        async function loadQuestions() {
+            try {
+                let subject = getQueryParam('subject');
+                // Fetch questions and paper details
+                const response = await fetch(`../readingPapers/${subject}.json`);
+                const data = await response.json();
+                console.log(data)
+                console.log(data.mcqs)
+                console.log(data.mcqs[0])
+
+                // Set paper title and date
+                document.getElementById('paper-title').textContent = data.title;
+                document.getElementById('paper-date').textContent = `Date: ${data.date}`;
+
+                const mcqsContainer = document.getElementById('mcqs-container');
+                const fillInTheBlanksContainer = document.getElementById('fill-in-the-blanks-container');
+                const theoryQuestionsContainer = document.getElementById('theory-questions-container');
+                const practicalImplementationContainer = document.getElementById('practical-implementation-container');
+
+                // Load MCQs
+                data.mcqs.forEach((mcq, index) => {
+                    console.log('Processing MCQ:', mcq);  // Debug log
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'mb-6';
+
+                    let questionHTML = `
+                        <p class="text-gray-400">
+                            <strong>(${mcq.id || index + 1})</strong> ${mcq.question || 'Question not available'}
+                        </p>
+                    `;
+
+                    if (mcq.options && typeof mcq.options === 'object') {
+                        const options = Object.entries(mcq.options)
+                            .map(([key, value]) => `${key}) ${value}`)
+                            .join('    ');
+
+                        questionHTML += `
+                            <p class="text-gray-400">
+                                ${options}
+                            </p>
+                            <p class="text-blue-400">
+                                Answer: ${mcq.answer || 'Not provided'}
+                            </p>
+                        `;
+                    } else {
+                        console.error('Invalid options for MCQ:', mcq);
+                        questionHTML += `
+                            <p class="text-red-400">
+                                Error: Options not available for this question
+                            </p>
+                        `;
+                    }
+
+                    questionDiv.innerHTML = questionHTML;
+                    mcqsContainer.appendChild(questionDiv);
+                });
+
+                // Load Fill in the Blanks
+                data.fillInTheBlanks.forEach(fillInTheBlank => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'mb-6';
+
+                    const questionHTML = `
+                        <p class="text-gray-400">
+                            <strong>(${fillInTheBlank.id})</strong> ${fillInTheBlank.question}
+                        </p>
+                        <p class="text-blue-400">
+                            Answer: ${fillInTheBlank.answer}
+                        </p>
+                    `;
+
+                    questionDiv.innerHTML = questionHTML;
+                    fillInTheBlanksContainer.appendChild(questionDiv);
+                });
+
+                // Load Theory Questions
+                data.theoryQuestions.forEach(theoryQuestion => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'mb-6';
+
+                    const questionHTML = `
+                        <p class="text-gray-400">
+                            <strong>(${theoryQuestion.id})</strong> ${theoryQuestion.question}
+                        </p>
+                    `;
+
+                    questionDiv.innerHTML = questionHTML;
+                    theoryQuestionsContainer.appendChild(questionDiv);
+                });
+
+                // Load Practical Implementation Questions
+                data.practicalImplementationQuestions.forEach(practicalQuestion => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'mb-6';
+
+                    let questionHTML = `
+                        <p class="text-gray-400">
+                            <strong>(${practicalQuestion.id})</strong> ${practicalQuestion.question}
+                        </p>
+                    `;
+
+                    if (practicalQuestion.subparts) {
+                        questionHTML += `<ol class="list-decimal list-inside mt-2">`;
+                        practicalQuestion.subparts.forEach(subpart => {
+                            questionHTML += `
+                                <li class="text-gray-400 mb-2">
+                                    ${subpart}
+                                </li>
+                            `;
+                        });
+                        questionHTML += `</ol>`;
+                    }
+
+                    questionDiv.innerHTML = questionHTML;
+                    practicalImplementationContainer.appendChild(questionDiv);
+                });
+
+            } catch (error) {
+                console.error('Error loading questions:', error);
+                const mcqsContainer = document.getElementById('mcqs-container');
+                mcqsContainer.innerHTML = '<p class="text-red-500">Error loading questions. Please try again later.</p>';
+            }
+        }
+
+        // Load questions when the page loads
+        window.addEventListener('load', loadQuestions);
+    </script>
+</head>
+<body class="bg-[#020817] text-gray-100 min-h-screen">
+    <!-- Back Button -->
+    <div class="container mx-auto px-4 py-6">
+        <a href="/index.html" class="inline-flex items-center text-dojo-accent hover:text-dojo-accent/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Papers
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Paper Title Section -->
+        <div class="mb-16 animate-title">
+            <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
+                <!-- Title will be dynamically inserted here -->
+            </h1>
+            <p id="paper-date" class="text-gray-400 text-lg">
+                <!-- Date will be dynamically inserted here -->
+            </p>
+        </div>
+
+        <!-- Questions Section -->
+        <div class="space-y-8">
+            <!-- Q.1: Multiple Choice Questions -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Q.1 Multiple Choice Questions</h3>
+                <div id="mcqs-container" class="space-y-4">
+                </div>
+            </div>
+
+            <!-- Q.2: Fill in the Blanks -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Q.2 Fill in the Blanks</h3>
+                <div id="fill-in-the-blanks-container" class="space-y-4">
+                </div>
+            </div>
+
+            <!-- Q.3: Theory Questions -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Q.3 Theory Questions</h3>
+                <div id="theory-questions-container" class="space-y-4">
+                </div>
+            </div>
+
+            <!-- Q.4: Practical Implementation -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Q.4 Practical Implementation Questions</h3>
+                <div id="practical-implementation-container" class="space-y-4">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800">
+        <p>&copy; 2025 PracticeDojo. All rights reserved.</p>
+    </footer>
+</body>
+</html>
