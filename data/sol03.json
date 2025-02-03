@@ -1,0 +1,315 @@
+{
+    "title": "Express and API Testing",
+  "date": "29th January 2025",
+    "mcqs": [
+        {
+            "id": 1,
+            "question": "You are testing a POST request in Postman. Where would you add the JSON payload for the request?",
+            "options": {
+                "a": "Params tab",
+                "b": "Body tab",
+                "c": "Headers tab",
+                "d": "Pre-request Script tab"
+            },
+            "answer": "b) Body tab",
+            "explanation": "In Postman, the JSON payload for a POST request is added in the 'Body' tab under the 'raw' option.",
+            "code": ""
+        },
+        {
+            "id": 2,
+            "question": "Which of the following is an invalid JSON payload for a POST request to create a user?",
+            "options": {
+                "a": "{\"name\": \"John\", \"age\": 30}",
+                "b": "{name: \"John\", age: 30}",
+                "c": "{\"name\": \"John\", \"age\": \"30\"}",
+                "d": "Both a and c"
+            },
+            "answer": "b) {name: \"John\", age: 30}",
+            "explanation": "JSON keys must always be enclosed in double quotes. The second option is invalid because the keys are not in double quotes.",
+            "code": ""
+        },
+        {
+            "id": 3,
+            "question": "What is the difference between PUT and PATCH methods?",
+            "options": {
+                "a": "PUT updates the entire resource, while PATCH updates only specific fields",
+                "b": "PUT is used for creating resources, while PATCH is used for updating",
+                "c": "PUT is idempotent, while PATCH is not",
+                "d": "Both a and c"
+            },
+            "answer": "d) Both a and c",
+            "explanation": "PUT replaces the entire resource, while PATCH modifies only specific fields. PUT is idempotent (multiple calls result in the same state), whereas PATCH is not.",
+            "code": ""
+        },
+        {
+            "id": 4,
+            "question": "Which HTTP status code indicates a successful creation of a resource?",
+            "options": {
+                "a": "200",
+                "b": "201",
+                "c": "204",
+                "d": "400"
+            },
+            "answer": "b) 201",
+            "explanation": "The HTTP status code 201 (Created) indicates that a new resource has been successfully created.",
+            "code": ""
+        },
+        {
+            "id": 5,
+            "question": "Which of the following is a valid HTTP status code for a redirect?",
+            "options": {
+                "a": "200",
+                "b": "301",
+                "c": "304",
+                "d": "503"
+            },
+            "answer": "b) 301",
+            "explanation": "The HTTP status code 301 (Moved Permanently) is used for redirects.",
+            "code": ""
+        },
+        {
+            "id": 6,
+            "question": "How do you handle errors in Express.js?",
+            "options": {
+                "a": "Using app.error()",
+                "b": "Using a middleware with four arguments: (err, req, res, next)",
+                "c": "Using try-catch blocks in every route",
+                "d": "Errors cannot be handled in Express.js"
+            },
+            "answer": "b) Using a middleware with four arguments: (err, req, res, next)",
+            "explanation": "Express.js handles errors using middleware functions with four parameters: (err, req, res, next).",
+            "code": "app.use((err, req, res, next) => {\n    res.status(500).json({ error: err.message });\n});"
+        },
+        {
+            "id": 7,
+            "question": "How can you improve the performance of an Express.js application?",
+            "options": {
+                "a": "Use clustering to leverage multiple CPU cores",
+                "b": "Use synchronous code everywhere",
+                "c": "Avoid using middleware",
+                "d": "Use a single route for all requests"
+            },
+            "answer": "a) Use clustering to leverage multiple CPU cores",
+            "explanation": "Clustering allows Express.js to utilize multiple CPU cores, improving performance for concurrent requests.",
+            "code": ""
+        },
+        {
+            "id": 8,
+            "question": "What is the purpose of the next() function in Express.js middleware?",
+            "options": {
+                "a": "To end the request-response cycle",
+                "b": "To pass control to the next middleware function",
+                "c": "To skip to the last middleware",
+                "d": "To restart the middleware chain"
+            },
+            "answer": "b) To pass control to the next middleware function",
+            "explanation": "next() is used in Express middleware to pass control to the next middleware function in the stack.",
+            "code": "app.use((req, res, next) => {\n    console.log('Middleware executed');\n    next();\n});"
+        },
+        {
+            "id": 9,
+            "question": "What's the purpose of the app.all() method in Express.js?",
+            "options": {
+                "a": "Handles all routes",
+                "b": "Handles all HTTP methods for a path",
+                "c": "Middleware for all routes",
+                "d": "Error handler for all routes"
+            },
+            "answer": "b) Handles all HTTP methods for a path",
+            "explanation": "app.all() is used to handle all HTTP methods (GET, POST, PUT, DELETE, etc.) for a specified path.",
+            "code": "app.all('/api/resource', (req, res) => {\n    res.send('This handles all HTTP methods');\n});"
+        },
+        {
+            "id": 10,
+            "question": "What happens when you call res.json() and res.send() multiple times in the same request handler?",
+            "options": {
+                "a": "Both responses are sent",
+                "b": "Error is thrown",
+                "c": "Only the first response is sent",
+                "d": "Only the last response is sent"
+            },
+            "answer": "b) Error is thrown",
+            "explanation": "Calling res.json() or res.send() multiple times in the same request handler results in an error since the response can only be sent once.",
+            "code": "app.get('/', (req, res) => {\n    res.send('First response');\n    res.send('Second response'); // This will throw an error\n});"
+        }
+    ],
+    "shortQuestions": [
+        {
+            "id": 1,
+            "question": "What is rate limiting in APIs? Why is it important?",
+            "solution": "Rate limiting is a technique used to restrict the number of requests a client can make to an API in a given time frame. It is essential because it prevents abuse, such as excessive or malicious requests that can overwhelm the server, causing a denial-of-service (DoS) attack. Rate limiting also ensures fair usage, preserving server resources and guaranteeing availability to all users. Without rate limiting, an API might face performance issues or downtime due to high traffic.",
+            "code": ""
+        },
+        {
+            "id": 2,
+            "question": "Explain the purpose of environment variables in Postman. Provide an example of their usage.",
+            "solution": "Environment variables in Postman are used to store values that can be reused in different requests, making it easier to test APIs across various environments like development, staging, and production. They allow you to avoid hardcoding values such as API keys, base URLs, and user credentials directly in requests. For example, you could have an environment variable for the API base URL, which can be used in all requests for different environments.\n\nExample usage: If you have a base URL defined as an environment variable, you can use it like this:\n\n    GET {{base_url}}/users\n    Authorization: Bearer {{auth_token}}",
+            "code": "Example:\n{\n    \"base_url\": \"https://api.example.com\",\n    \"auth_token\": \"123456\"\n}\n// Usage in Postman:\nGET {{base_url}}/users\nHeaders: Authorization: Bearer {{auth_token}}"
+        },
+        {
+            "id": 3,
+            "question": "What are query parameters and path parameters in APIs? Provide an example of each.",
+            "solution": "Query parameters are key-value pairs included in the URL after a '?' symbol, used to filter or modify the response from the API. They are optional and can be repeated for multiple values.\n\nPath parameters, on the other hand, are part of the URL structure itself and are used to identify specific resources. They are mandatory in the request.\n\nExample of query parameters: `GET /users?age=30&country=USA`.\nExample of path parameters: `GET /users/12345` where `12345` is the user ID.",
+            "code": ""
+        },
+        {
+            "id": 4,
+            "question": "Write a middleware function to log the request method, timestamp, and URL for every incoming request.",
+            "solution": "A middleware function in Express.js allows you to execute code before the request reaches its final destination. This logging middleware will capture and display the request method, timestamp, and URL for every incoming request, which can be useful for debugging and monitoring.\n\nThe `next()` function ensures that the request continues to the next middleware or route handler.\n\nExample of the logging middleware function:",
+            "code": "app.use((req, res, next) => {\n    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);\n    next();\n});"
+        },
+        {
+            "id": 5,
+            "question": "Write an Express.js route for /greet/:language that returns { \"greeting\": \"Namaste\" } for Hindi, { \"greeting\": \"Kem cho\" } for Gujarati, and defaults to { \"greeting\": \"Hello\" } for unsupported languages.",
+            "solution": "This route utilizes a dynamic parameter (`language`) in the URL to provide different greetings based on the language. The parameter value is accessed via `req.params.language`. A dictionary object is used to map specific greetings for recognized languages like Hindi and Gujarati, and it defaults to 'Hello' if the language is not recognized.\n\nExample of the Express route:",
+            "code": "app.get('/greet/:language', (req, res) => {\n    const greetings = {\n        'hindi': 'Namaste',\n        'gujarati': 'Kem cho'\n    };\n    const language = req.params.language.toLowerCase();\n    res.json({ greeting: greetings[language] || 'Hello' });\n});"
+        },
+        {
+            "id": 6,
+            "question": "What is the MVC pattern in Express.js? Explain with a simple example.",
+            "solution": "The MVC (Model-View-Controller) pattern is a software design architecture that divides an application into three interconnected components:\n\n1. **Model**: Represents the data layer and business logic, usually interacting with a database.\n2. **View**: Responsible for rendering the user interface and displaying data.\n3. **Controller**: Acts as an intermediary between the Model and View, processing user input, fetching data from the Model, and updating the View.\n\nIn Express.js, you can use this pattern to organize the routes and structure of your application.\n\nExample:\n\n- The **Model** could be a `Post` schema that interacts with the MongoDB database.\n- The **View** could be an EJS file that displays blog posts.\n- The **Controller** could manage fetching blog posts and sending them to the View.",
+            "code": "Model (models/Post.js):\nconst mongoose = require('mongoose');\nconst PostSchema = new mongoose.Schema({ title: String, content: String });\nmodule.exports = mongoose.model('Post', PostSchema);\n\nController (controllers/postController.js):\nconst Post = require('../models/Post');\nexports.getPosts = async (req, res) => {\n    const posts = await Post.find();\n    res.render('post', { posts });\n};\n\nView (views/post.ejs):\n<% posts.forEach(post => { %>\n    <h2><%= post.title %></h2>\n    <p><%= post.content %></p>\n<% }); %>"
+        },
+        {
+            "id": 7,
+            "question": "Write an Express.js route for /records that uses the type query parameter to redirect to https://www.google.com for type=google, https://www.github.com for type=github, and defaults to https://www.example.com for any other type or if type is missing.",
+            "solution": "The `type` query parameter is extracted using `req.query.type`. Based on the value of `type`, the route redirects the user to a specific URL. If the `type` is either 'google' or 'github', the user is redirected to the corresponding site. For any other value, or if `type` is missing, the user is redirected to 'example.com'.\n\nThis approach ensures dynamic redirection based on user input or query parameters.",
+            "code": "app.get('/records', (req, res) => {\n    const redirects = {\n        'google': 'https://www.google.com',\n        'github': 'https://www.github.com'\n    };\n    const type = req.query.type;\n    res.redirect(redirects[type] || 'https://www.example.com');\n});"
+        }
+    ],
+    "longQuestions": [
+        {
+            "id": 1,
+            "question": "You are building a food delivery app called FoodieFast. Create an Express.js application that:\n\n1. Connects to MongoDB using Mongoose.\n2. Has a model called Restaurant using a schema for the collection restaurants.\n3. Handles GET requests at /api/v1/restaurants to return a list of all restaurants.\n4. Handles POST requests at /api/v1/addRestaurant to add a new restaurant after validating the request body.\n5. Handles DELETE requests at /api/v1/deleteRestaurant/:id to delete a restaurant by its _id",
+            "solution": "To build the FoodieFast app using Express.js, you need to establish a connection to MongoDB using Mongoose and create a model for restaurants. You'll also need to create the corresponding routes for handling GET, POST, and DELETE requests for restaurants.\n\nHere’s a step-by-step solution and the necessary code to achieve the required functionality.",
+            "subparts": [
+                {
+                    "question": "How to connect to MongoDB using Mongoose?",
+                    "solution": "To connect to MongoDB, you need to use Mongoose, a MongoDB object modeling tool for Node.js. First, install mongoose by running `npm install mongoose` in your project directory. Then, in your Express.js application, use Mongoose to establish the connection to your MongoDB instance.\n\nExample of the MongoDB connection setup:",
+                    "code": "const mongoose = require('mongoose');\n\nmongoose.connect('mongodb://localhost:27017/foodiefast', { useNewUrlParser: true, useUnifiedTopology: true })\n    .then(() => console.log('Connected to MongoDB'))\n    .catch(err => console.error('Could not connect to MongoDB:', err));"
+                },
+                {
+                    "question": "How to define a Mongoose schema for the Restaurant model?",
+                    "solution": "To define the Restaurant model, we need to create a Mongoose schema for the `restaurants` collection. The schema will define the structure of the restaurant document, including fields like `name`, `location`, `cuisine`, and `rating`.\n\nExample of defining a schema for the Restaurant model:",
+                    "code": "const mongoose = require('mongoose');\n\nconst restaurantSchema = new mongoose.Schema({\n    name: { type: String, required: true },\n    location: { type: String, required: true },\n    cuisine: { type: String, required: true },\n    rating: { type: Number, min: 1, max: 5 }\n});\n\nconst Restaurant = mongoose.model('Restaurant', restaurantSchema);\nmodule.exports = Restaurant;"
+                },
+                {
+                    "question": "How to handle GET requests to list all restaurants?",
+                    "solution": "To handle GET requests and return a list of all restaurants, you will use the `Restaurant` model to query MongoDB for all documents in the `restaurants` collection. The data will be returned as a JSON response.\n\nExample of handling the GET request at `/api/v1/restaurants`:",
+                    "code": "const express = require('express');\nconst Restaurant = require('./models/restaurant');\n\nconst app = express();\n\napp.get('/api/v1/restaurants', async (req, res) => {\n    try {\n        const restaurants = await Restaurant.find();\n        res.json(restaurants);\n    } catch (err) {\n        res.status(500).json({ message: 'Error fetching restaurants' });\n    }\n});"
+                },
+                {
+                    "question": "How to handle POST requests to add a new restaurant after validating the request body?",
+                    "solution": "To handle POST requests, you need to validate the request body to ensure it contains the necessary fields (like `name`, `location`, and `cuisine`). If the body is valid, you will create a new `Restaurant` document and save it to MongoDB.\n\nExample of handling the POST request at `/api/v1/addRestaurant` with validation:",
+                    "code": "app.post('/api/v1/addRestaurant', async (req, res) => {\n    const { name, location, cuisine, rating } = req.body;\n\n    if (!name || !location || !cuisine) {\n        return res.status(400).json({ message: 'Name, location, and cuisine are required' });\n    }\n\n    try {\n        const newRestaurant = new Restaurant({ name, location, cuisine, rating });\n        await newRestaurant.save();\n        res.status(201).json({ message: 'Restaurant added successfully' });\n    } catch (err) {\n        res.status(500).json({ message: 'Error adding restaurant' });\n    }\n});"
+                },
+                {
+                    "question": "How to handle DELETE requests to delete a restaurant by its _id?",
+                    "solution": "To handle DELETE requests, you will use the restaurant's `_id` from the request parameters to delete the corresponding document in the `restaurants` collection. If successful, a confirmation message will be sent, otherwise an error message will be returned.\n\nExample of handling the DELETE request at `/api/v1/deleteRestaurant/:id`:",
+                    "code": "app.delete('/api/v1/deleteRestaurant/:id', async (req, res) => {\n    const { id } = req.params;\n\n    try {\n        const deletedRestaurant = await Restaurant.findByIdAndDelete(id);\n        if (!deletedRestaurant) {\n            return res.status(404).json({ message: 'Restaurant not found' });\n        }\n        res.status(200).json({ message: 'Restaurant deleted successfully' });\n    } catch (err) {\n        res.status(500).json({ message: 'Error deleting restaurant' });\n    }\n});"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "You are testing an online banking API for the endpoint /transactions. It expects the following body parameters: transactionId (string): A unique identifier for the transaction which starts with 'TXN' followed by 8 random digits. Example: 'TXN12345678' amount (number): Amount of the transaction. It should be a random number between 0 and 1,000,000. transactionType (string): Type of transaction. It can be: 'Deposit' or 'Withdrawal' or 'Transfer'. Write a Postman pre-request script to generate random values for the above parameters.",
+            "solution": "The pre-request script generates random values for the required parameters (transactionId, amount, transactionType) and sets them as environment variables.",
+            "subparts": [
+              {
+                "question": "Generate a random transactionId starting with 'TXN' followed by 8 random digits.",
+                "solution": "We can generate the transactionId by concatenating 'TXN' with 8 random digits.",
+                "code": "let transactionId = 'TXN' + Math.floor(10000000 + Math.random() * 90000000);"
+              },
+              {
+                "question": "Generate a random amount between 0 and 1,000,000.",
+                "solution": "We can use Math.random() to generate a random number and scale it to the range 0-1,000,000.",
+                "code": "let amount = Math.floor(Math.random() * 1000000);"
+              },
+              {
+                "question": "Generate a random transaction type from 'Deposit', 'Withdrawal', or 'Transfer'.",
+                "solution": "We randomly select a transaction type from an array of possible values.",
+                "code": "let transactionTypes = ['Deposit', 'Withdrawal', 'Transfer']; let transactionType = transactionTypes[Math.floor(Math.random() * transactionTypes.length)];"
+              },
+              {
+                "question": "Set the generated values as environment variables.",
+                "solution": "The values are set as environment variables using pm.environment.set so they can be used in the request body.",
+                "code": "pm.environment.set('transactionId', transactionId); pm.environment.set('amount', amount); pm.environment.set('transactionType', transactionType);"
+              },
+              {
+                "question": "THIS IS FINALE CODE",
+                "solution": null,
+                "code": "// Pre-request Script\nlet transactionId = 'TXN' + Math.floor(10000000 + Math.random() * 90000000);\nlet amount = Math.floor(Math.random() * 1000000);\nlet transactionTypes = ['Deposit', 'Withdrawal', 'Transfer'];\nlet transactionType = transactionTypes[Math.floor(Math.random() * transactionTypes.length)];\n\n// Set values as environment variables\npm.environment.set('transactionId', transactionId);\npm.environment.set('amount', amount);\npm.environment.set('transactionType', transactionType);"
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "question": "Create an Aadhar picture upload service:\n\n1. Use multer middleware for handling file uploads\n2. Allow only image files (jpg, png)\n3. Limit file size to 1MB\n4. Save file with unique name\n5. Return file URL in response",
+            "solution": "We will use the Multer middleware to handle file uploads. The file will be validated for type and size restrictions. The uploaded file will be stored with a unique name to avoid conflicts, and the file URL will be returned in the response.",
+            "subparts": [
+              {
+                "question": "Set up multer middleware for handling file uploads.",
+                "solution": "We will configure multer to handle file uploads, specifying the destination and file naming rules.",
+                "code": "const multer = require('multer');\n\n// Set up file storage with unique names\nconst storage = multer.diskStorage({\n  destination: (req, file, cb) => {\n    cb(null, 'uploads/');\n  },\n  filename: (req, file, cb) => {\n    const uniqueName = Date.now() + '-' + file.originalname;\n    cb(null, uniqueName);\n  }\n});\n\n// Define file upload limits and filters\nconst upload = multer({\n  storage: storage,\n  limits: { fileSize: 1 * 1024 * 1024 }, // 1MB\n  fileFilter: (req, file, cb) => {\n    const allowedTypes = /jpeg|png/;\n    const extname = allowedTypes.test(file.mimetype);\n    const filename = allowedTypes.test(file.originalname.split('.').pop());\n    if (extname && filename) {\n      return cb(null, true);\n    }\n    cb(new Error('Only jpg and png files are allowed'));\n  }\n});"
+              },
+              {
+                "question": "Handle the upload endpoint and return the file URL.",
+                "solution": "We will create a POST route to handle the Aadhar image upload. Upon successful upload, the file URL will be returned in the response.",
+                "code": "const express = require('express');\nconst app = express();\nconst path = require('path');\n\n// Create the POST route for uploading Aadhar image\napp.post('/upload-aadhar', upload.single('aadharImage'), (req, res) => {\n  if (!req.file) {\n    return res.status(400).send('No file uploaded');\n  }\n  const fileUrl = path.join(__dirname, 'uploads', req.file.filename);\n  res.status(200).json({ message: 'File uploaded successfully', fileUrl: fileUrl });\n});"
+              },
+              {
+                "question": "FINALE CODE",
+                "solution": "Full code is mentioned below",
+                "code": "// Aadhar picture upload service using multer\nconst express = require('express');\nconst multer = require('multer');\nconst path = require('path');\n\nconst app = express();\n\n// Set up file storage with unique names\nconst storage = multer.diskStorage({\n  destination: (req, file, cb) => {\n    cb(null, 'uploads/');\n  },\n  filename: (req, file, cb) => {\n    const uniqueName = Date.now() + '-' + file.originalname;\n    cb(null, uniqueName);\n  }\n});\n\n// Define file upload limits and filters\nconst upload = multer({\n  storage: storage,\n  limits: { fileSize: 1 * 1024 * 1024 }, // 1MB\n  fileFilter: (req, file, cb) => {\n    const allowedTypes = /jpeg|png/;\n    const extname = allowedTypes.test(file.mimetype);\n    const filename = allowedTypes.test(file.originalname.split('.').pop());\n    if (extname && filename) {\n      return cb(null, true);\n    }\n    cb(new Error('Only jpg and png files are allowed'));\n  }\n});\n\n// POST route to handle file upload\napp.post('/upload-aadhar', upload.single('aadharImage'), (req, res) => {\n  if (!req.file) {\n    return res.status(400).send('No file uploaded');\n  }\n  const fileUrl = path.join(__dirname, 'uploads', req.file.filename);\n  res.status(200).json({ message: 'File uploaded successfully', fileUrl: fileUrl });\n});\n\n// Start the server\napp.listen(3000, () => {\n  console.log('Server started on port 3000');\n});"
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "question": "You are building a Newsletter System using a template engine.\n\n1. Set up Handlebars as the template engine.\n2. Create a newsletter template (newsletter.hbs) with dynamic content (e.g., title, body).\n3. Add a route /newsletter to render the newsletter preview.\n4. Pass dynamic data (e.g., title: 'Monthly Update', body: 'Stay tuned for exciting news!') to the template.\n5. Use partials for the header (header.hbs) and footer (footer.hbs) in the newsletter template.",
+            "solution": "We will use Express.js to set up a route for rendering the newsletter preview. Handlebars will be used to render dynamic content in the newsletter template, and partials will be used for the header and footer.",
+            "subparts": [
+              {
+                "question": "Set up Handlebars as the template engine.",
+                "solution": "First, we need to install Handlebars and set it up in the Express app as the template engine.",
+                "code": "const express = require('express');\nconst exphbs = require('express-handlebars');\n\nconst app = express();\n\n// Set up Handlebars as the template engine\napp.engine('hbs', exphbs({ extname: 'hbs' }));\napp.set('view engine', 'hbs');\n"
+              },
+              {
+                "question": "Create a newsletter template (newsletter.hbs) with dynamic content.",
+                "solution": "We will create a newsletter template (`newsletter.hbs`) that uses dynamic content like title and body. The placeholders will be replaced with actual data when the template is rendered.",
+                "code": "<!-- newsletter.hbs -->\n{{> header}}\n\n<h1>{{title}}</h1>\n<p>{{body}}</p>\n\n{{> footer}}"
+              },
+              {
+                "question": "Add a route /newsletter to render the newsletter preview.",
+                "solution": "We will create a route `/newsletter` that will render the `newsletter.hbs` template when accessed. The dynamic data for the newsletter will be passed from the route handler.",
+                "code": "app.get('/newsletter', (req, res) => {\n  res.render('newsletter', {\n    title: 'Monthly Update',\n    body: 'Stay tuned for exciting news!'\n  });\n});"
+              },
+              {
+                "question": "Pass dynamic data (e.g., title: 'Monthly Update', body: 'Stay tuned for exciting news!') to the template.",
+                "solution": "In the `/newsletter` route, we pass dynamic data like `title` and `body` to the Handlebars template. The template will render these values in the final output.",
+                "code": "app.get('/newsletter', (req, res) => {\n  res.render('newsletter', {\n    title: 'Monthly Update',\n    body: 'Stay tuned for exciting news!'\n  });\n});"
+              },
+              {
+                "question": "Use partials for the header (header.hbs) and footer (footer.hbs) in the newsletter template.",
+                "solution": "Partials are reusable templates that we can include in other templates. We'll create partials for the header and footer, and include them in `newsletter.hbs`.",
+                "code": "// Set up Handlebars partials\napp.set('views', path.join(__dirname, 'views'));\n\n// Create partial for header (header.hbs)\n{{!-- header.hbs --}}\n<header>\n  <h1>Newsletter Header</h1>\n</header>\n\n// Create partial for footer (footer.hbs)\n{{!-- footer.hbs --}}\n<footer>\n  <p>Newsletter Footer</p>\n</footer>\n"
+              },
+              {
+                "question": "FINALE CODE",
+                "solution": null,
+                "code": "// Full implementation\nconst express = require('express');\nconst exphbs = require('express-handlebars');\nconst path = require('path');\n\nconst app = express();\n\n// Set up Handlebars as the template engine\napp.engine('hbs', exphbs({ extname: 'hbs' }));\napp.set('view engine', 'hbs');\napp.set('views', path.join(__dirname, 'views'));\n\n// Set up partials for header and footer\n// (header.hbs and footer.hbs should be created in the 'views/partials' directory)\n\n// Route for /newsletter to render preview\napp.get('/newsletter', (req, res) => {\n  res.render('newsletter', {\n    title: 'Monthly Update',\n    body: 'Stay tuned for exciting news!'\n  });\n});\n\n// Start the server\napp.listen(3000, () => {\n  console.log('Server running on http://localhost:3000');\n});"
+              }
+            ]
+          }
+          
+          
+          
+        
+        
+        
+        
+        
+        
+        
+    ]
+}

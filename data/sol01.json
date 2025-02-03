@@ -1,0 +1,323 @@
+{
+    "title": "HTML and CSS",
+  "date": "29th January 2025",
+  
+    "mcqs": [
+        {
+            "id": 1,
+            "question": "You are designing a button that changes color when hovered. Which CSS property should you use?",
+            "options": [
+                "a) hover",
+                "b) transition",
+                "c) transform",
+                "d) animation"
+            ],
+            "answer": "b) transition",
+            "explanation": "The 'transition' property is used to specify the transition effect when changing property values (like color) over a specific duration.",
+            "code": "button:hover { transition: background-color 0.3s ease; }"
+        },
+        {
+            "id": 2,
+            "question": "You want to create a parallax scrolling effect. Which CSS property is essential for this effect?",
+            "options": [
+                "a) background-attachment: fixed;",
+                "b) position: sticky;",
+                "c) z-index: 1;",
+                "d) transform: translateY();"
+            ],
+            "answer": "a) background-attachment: fixed;",
+            "explanation": "The 'background-attachment: fixed;' property keeps the background in place while the content scrolls over it, creating a parallax effect.",
+            "code": "body { background-image: url('parallax.jpg'); background-attachment: fixed; }"
+        },
+        {
+            "id": 3,
+            "question": "Which of the following is a best practice for improving SEO in HTML?",
+            "options": [
+                "a) Using &lt;div&gt; for all elements",
+                "b) Using semantic HTML elements like &lt;header&gt;, &lt;main&gt;, and &lt;footer&gt;",
+                "c) Adding as many &lt;meta&gt; tags as possible",
+                "d) Using inline styles for all elements"
+            ],
+            "answer": "b) Using semantic HTML elements like &lt;header&gt;, &lt;main&gt;, and &lt;footer&gt;",
+            "explanation": "Semantic HTML elements like &lt;header&gt;, &lt;main&gt;, and &lt;footer&gt; provide meaning to the structure of the webpage, which is crucial for SEO and accessibility.",
+            "code": "&lt;header&gt;Welcome to my website&lt;/header&gt;&lt;main&gt;&lt;h1&gt;Main Content&lt;/h1&gt;&lt;/main&gt;&lt;footer&gt;Contact info&lt;/footer&gt;"
+        },
+        {
+            "id": 4,
+            "question": "Which of the following is a valid way to lazy-load images in HTML?",
+            "options": [
+                "a) &lt;img src=\"image.jpg\" loading=\"lazy\"&gt;",
+                "b) &lt;img src=\"image.jpg\" lazy=\"true\"&gt;",
+                "c) &lt;img src=\"image.jpg\" defer&gt;",
+                "d) &lt;img src=\"image.jpg\" async&gt;"
+            ],
+            "answer": "a) &lt;img src=\"image.jpg\" loading=\"lazy\"&gt;",
+            "explanation": "The 'loading' attribute with a value of 'lazy' allows the image to load only when it enters the viewport, improving page load performance.",
+            "code": "&lt;img src=\"image.jpg\" loading=\"lazy\"&gt;"
+        },
+        {
+            "id": 5,
+            "question": "You want to embed a YouTube video with specific start and end times. What should you add to the iframe src URL?",
+            "options": [
+                "a) start=X&amp;end=Y parameters",
+                "b) from=X&amp;to=Y parameters",
+                "c) begin=X&amp;stop=Y parameters",
+                "d) s=X&amp;e=Y parameters"
+            ],
+            "answer": "a) start=X&amp;end=Y parameters",
+            "explanation": "To specify the start and end times for a YouTube video, use the 'start' and 'end' parameters in the iframe src URL.",
+            "code": "&lt;iframe src=\"https://www.youtube.com/embed/VIDEO_ID?start=30&amp;end=90\"&gt;&lt;/iframe&gt;"
+        },
+        {
+            "id": 6,
+            "question": "You're building a form that uploads a file to the server when submitted. What should the enctype of the form be?",
+            "options": [
+                "a) text/plain",
+                "b) multipart/form-data",
+                "c) application/x-www-form-urlencoded",
+                "d) application/json"
+            ],
+            "answer": "b) multipart/form-data",
+            "explanation": "The 'multipart/form-data' enctype is used when uploading files through a form. It allows file data to be sent as binary.",
+            "code": "&lt;form action=\"/upload\" method=\"POST\" enctype=\"multipart/form-data\"&gt;&lt;input type=\"file\" name=\"file\"&gt;&lt;button type=\"submit\"&gt;Upload&lt;/button&gt;&lt;/form&gt;"
+        },
+        {
+            "id": 7,
+            "question": "You want to prefetch a resource (e.g. a web page) that the user is likely to navigate to, to improve performance. What rel attribute value should you use on the link?",
+            "options": [
+                "a) prefetch",
+                "b) preload",
+                "c) prerender",
+                "d) precache"
+            ],
+            "answer": "a) prefetch",
+            "explanation": "The 'prefetch' value of the rel attribute indicates that the linked resource should be fetched in advance, improving performance when the user navigates to it.",
+            "code": "&lt;link rel=\"prefetch\" href=\"nextpage.html\"&gt;"
+        },
+        {
+            "id": 8,
+            "question": "What's the most semantically correct way to mark up a famous quote from an author in HTML?",
+            "options": [
+                "a) &lt;p&gt;",
+                "b) &lt;quote&gt;",
+                "c) &lt;blockquote&gt;",
+                "d) &lt;q&gt;"
+            ],
+            "answer": "c) &lt;blockquote&gt;",
+            "explanation": "The &lt;blockquote&gt; element is used to mark up a section that is a quotation from another source. It is the most semantically correct element for quoting.",
+            "code": "&lt;blockquote&gt;&quot;The only limit to our realization of tomorrow is our doubts of today.&quot; - Franklin D. Roosevelt&lt;/blockquote&gt;"
+        },
+        {
+            "id": 9,
+            "question": "Which CSS property is used to create a smooth scrolling effect on a webpage?",
+            "options": [
+                "a) scroll-behavior",
+                "b) smooth-scroll",
+                "c) scroll-snap",
+                "d) scroll-transition"
+            ],
+            "answer": "a) scroll-behavior",
+            "explanation": "The 'scroll-behavior' property allows you to control the smoothness of scrolling, enabling smooth scrolling for anchor links.",
+            "code": "html { scroll-behavior: smooth; }"
+        },
+        {
+            "id": 10,
+            "question": "Which CSS property is used to create a shadow effect around an element?",
+            "options": [
+                "a) box-shadow",
+                "b) text-shadow",
+                "c) element-shadow",
+                "d) shadow-effect"
+            ],
+            "answer": "a) box-shadow",
+            "explanation": "The 'box-shadow' property is used to add shadow effects around an element, like a button or box.",
+            "code": "div { box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); }"
+        }
+    ],
+
+
+    "shortQuestions": [
+        {
+            "id": 1,
+            "question": "Explain the purpose of semantic HTML elements. Provide three examples of semantic elements and their use cases",
+            "solution": "Semantic HTML elements provide meaning to the structure of the webpage. They make it easier for both developers and search engines to understand the content and its structure. Using semantic tags also improves accessibility. Examples of semantic elements include:<ul><li>&lt;header&gt;: Represents the header section of a page, often containing introductory content or navigation links.</li><li>&lt;article&gt;: Represents a self-contained piece of content, such as a blog post or news article, which could be independently distributed.</li><li>&lt;footer&gt;: Represents the footer section of a page, often containing information such as copyright, contact information, or site navigation.</li></ul>",
+            "code": "&lt;header&gt;&lt;h1&gt;Welcome to my website&lt;/h1&gt;&lt;/header&gt;&lt;article&gt;&lt;p&gt;This is a blog post.&lt;/p&gt;&lt;/article&gt;&lt;footer&gt;Contact us at info@website.com&lt;/footer&gt;"
+        },
+        {
+            "id": 2,
+            "question": "What is the difference between the &lt;div&gt; and &lt;span&gt; elements in HTML? Provide an example of when you would use each",
+            "solution": "The &lt;div&gt; element is a block-level container used to group larger sections of content, while the &lt;span&gt; element is an inline container used to style or group small portions of text or other inline elements. Use &lt;div&gt; when you need to group block-level elements, and &lt;span&gt; when you want to apply styles or behavior to a small part of text or inline content without affecting the layout.<br>Example using &lt;div&gt;: <code>&lt;div&gt;This is a section of the page.&lt;/div&gt;</code><br>Example using &lt;span&gt;: <code>&lt;span&gt;Important text&lt;/span&gt; within a sentence.&lt;/code>",
+            "code": "&lt;div&gt;This is a section of the page.&lt;/div&gt;&lt;span&gt;Important text&lt;/span&gt; within a sentence."
+        },
+        {
+            "id": 3,
+            "question": "Write the HTML code to embed a video with controls, autoplay, and a fallback message for browsers that do not support the video tag",
+            "solution": "To embed a video with controls and autoplay, use the &lt;video&gt; tag. The 'controls' attribute enables video controls (play, pause, volume), and the 'autoplay' attribute allows the video to start automatically when the page loads. If the browser does not support the video tag, a fallback message is provided within the &lt;video&gt; tag.<br>Example code:",
+            "code": "&lt;video controls autoplay&gt;&lt;source src=\"video.mp4\" type=\"video/mp4\"&gt;Your browser does not support the video tag.&lt;/video&gt;"
+        },
+        {
+            "id": 4,
+            "question": "Write the HTML code to create a webpage where the content is displayed in Hindi, Gujarati, or Telugu. The page should display the equivalent of \"Hello friends\" in the selected language",
+            "solution": "To display content in different languages, use the &lt;html&gt; tag with the appropriate 'lang' attribute for the selected language. The equivalent translations for \"Hello friends\" in Hindi, Gujarati, and Telugu are:<ul><li>Hindi: नमस्ते दोस्तों</li><li>Gujarati: નમસ્તે મિત્રો</li><li>Telugu: హలో మిత్రులు</li></ul> Example code:",
+            "code": "&lt;html lang=\"hi\"&gt;&lt;body&gt;&lt;p&gt;नमस्ते दोस्तों&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;<br>&lt;html lang=\"gu\"&gt;&lt;body&gt;&lt;p&gt;નમસ્તે મિત્રો&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;<br>&lt;html lang=\"te\"&gt;&lt;body&gt;&lt;p&gt;హలో మిత్రులు&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+        },
+        {
+            "id": 5,
+            "question": "Write the CSS code to create a sticky footer that stays at the bottom of the viewport if the content is short, but moves down with the content if it is long",
+            "solution": "To create a sticky footer, use the 'position: fixed' property to keep it at the bottom of the viewport, but set it to 'relative' or 'static' when the content exceeds the viewport height. The 'min-height' of the body can also be adjusted to ensure the footer appears at the bottom.<br>Example CSS code:",
+            "code": "body { display: flex; flex-direction: column; min-height: 100vh; } footer { margin-top: auto; background: #333; color: white; padding: 10px; }"
+        },
+        {
+            "id": 6,
+            "question": "Write the CSS code to center a &lt;div&gt; horizontally and vertically within its parent container",
+            "solution": "To center a &lt;div&gt; both horizontally and vertically, use Flexbox or Grid. With Flexbox, set the parent container to 'display: flex', align the items centrally with 'justify-content: center', and 'align-items: center'.<br>Example code:",
+            "code": "parent { display: flex; justify-content: center; align-items: center; height: 100vh; } div { width: 200px; height: 100px; background-color: lightblue; }"
+        },
+        {
+            "id": 7,
+            "question": "What is the purpose of the box-sizing property in CSS? Explain the difference between content-box and border-box",
+            "solution": "The 'box-sizing' property defines how the width and height of an element are calculated. By default, the value is 'content-box', which means the width and height only include the content, not the padding or border. The 'border-box' value includes padding and border in the element's total width and height, making it easier to manage layout.<br>Example code for 'border-box':",
+            "code": "element { box-sizing: border-box; padding: 10px; border: 1px solid #ccc; width: 100px; }"
+        }
+    ],
+    "longQuestions": [
+        {
+            "id": 1,
+            "question": "Using only HTML, create a student registration form titled 'Student Enrollment 2024' that includes various sections.",
+            "solution": "The form consists of multiple sections: personal information, course preferences, address details, document upload, and extracurricular activities. It is structured using the &lt;form&gt; tag, input fields, &lt;select&gt; dropdown, checkboxes, radio buttons, and a file upload field.",
+            "subparts": [
+                {
+                    "question": "How to create a personal information section with fields for name, DOB, and gender (radio buttons)?",
+                    "solution": "The personal information section contains input fields for name, date of birth, and radio buttons for selecting gender.",
+                    "code": "&lt;fieldset&gt;\n    &lt;legend&gt;Personal Information&lt;/legend&gt;\n    &lt;label for='name'&gt;Full Name:&lt;/label&gt;\n    &lt;input type='text' id='name' name='name' required&gt;&lt;br&gt;&lt;br&gt;\n    \n    &lt;label for='dob'&gt;Date of Birth:&lt;/label&gt;\n    &lt;input type='date' id='dob' name='dob' required&gt;&lt;br&gt;&lt;br&gt;\n    \n    &lt;label&gt;Gender:&lt;/label&gt;\n    &lt;input type='radio' id='male' name='gender' value='Male' required&gt;\n    &lt;label for='male'&gt;Male&lt;/label&gt;\n    &lt;input type='radio' id='female' name='gender' value='Female' required&gt;\n    &lt;label for='female'&gt;Female&lt;/label&gt;\n    &lt;input type='radio' id='other' name='gender' value='Other' required&gt;\n    &lt;label for='other'&gt;Other&lt;/label&gt;\n&lt;/fieldset&gt;"
+                },
+                {
+                    "question": "How to add a dropdown for selecting 3 course preferences?",
+                    "solution": "The dropdown allows students to select three course preferences using the &lt;select&gt; element with multiple selections enabled.",
+                    "code": "&lt;fieldset&gt;\n    &lt;legend&gt;Course Preferences&lt;/legend&gt;\n    &lt;label for='courses'&gt;Select up to 3 course preferences:&lt;/label&gt;\n    &lt;select id='courses' name='courses' multiple required&gt;\n        &lt;option value='computer-science'&gt;Computer Science&lt;/option&gt;\n        &lt;option value='business'&gt;Business Administration&lt;/option&gt;\n        &lt;option value='engineering'&gt;Engineering&lt;/option&gt;\n        &lt;option value='arts'&gt;Arts&lt;/option&gt;\n        &lt;option value='medicine'&gt;Medicine&lt;/option&gt;\n    &lt;/select&gt;\n&lt;/fieldset&gt;"
+                },
+                {
+                    "question": "How to create an address section with fields for street, city, and postal code?",
+                    "solution": "The address section includes input fields for entering street, city, and postal code.",
+                    "code": "&lt;fieldset&gt;\n    &lt;legend&gt;Address Information&lt;/legend&gt;\n    &lt;label for='street'&gt;Street:&lt;/label&gt;\n    &lt;input type='text' id='street' name='street' required&gt;&lt;br&gt;&lt;br&gt;\n    \n    &lt;label for='city'&gt;City:&lt;/label&gt;\n    &lt;input type='text' id='city' name='city' required&gt;&lt;br&gt;&lt;br&gt;\n    \n    &lt;label for='postal'&gt;Postal Code:&lt;/label&gt;\n    &lt;input type='text' id='postal' name='postal' required&gt;&lt;br&gt;&lt;br&gt;\n&lt;/fieldset&gt;"
+                },
+                {
+                    "question": "How to add a file upload section for supporting documents?",
+                    "solution": "The file input field allows students to upload supporting documents such as identity proof, certificates, etc.",
+                    "code": "&lt;fieldset&gt;\n    &lt;legend&gt;Upload Supporting Documents&lt;/legend&gt;\n    &lt;label for='documents'&gt;Upload Files:&lt;/label&gt;\n    &lt;input type='file' id='documents' name='documents' required&gt;\n&lt;/fieldset&gt;"
+                },
+                {
+                    "question": "How to add a checkbox group for selecting extracurricular activities?",
+                    "solution": "The checkbox group allows students to select multiple extracurricular activities they are interested in.",
+                    "code": "&lt;fieldset&gt;\n    &lt;legend&gt;Extracurricular Activities&lt;/legend&gt;\n    &lt;input type='checkbox' id='sports' name='activities' value='sports'&gt;\n    &lt;label for='sports'&gt;Sports&lt;/label&gt;&lt;br&gt;\n    \n    &lt;input type='checkbox' id='music' name='activities' value='music'&gt;\n    &lt;label for='music'&gt;Music&lt;/label&gt;&lt;br&gt;\n    \n    &lt;input type='checkbox' id='drama' name='activities' value='drama'&gt;\n    &lt;label for='drama'&gt;Drama Club&lt;/label&gt;&lt;br&gt;\n    \n    &lt;input type='checkbox' id='coding' name='activities' value='coding'&gt;\n    &lt;label for='coding'&gt;Coding Club&lt;/label&gt;\n&lt;/fieldset&gt;"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "Using HTML, create a smartphone comparison table that includes proper structure, column groups, a nested table for camera specifications, scope attributes, and a price summary in the footer.",
+            "solution": "The table is structured using &lt;thead&gt;, &lt;tbody&gt;, and &lt;tfoot&gt;. Column groups are used for styling iPhone and Android specs. A nested table is included for camera details, and scope attributes improve accessibility.",
+            "subparts": [
+                {
+                    "question": "How to structure the table using thead, tbody, and tfoot?",
+                    "solution": "The table should be divided into three sections: &lt;thead&gt; for column headers, &lt;tbody&gt; for data rows, and &lt;tfoot&gt; for the summary.",
+                    "code": "&lt;table border='1'&gt;\n    &lt;thead&gt;\n        &lt;tr&gt;\n            &lt;th scope='col'&gt;Feature&lt;/th&gt;\n            &lt;th scope='col'&gt;iPhone&lt;/th&gt;\n            &lt;th scope='col'&gt;Android&lt;/th&gt;\n        &lt;/tr&gt;\n    &lt;/thead&gt;\n    &lt;tbody&gt;\n        &lt;!-- Data rows go here --&gt;\n    &lt;/tbody&gt;\n    &lt;tfoot&gt;\n        &lt;tr&gt;\n            &lt;td colspan='3'&gt;Price comparison summary goes here&lt;/td&gt;\n        &lt;/tr&gt;\n    &lt;/tfoot&gt;\n&lt;/table&gt;"
+                },
+                {
+                    "question": "How to use column groups for styling different sections?",
+                    "solution": "The &lt;colgroup&gt; tag is used to define separate styling for the feature column, iPhone specifications, and Android specifications.",
+                    "code": "&lt;colgroup&gt;\n    &lt;col style='background-color: lightgray;'&gt;\n    &lt;col style='background-color: #ffcccb;'&gt;\n    &lt;col style='background-color: #d1e7dd;'&gt;\n&lt;/colgroup&gt;"
+                },
+                {
+                    "question": "How to include a nested table for camera specifications?",
+                    "solution": "A table inside the camera specification row provides detailed information on front and rear cameras.",
+                    "code": "&lt;tr&gt;\n    &lt;td&gt;Camera&lt;/td&gt;\n    &lt;td colspan='2'&gt;\n        &lt;table border='1'&gt;\n            &lt;tr&gt;\n                &lt;th scope='col'&gt;Type&lt;/th&gt;\n                &lt;th scope='col'&gt;iPhone&lt;/th&gt;\n                &lt;th scope='col'&gt;Android&lt;/th&gt;\n            &lt;/tr&gt;\n            &lt;tr&gt;\n                &lt;td&gt;Front Camera&lt;/td&gt;\n                &lt;td&gt;12 MP&lt;/td&gt;\n                &lt;td&gt;32 MP&lt;/td&gt;\n            &lt;/tr&gt;\n            &lt;tr&gt;\n                &lt;td&gt;Rear Camera&lt;/td&gt;\n                &lt;td&gt;48 MP&lt;/td&gt;\n                &lt;td&gt;64 MP&lt;/td&gt;\n            &lt;/tr&gt;\n        &lt;/table&gt;\n    &lt;/td&gt;\n&lt;/tr&gt;"
+                },
+                {
+                    "question": "How to add scope attributes to all header cells?",
+                    "solution": "Scope attributes improve accessibility by specifying whether a header applies to a column or row.",
+                    "code": "&lt;th scope='col'&gt;Feature&lt;/th&gt;\n&lt;th scope='col'&gt;iPhone&lt;/th&gt;\n&lt;th scope='col'&gt;Android&lt;/th&gt;"
+                },
+                {
+                    "question": "How to implement a summary of price comparisons in the footer?",
+                    "solution": "The &lt;tfoot&gt; section contains a row summarizing price comparisons across devices.",
+                    "code": "&lt;tfoot&gt;\n    &lt;tr&gt;\n        &lt;td colspan='3'&gt;Price Summary: iPhone - $999, Android - $799&lt;/td&gt;\n    &lt;/tr&gt;\n&lt;/tfoot&gt;"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "Write the CSS code to create a parallax scrolling effect for a section with a background image, ensuring the image is fixed, covers the section, has a semi-transparent overlay, centers text, and sets a height of 500px.",
+            "solution": "The parallax effect is achieved by setting the background image to fixed position. An overlay improves readability, and flexbox centers the text both vertically and horizontally.",
+            "subparts": [
+                {
+                    "question": "How to create a parallax scrolling effect using a background image?",
+                    "solution": "The background image is set to fixed with 'background-attachment: fixed;' to create the parallax effect.",
+                    "code": ".parallax {\n    background-image: url('parallax-image.jpg');\n    background-attachment: fixed;\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: cover;\n    height: 500px;\n}"
+                },
+                {
+                    "question": "How to ensure the background image is fixed and covers the entire section?",
+                    "solution": "Using 'background-size: cover;' ensures the image fills the section, and 'background-attachment: fixed;' makes it stay in place while scrolling.",
+                    "code": ".parallax {\n    background-size: cover;\n    background-attachment: fixed;\n}"
+                },
+                {
+                    "question": "How to add a semi-transparent overlay to improve text readability?",
+                    "solution": "A pseudo-element (::before) is used to create an overlay with a semi-transparent black background.",
+                    "code": ".parallax::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.5);\n    z-index: 1;\n}"
+                },
+                {
+                    "question": "How to center the text vertically and horizontally?",
+                    "solution": "Flexbox is used with 'display: flex;' and 'justify-content: center;' to horizontally center the text, while 'align-items: center;' centers it vertically.",
+                    "code": ".parallax {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    text-align: center;\n    position: relative;\n    z-index: 2;\n    color: white;\n}"
+                },
+                {
+                    "question": "How to set the section height to 500px?",
+                    "solution": "Using 'height: 500px;' ensures the section has a fixed height for better visibility of the parallax effect.",
+                    "code": ".parallax {\n    height: 500px;\n}"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": "Write the CSS code to style an image gallery using a responsive flexbox layout, ensuring images wrap when needed, have a gap, scale proportionally, and include a hover effect.",
+            "solution": "The gallery is made responsive using flexbox with 'flex-wrap: wrap;'. Images are spaced using 'gap', scaled proportionally with 'max-width', and enlarged on hover.",
+            "subparts": [
+                {
+                    "question": "How to display images in a responsive flexbox layout?",
+                    "solution": "Using 'display: flex;' arranges images in a row, making them responsive within the container.",
+                    "code": ".gallery {\n    display: flex;\n}"
+                },
+                {
+                    "question": "How to ensure images wrap to the next line when the container width is exceeded?",
+                    "solution": "Using 'flex-wrap: wrap;' allows images to move to the next line if the container is too small.",
+                    "code": ".gallery {\n    flex-wrap: wrap;\n}"
+                },
+                {
+                    "question": "How to add a gap of 10px between images?",
+                    "solution": "The 'gap' property in flexbox ensures consistent spacing between images.",
+                    "code": ".gallery {\n    gap: 10px;\n}"
+                },
+                {
+                    "question": "How to make images scale proportionally to fit the container?",
+                    "solution": "Using 'max-width: 100%;' ensures images resize while maintaining aspect ratio.",
+                    "code": ".gallery img {\n    max-width: 100%;\n    height: auto;\n}"
+                },
+                {
+                    "question": "How to add a hover effect that slightly enlarges the images?",
+                    "solution": "Applying 'transform: scale(1.1);' on hover increases the size of images slightly.",
+                    "code": ".gallery img:hover {\n    transform: scale(1.1);\n    transition: transform 0.3s ease-in-out;\n}"
+                }
+            ]
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    ]
+}

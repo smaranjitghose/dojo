@@ -1,0 +1,334 @@
+{
+    "title": "MongoDB and Version Control",
+  "date": "29th January 2025",
+    "mcqs": [
+        
+            {
+                "id": 1,
+                "question": "How do you sort documents in descending order by age?",
+                "options": {
+                    "a": "db.users.find().sort({ age: 0 })",
+                    "b": "db.users.find().sort({ age: -1 })",
+                    "c": "db.users.find().sort({ age: 'desc' })",
+                    "d": "db.users.find().orderBy({ age: 'down' })"
+                },
+                "answer": "b) db.users.find().sort({ age: -1 })",
+                "explanation": "To sort documents in descending order by age, we use the sort operator with -1 for descending order.",
+                "code": ""
+            },
+            {
+                "id": 2,
+                "question": "What operator updates if document exists, inserts if not?",
+                "options": {
+                    "a": "$set",
+                    "b": "$update",
+                    "c": "$upsert",
+                    "d": "$setOrInsert"
+                },
+                "answer": "c) $upsert",
+                "explanation": "The $upsert operator ensures that the document is either updated if it exists or inserted if it does not.",
+                "code": ""
+            },
+            {
+                "id": 3,
+                "question": "Which operator matches values in an array?",
+                "options": {
+                    "a": "$array",
+                    "b": "$in",
+                    "c": "$contains",
+                    "d": "$has"
+                },
+                "answer": "b) $in",
+                "explanation": "The $in operator is used to match any value in an array.",
+                "code": ""
+            },
+            {
+                "id": 4,
+                "question": "What tool is used to import JSON/CSV data?",
+                "options": {
+                    "a": "mongoimport",
+                    "b": "mongorestore",
+                    "c": "mongoload",
+                    "d": "mongofetch"
+                },
+                "answer": "a) mongoimport",
+                "explanation": "mongoimport is the tool used to import JSON and CSV data into MongoDB.",
+                "code": ""
+            },
+            {
+                "id": 5,
+                "question": "What is the minimum number of nodes needed for a replica set?",
+                "options": {
+                    "a": "1",
+                    "b": "2",
+                    "c": "3",
+                    "d": "4"
+                },
+                "answer": "c) 3",
+                "explanation": "A replica set in MongoDB requires at least 3 nodes for redundancy and availability.",
+                "code": ""
+            },
+            {
+                "id": 6,
+                "question": "What is the maximum number of indexes per collection?",
+                "options": {
+                    "a": "32",
+                    "b": "64",
+                    "c": "128",
+                    "d": "256"
+                },
+                "answer": "b) 64",
+                "explanation": "MongoDB supports a maximum of 64 indexes per collection.",
+                "code": ""
+            },
+            {
+                "id": 7,
+                "question": "You need to temporarily switch tasks but aren't ready to commit. What should you do?",
+                "options": {
+                    "a": "Commit incomplete changes",
+                    "b": "Use git stash",
+                    "c": "Create a new branch",
+                    "d": "Copy files manually"
+                },
+                "answer": "b) Use git stash",
+                "explanation": "git stash allows you to save your changes temporarily and switch tasks without committing incomplete changes.",
+                "code": ""
+            },
+            {
+                "id": 8,
+                "question": "You need to modify your last commit message. What command should you use?",
+                "options": {
+                    "a": "git commit --amend",
+                    "b": "git modify",
+                    "c": "git message",
+                    "d": "git update"
+                },
+                "answer": "a) git commit --amend",
+                "explanation": "git commit --amend allows you to modify the most recent commit message.",
+                "code": ""
+            },
+            {
+                "id": 9,
+                "question": "You accidentally committed to main branch instead of feature branch. What's the best action?",
+                "options": {
+                    "a": "Delete the repository and clone again",
+                    "b": "Create a new branch from the current state",
+                    "c": "git reset to move commit to correct branch",
+                    "d": "Ignore it and continue working"
+                },
+                "answer": "c) git reset to move commit to correct branch",
+                "explanation": "Use git reset to move the commit from the main branch to the correct feature branch.",
+                "code": ""
+            },
+            {
+                "id": 10,
+                "question": "What's the purpose of SSH keys in Git?",
+                "options": {
+                    "a": "Encrypt commits",
+                    "b": "Secure authentication with remote",
+                    "c": "Encrypt repository",
+                    "d": "Sign commits"
+                },
+                "answer": "b) Secure authentication with remote",
+                "explanation": "SSH keys are used to securely authenticate with remote Git repositories, avoiding the need to input your username and password every time.",
+                "code": ""
+            }
+        
+        
+    ],
+    "shortQuestions": [
+        {
+            "id": 1,
+            "question": "What is a capped collection in MongoDB? Explain with example",
+            "solution": "A capped collection is a special type of collection in MongoDB with a fixed size and automatically overwrites its oldest documents when the limit is reached. It is ideal for storing logs or time-series data. Capped collections maintain the insertion order and provide high-performance reads and writes.",
+            "code": "db.createCollection('logs', { capped: true, size: 100000 });\ndb.logs.insert({ message: 'Log entry 1' });\ndb.logs.insert({ message: 'Log entry 2' });"
+        },
+        {
+            "id": 2,
+            "question": "Explain the concept of Sharding in MongoDB? List the different sharding strategies.",
+            "solution": "Sharding is the process of distributing data across multiple servers to ensure horizontal scalability. It allows MongoDB to handle large datasets by splitting them into smaller, manageable chunks. Sharding is done by a shard key, which determines how the data is distributed.\nSharding strategies include:\n1. Range-based sharding: Data is partitioned based on a range of shard key values.\n2. Hash-based sharding: A hash function is applied to the shard key to distribute documents evenly across shards.\n3. Zone-based sharding: Allows custom zones to be defined for certain ranges of shard keys, enabling greater control over data distribution.",
+            "code": "db.runCommand({ shardCollection: 'database.collection', key: { userId: 1 } });"
+        },
+        {
+            "id": 3,
+            "question": "Discuss about different types of indexes in MongoDB using code examples",
+            "solution": "MongoDB provides several types of indexes to optimize query performance:\n1. Single-field index: Index created on a single field to improve query speed.\n2. Compound index: Index created on multiple fields to optimize queries that involve multiple conditions.\n3. Multikey index: Index for arrays that indexes each element of the array.\n4. Geospatial index: Indexes for spatial data, useful for geographic queries.\n5. Text index: Index for full-text search on string fields.\n6. Hashed index: An index based on a hashed value of a field, ideal for sharding.",
+            "code": "db.collection.createIndex({ name: 1 });\ndb.collection.createIndex({ name: 1, age: -1 });\ndb.collection.createIndex({ location: '2dsphere' });"
+        },
+        {
+            "id": 4,
+            "question": "What are embedded documents in MongoDB? Give an example",
+            "solution": "Embedded documents in MongoDB allow one document to contain other documents as fields. This helps to represent hierarchical data within a single document and reduces the need for joins. It is a common design pattern in MongoDB to keep related data together.\nExample: A 'user' document containing an embedded 'address' document.",
+            "code": "db.users.insert({ name: 'John', address: { street: '123 Main St', city: 'New York', zip: '10001' } });"
+        },
+        {
+            "id": 5,
+            "question": "What is a Git tag? Explain the difference between lightweight and annotated tags.",
+            "solution": "A Git tag is a reference to a specific commit, often used to mark release points or important commits in the repository.\nThere are two types of tags in Git:\n1. Lightweight tag: A simple reference to a commit, like a branch pointer. It does not store any extra metadata.\n2. Annotated tag: A tag that stores extra information such as the tagger's name, email, date, and a message. It is stored as a full object in Git.",
+            "code": "git tag v1.0\n git tag -a v1.0 -m 'Release version 1.0'"
+        },
+        {
+            "id": 6,
+            "question": "What is Git Reflog? How is it different from git reset?",
+            "solution": "Git Reflog is a mechanism in Git that records changes made to the tips of branches and other references. It allows you to track movements of the HEAD and recover commits that are no longer in the branch history.\nGit reset is a command that alters the commit history by resetting the HEAD to a specific state, either removing or staging changes, whereas Reflog is more like a log to track previous states.",
+            "code": "git reflog\n git reset --hard <commit_hash>"
+        },
+        {
+            "id": 7,
+            "question": "Explain the difference between git rebase and git merge",
+            "solution": "Both git rebase and git merge are used to integrate changes from one branch to another. However, they work differently:\n1. Git rebase: Rewrites the commit history by applying commits from one branch onto another. It results in a linear history.\n2. Git merge: Combines the histories of two branches without changing the commit history. It results in a merge commit that preserves the history of both branches.",
+            "code": "git rebase main\n git merge main"
+        }
+    ]
+    ,
+    "longQuestions": [
+        {
+            "id": 1,
+            "question": "You are working with a MongoDB database called social_media with collections posts, users, and comments. Perform the following tasks:",
+            "solution": "In this problem, we'll be working with the MongoDB collections `posts`, `users`, and `comments`. We'll demonstrate how to insert, query, update, calculate, and delete documents in MongoDB.",
+            "subparts": [
+                {
+                    "question": "1. Insert five documents into the posts collection with fields: content (string), author (string), likes (number), tags (array of strings), createdAt (date)",
+                    "solution": "To insert multiple documents into the posts collection, we can use the `insertMany()` method. Each document will have the specified fields, including the content, author, likes, tags, and createdAt.",
+                    "code": "db.posts.insertMany([\n  { content: 'Exploring the future of technology', author: 'Alice', likes: 120, tags: ['technology', 'future'], createdAt: new Date() },\n  { content: 'The best cooking recipes', author: 'Bob', likes: 50, tags: ['food', 'cooking'], createdAt: new Date() },\n  { content: 'New trends in web development', author: 'Charlie', likes: 200, tags: ['technology', 'web development'], createdAt: new Date() },\n  { content: 'Healthy living tips', author: 'Alice', likes: 90, tags: ['health', 'wellness'], createdAt: new Date() },\n  { content: 'Latest gadgets on the market', author: 'David', likes: 180, tags: ['technology', 'gadgets'], createdAt: new Date() }\n]);"
+                },
+                {
+                    "question": "2. Find all posts containing the tag 'technology' and sort by likes in descending order",
+                    "solution": "To query for posts containing the 'technology' tag and sort by likes in descending order, we use the `find()` method with a filter and a `sort()` method.",
+                    "code": "db.posts.find({ tags: 'technology' }).sort({ likes: -1 });"
+                },
+                {
+                    "question": "3. Update all posts with more than 100 likes by adding a field 'trending' set to true",
+                    "solution": "To update posts with more than 100 likes, we use the `updateMany()` method. This will add a new field `trending` and set it to true for all matching documents.",
+                    "code": "db.posts.updateMany({ likes: { $gt: 100 } }, { $set: { trending: true } });"
+                },
+                {
+                    "question": "4. Calculate the average number of likes per author",
+                    "solution": "To calculate the average number of likes per author, we use the aggregation framework. The `$group` stage groups the posts by author, and the `$avg` operator calculates the average of the `likes` field.",
+                    "code": "db.posts.aggregate([\n  { $group: { _id: '$author', avgLikes: { $avg: '$likes' } } }\n]);"
+                },
+                {
+                    "question": "5. Delete all posts older than 30 days",
+                    "solution": "To delete posts older than 30 days, we use the `deleteMany()` method with a filter that checks the `createdAt` field to be older than the current date minus 30 days.",
+                    "code": "db.posts.deleteMany({ createdAt: { $lt: new Date(new Date() - 30 * 24 * 60 * 60 * 1000) } });"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "You are working with a MongoDB database called blog that contains the collections articles, authors, and comments. Perform the following tasks:",
+            "solution": "In this problem, we will be working with the `articles` collection in the MongoDB `blog` database. The tasks will demonstrate how to insert, index, query, update, and delete documents in MongoDB.",
+            "subparts": [
+                {
+                    "question": "1. Insert five documents into the articles collection with fields: title (string), content (string), author (string), tags (array of strings), createdAt (date)",
+                    "solution": "To insert multiple documents into the articles collection, we use the `insertMany()` method. Each document will include the title, content, author, tags, and createdAt fields.",
+                    "code": "db.articles.insertMany([\n  { title: 'Introduction to JavaScript', content: 'JavaScript is a powerful scripting language...', author: 'Alice', tags: ['programming', 'JavaScript'], createdAt: new Date() },\n  { title: 'Understanding Databases', content: 'Databases are essential for data storage...', author: 'Bob', tags: ['technology', 'database'], createdAt: new Date() },\n  { title: 'Web Development Trends', content: 'JavaScript frameworks are growing rapidly...', author: 'Charlie', tags: ['programming', 'web development'], createdAt: new Date() },\n  { title: 'CSS for Beginners', content: 'CSS is used to style web pages...', author: 'Alice', tags: ['programming', 'CSS'], createdAt: new Date() },\n  { title: 'Database Optimization', content: 'Learn how to optimize your database queries...', author: 'David', tags: ['database', 'optimization'], createdAt: new Date() }\n]);"
+                },
+                {
+                    "question": "2. Create a text index on the title and content fields of the articles collection",
+                    "solution": "To create a text index on the `title` and `content` fields, we use the `createIndex()` method and specify the fields to be indexed as text.",
+                    "code": "db.articles.createIndex({ title: 'text', content: 'text' });"
+                },
+                {
+                    "question": "3. Find all articles containing the word 'JavaScript' in either the title or content fields, sorted by createdAt in descending order",
+                    "solution": "To search for articles containing the word 'JavaScript', we use the `$text` operator along with the `$search` keyword to find the documents matching the term. We can then sort the results by the `createdAt` field in descending order.",
+                    "code": "db.articles.find({ $text: { $search: 'JavaScript' } }).sort({ createdAt: -1 });"
+                },
+                {
+                    "question": "4. Update all articles containing the word 'database' in the content field by adding a new field category with the value 'Database'",
+                    "solution": "To update articles containing the word 'database' in the content, we use the `$text` search operator. The `updateMany()` method will add a `category` field with the value 'Database'.",
+                    "code": "db.articles.updateMany({ $text: { $search: 'database' } }, { $set: { category: 'Database' } });"
+                },
+                {
+                    "question": "5. Delete all articles that do not contain any tags",
+                    "solution": "To delete articles that do not have any tags, we use the `deleteMany()` method with a filter that checks for documents where the `tags` field is either missing or an empty array.",
+                    "code": "db.articles.deleteMany({ tags: { $exists: false } });"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "Imagine you are working on the clone of an open-source project in your local system. How will you achieve the following tasks using Git CLI commands:",
+            "solution": "In this task, we will perform common Git operations to interact with both the origin (forked remote) and upstream (original project remote). These operations include setting remotes, fetching branches, creating new branches, staging changes, committing, and pushing changes.",
+            "subparts": [
+                {
+                    "question": "1. Set remotes for your forked remote (origin) and the upstream remote (upstream)",
+                    "solution": "First, we need to set the remotes for both the forked repository and the original repository (upstream). The `origin` refers to your fork, and `upstream` refers to the original repository you forked from.",
+                    "code": [
+                        "git remote add origin https://github.com/your-username/forked-repository.git\n",
+                        "git remote add upstream https://github.com/original-author/original-repository.git"
+                    ]
+                },
+                {
+                    "question": "2. Fetch all feature branches from the upstream remote",
+                    "solution": "To fetch all the feature branches from the upstream repository, we use the `git fetch` command. This pulls down all branches and their respective updates from the upstream repository.",
+                    "code": "git fetch upstream"
+                },
+                {
+                    "question": "3. Create a feature branch feat6 linked to upstream/feat6",
+                    "solution": "After fetching the latest branches, we can create a new local branch `feat6` and set it to track the `upstream/feat6` branch.",
+                    "code": "git checkout -b feat6 upstream/feat6"
+                },
+                {
+                    "question": "4. Stage and commit a change with the message 'Completed Task 6' on the feat6 branch",
+                    "solution": "To stage and commit changes on the `feat6` branch, we first use `git add` to stage the changes, then commit them with the provided message.",
+                    "code": [
+                        "git add .",
+                        "git commit -m 'Completed Task 6'"
+                    ]
+                },
+                {
+                    "question": "5. Push the feat6 branch to your forked remote",
+                    "solution": "Finally, we push the `feat6` branch to the origin (your forked remote) using the `git push` command.",
+                    "code": "git push origin feat6"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": "Imagine you are working on a feature branch and want to clean up your commit history by squashing multiple commits into one. How will you achieve the following tasks using Git CLI commands:",
+            "solution": "In this task, we will use Git's interactive rebase feature to squash multiple commits into one. After squashing the commits, we will force-push the changes to the remote repository and verify the commit history.",
+            "subparts": [
+                {
+                    "question": "1. View the commit history to identify the commits to squash",
+                    "solution": "To view the commit history, we use `git log` to list the commits. This will help identify the commits that need to be squashed together.",
+                    "code": "git log --oneline"
+                },
+                {
+                    "question": "2. Start an interactive rebase for the last 4 commits",
+                    "solution": "To start an interactive rebase for the last 4 commits, use the `git rebase -i` command followed by `HEAD~4` to specify the range of commits to rebase.",
+                    "code": "git rebase -i HEAD~4"
+                },
+                {
+                    "question": "3. Squash the last 3 commits into the first commit, keeping the first commit's message",
+                    "solution": "In the interactive rebase editor, change `pick` to `squash` for the last 3 commits. This will squash them into the first commit. You will keep the first commit's message when prompted to edit the commit message during the rebase.",
+                    "code": ["pick <commit-hash> Commit message for the first commit\n",
+                            "squash <commit-hash> Commit message for the second commit\n",
+                            "squash <commit-hash> Commit message for the third commit\n",
+                            "squash <commit-hash> Commit message for the fourth commit"]
+                },
+                {
+                    "question": "4. Force-push the squashed branch to the remote repository",
+                    "solution": "After squashing the commits, you need to force-push the changes to the remote repository because the commit history has been rewritten.",
+                    "code": "git push origin feat-branch --force"
+                },
+                {
+                    "question": "5. Verify the commit history after squashing",
+                    "solution": "To verify the commit history after squashing, use `git log` again to see that the commits have been squashed into a single commit.",
+                    "code": "git log --oneline"
+                }
+            ]
+        }
+        
+        
+    ]}
+          
+          
+          
+          
+        
+        
+        
+        
+        
+        
