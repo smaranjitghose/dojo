@@ -1,186 +1,192 @@
 {
-  "title": "Express.js and API Testing Paper",
-  "date": "30th January 2025",
-    "mcqs": [
-      {
-        "id": 1,
-        "question": "You are testing a POST request in Postman. Where would you add the JSON payload for the request:",
-        "code": null,
-        "options": {
-          "a": "Params tab",
-          "b": "Body tab",
-          "c": "Headers tab",
-          "d": "Pre-request Script tab"
-        }
-      },
-      {
-        "id": 2,
-        "question": "Which of the following is an invalid JSON payload for a POST request to create a user?",
-        "code": null,
-        "options": {
-          "a": "{\"name\": \"John\", \"age\": 30}",
-          "b": "{name: \"John\", age: 30}",
-          "c": "{\"name\": \"John\", \"age\": \"30\"}",
-          "d": "Both a and c"
-        }
-      },
-      {
-        "id": 3,
-        "question": "What is the difference between PUT and PATCH methods?",
-        "code": null,
-        "options": {
-          "a": "PUT updates the entire resource, while PATCH updates only specific fields",
-          "b": "PUT is used for creating resources, while PATCH is used for updating",
-          "c": "PUT is idempotent, while PATCH is not",
-          "d": "Both a and c"
-        }
-      },
-      {
-        "id": 4,
-        "question": "Which HTTP status code indicates a successful creation of a resource?",
-        "code": null,
-        "options": {
-          "a": "200",
-          "b": "201",
-          "c": "204",
-          "d": "400"
-        }
-      },
-      {
-        "id": 5,
-        "question": "Which of the following is a valid HTTP status code for a redirect?",
-        "code": null,
-        "options": {
-          "a": "200",
-          "b": "301",
-          "c": "304",
-          "d": "503"
-        }
-      },
-      {
-        "id": 6,
-        "question": "How do you handle errors in Express.js?",
-        "code": null,
-        "options": {
-          "a": "Using app.error()",
-          "b": "Using a middleware with four arguments: (err, req, res, next)",
-          "c": "Using try-catch blocks in every route",
-          "d": "Errors cannot be handled in Express.js"
-        }
-      },
-      {
-        "id": 7,
-        "question": "How can you improve the performance of an Express.js application?",
-        "code": null,
-        "options": {
-          "a": "Use clustering to leverage multiple CPU cores",
-          "b": "Use synchronous code everywhere",
-          "c": "Avoid using middleware",
-          "d": "Use a single route for all requests"
-        }
-      },
-      {
-        "id": 8,
-        "question": "What is the purpose of the next() function in Express.js middleware?",
-        "code": null,
-        "options": {
-          "a": "To end the request-response cycle",
-          "b": "To pass control to the next middleware function",
-          "c": "To skip to the last middleware",
-          "d": "To restart the middleware chain"
-        }
-      },
-      {
-        "id": 9,
-        "question": "What's the purpose of the app.all() method in Express.js?",
-        "code": null,
-        "options": {
-          "a": "Handles all routes",
-          "b": "Handles all HTTP methods for a path",
-          "c": "Middleware for all routes",
-          "d": "Error handler for all routes"
-        }
-      },
-      {
-        "id": 10,
-        "question": "What happens when you call res.json() and res.send() multiple times in the same request handler?",
-        "code": null,
-        "options": {
-          "a": "Both responses are sent",
-          "b": "Error is thrown",
-          "c": "Only the first response is sent",
-          "d": "Only the last response is sent"
-        }
+  "title": "MongoDB and Git Mid Semester Exam",
+  "date": "3rd February 2025",
+  "mcqs": [
+    {
+      "id": 1,
+      "question": "How do you sort documents in descending order by age?",
+      "code": null,
+      "options": {
+        "a": "db.users.find().sort({ age: 0 })",
+        "b": "db.users.find().sort({ age: -1 })",
+        "c": "db.users.find().sort({ age: 'desc' })",
+        "d": "db.users.find().orderBy({ age: 'down' })"
       }
-    ],
-    "shortQuestions": [
-      {
-        "id": 1,
-        "question": "What is rate limiting in APIs? Why is it important?"
-      },
-      {
-        "id": 2,
-        "question": "Explain the purpose of environment variables in Postman. Provide an example of their usage"
-      },
-      {
-        "id": 3,
-        "question": "What are query parameters and path parameters in APIs? Provide an example of each"
-      },
-      {
-        "id": 4,
-        "question": "Write a middleware function to log the request method, timestamp and URL for every incoming request"
-      },
-      {
-        "id": 5,
-        "question": "Write an Express.js route for /greet/:language that returns { \"greeting\": \"Namaste\" } for Hindi, { \"greeting\": \"Kem cho\" } for Gujarati, and defaults to { \"greeting\": \"Hello\" } for unsupported languages"
-      },
-      {
-        "id": 6,
-        "question": "What is the MVC pattern in Express.js? Explain with a simple example"
-      },
-      {
-        "id": 7,
-        "question": "Write an Express.js route for /records that uses the type query parameter to redirect to https://www.google.com for type=google, https://www.github.com for type=github, and defaults to https://www.example.com for any other type or if type is missing"
+    },
+    {
+      "id": 2,
+      "question": "What operator updates if document exists, inserts if not?",
+      "code": null,
+      "options": {
+        "a": "$set",
+        "b": "$update",
+        "c": "$upsert",
+        "d": "$setOrInsert"
       }
-    ],
-    "longQuestions": [
-      {
-        "id": 1,
-        "question": "You are building a food delivery app called FoodieFast. Create an Express.js application that:",
-        "subparts": [
-          "Connects to MongoDB using Mongoose.",
-          "Has a model called Restaurant using a schema for the collection restaurants.",
-          "Handles GET requests at /api/v1/restaurants to return a list of all restaurants.",
-          "Handles POST requests at /api/v1/addRestaurant to add a new restaurant after validating the request body.",
-          "Handles DELETE requests at /api/v1/deleteRestaurant/:id to delete a restaurant by its _id"
-        ]
-      },
-      {
-        "id": 2,
-        "question": "You are testing an online banking API for the endpoint /transactions. It expects the following body parameters: transactionId (string): A unique identifier for the transaction which starts with \"TXN\" followed by 8 random digits.       Example: \"TXN12345678\" amount (number): Amount of the transaction. It should be a random number between 0 and 1,000,000. transactionType (string): Type of transaction. It can be: \"Deposit\" or \"Withdrawal\"  or \"Transfer” Write a Postman pre-request script to generate random values for the above parameters",
-        "subparts": []
-      },
-      {
-        "id": 3,
-        "question": "Create an Aadhar picture upload service:",
-        "subparts": [
-          "Use multer middleware for handling file uploads",
-          "Allow only image files (jpg, png)",
-          "Limit file size to 1MB",
-          "Save file with unique name",
-          "Return file URL in response"
-        ]
-      },
-      {
-        "id": 4,
-        "question": "You are building a Newsletter System using a template engine.",
-        "subparts": [
-          "Set up Handlebars as the template engine.",
-          "Create a newsletter template (newsletter.hbs) with dynamic content (e.g., title, body).",
-          "Add a route /newsletter to render the newsletter preview.",
-          "Pass dynamic data (e.g., title: \"Monthly Update\", body: \"Stay tuned for exciting news!\") to the template.",
-          "Use partials for the header (header.hbs) and footer (footer.hbs) in the newsletter template"
-        ]
+    },
+    {
+      "id": 3,
+      "question": "Which operator matches values in an array?",
+      "code": null,
+      "options": {
+        "a": "$array",
+        "b": "$in",
+        "c": "$contains",
+        "d": "$has"
       }
-    ]
-  }
+    },
+    {
+      "id": 4,
+      "question": "What tool is used to import JSON/CSV data?",
+      "code": null,
+      "options": {
+        "a": "mongoimport",
+        "b": "mongorestore",
+        "c": "mongoload",
+        "d": "mongofetch"
+      }
+    },
+    {
+      "id": 5,
+      "question": "What is the minimum number of nodes needed for a replica set?",
+      "code": null,
+      "options": {
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4"
+      }
+    },
+    {
+      "id": 6,
+      "question": "What is the maximum number of indexes per collection?",
+      "code": null,
+      "options": {
+        "a": "32",
+        "b": "64",
+        "c": "128",
+        "d": "256"
+      }
+    },
+    {
+      "id": 7,
+      "question": "You need to temporarily switch tasks but aren't ready to commit. What should you do?",
+      "code": null,
+      "options": {
+        "a": "Commit incomplete changes",
+        "b": "Use git stash",
+        "c": "Create a new branch",
+        "d": "Copy files manually"
+      }
+    },
+    {
+      "id": 8,
+      "question": "You need to modify your last commit message. What command should you use?",
+      "code": null,
+      "options": {
+        "a": "git commit --amend",
+        "b": "git modify",
+        "c": "git message",
+        "d": "git update"
+      }
+    },
+    {
+      "id": 9,
+      "question": "You accidentally committed to main branch instead of feature branch. What's the best action?",
+      "code": null,
+      "options": {
+        "a": "Delete the repository and clone again",
+        "b": "Create a new branch from the current state",
+        "c": "git reset to move commit to correct branch",
+        "d": "Ignore it and continue working"
+      }
+    },
+    {
+      "id": 10,
+      "question": "What's the purpose of SSH keys in Git?",
+      "code": null,
+      "options": {
+        "a": "Encrypt commits",
+        "b": "Secure authentication with remote",
+        "c": "Encrypt repository",
+        "d": "Sign commits"
+      }
+    }
+  ],
+  "shortQuestions": [
+    {
+      "id": 1,
+      "question": "What is a capped collection in MongoDB? Explain with example"
+    },
+    {
+      "id": 2,
+      "question": "Explain the concept of Sharding in MongoDB? List the different sharding strategies."
+    },
+    {
+      "id": 3,
+      "question": "Discuss about different types of indexes in MongoDB using code examples"
+    },
+    {
+      "id": 4,
+      "question": "What are embedded documents in MongoDB? Give an example"
+    },
+    {
+      "id": 5,
+      "question": "What is a Git tag? Explain the difference between lightweight and annotated tags."
+    },
+    {
+      "id": 6,
+      "question": "What is Git Reflog? How is it different from git reset?"
+    },
+    {
+      "id": 7,
+      "question": "Explain the difference between git rebase and git merge"
+    }
+  ],
+  "longQuestions": [
+    {
+      "id": 1,
+      "question": "You are working with a MongoDB database called social_media with collections posts, users, and comments. Perform the following tasks:",
+      "subparts": [
+        "Insert five documents into the posts collection with fields: content (string), author (string), likes (number), tags (array of strings), createdAt (date)",
+        "Find all posts containing the tag \"technology\" and sort by likes in descending order",
+        "Update all posts with more than 100 likes by adding a field trending set to true",
+        "Calculate the average number of likes per author",
+        "Delete all posts older than 30 days"
+      ]
+    },
+    {
+      "id": 2,
+      "question": "You are working with a MongoDB database called blog that contains the collections articles, authors, and comments. Perform the following tasks:",
+      "subparts": [
+        "Insert five documents into the articles collection with fields: title (string), content (string), author (string), tags (array of strings), createdAt (date)",
+        "Create a text index on the title and content fields of the articles collection",
+        "Find all articles containing the word \"JavaScript\" in either the title or content fields, sorted by createdAt in descending order",
+        "Update all articles containing the word \"database\" in the content field by adding a new field category with the value \"Database\"",
+        "Delete all articles that do not contain any tags"
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Imagine you are working on the clone of an open-source project in your local system. How will you achieve the following tasks using Git CLI commands:",
+      "subparts": [
+        "Set remotes for your forked remote (origin) and the upstream remote (upstream)",
+        "Fetch all feature branches from the upstream remote",
+        "Create a feature branch feat6 linked to upstream/feat6",
+        "Stage and commit a change with the message \"Completed Task 6\" on the feat6 branch",
+        "Push the feat6 branch to your forked remote"
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Imagine you are working on a feature branch and want to clean up your commit history by squashing multiple commits into one. How will you achieve the following tasks using Git CLI commands:",
+      "subparts": [
+        "View the commit history to identify the commits to squash",
+        "Start an interactive rebase for the last 4 commits",
+        "Squash the last 3 commits into the first commit, keeping the first commit's message",
+        "Force-push the squashed branch to the remote repository",
+        "Verify the commit history after squashing"
+      ]
+    }
+  ]
+}
