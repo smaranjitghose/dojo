@@ -38,7 +38,7 @@
         async function loadQuestions() {
             try {
                 // Fetch questions and paper details
-                const response = await fetch('../data/qp01.json');
+                const response = await fetch('../data/qp03.json');
                 const data = await response.json();
 
                 // Set paper title and date
@@ -167,6 +167,14 @@
 
         // Load questions when the page loads
         window.addEventListener('load', loadQuestions);
+
+        function toggleCollapse(id) {
+            const section = document.getElementById(id);
+            const arrow = document.getElementById(`${id}-arrow`);
+            section.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+        
     </script>
 </head>
 <body class="bg-[#020817] text-gray-100 min-h-screen">
@@ -187,46 +195,31 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Paper Title Section -->
-        <div class="mb-16 animate-title">
-            <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
-                <!-- Title will be dynamically inserted here -->
-            </h1>
-            <p id="paper-date" class="text-gray-400 text-lg">
-                <!-- Date will be dynamically inserted here -->
-            </p>
+        <div class="mb-16">
+            <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-blue-400 mb-4"></h1>
+            <p id="paper-date" class="text-gray-400 text-lg"></p>
         </div>
-
-        <!-- Questions Section -->
         <div class="space-y-8">
-            <!-- Q.1: Multiple Choice Questions -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6 cursor-pointer" onclick="toggleCollapsible('mcqs-container')">
-                    Q.1 Multiple Choice Questions
+            <div class="p-6 bg-dojo-card rounded-lg">
+                <h3 class="text-2xl font-bold mb-6 cursor-pointer flex items-center justify-between" onclick="toggleCollapse('mcqs-container')">
+                    <span>Multiple Choice Questions</span>
+                    <span id="mcqs-container-arrow" class="text-xs transition-transform ml-auto">▼</span>
                 </h3>
-                <div id="mcqs-container" class="collapsible-content open">
-                    <!-- MCQs will be dynamically inserted here -->
-                </div>
+                <div id="mcqs-container" class="space-y-4 hidden"></div>
             </div>
-
-            <!-- Q.2: Short Questions -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6 cursor-pointer" onclick="toggleCollapsible('short-questions-container')">
-                    Q.2 Attempt any five (Short Questions)
+            <div class="p-6 bg-dojo-card rounded-lg">
+                <h3 class="text-2xl font-bold mb-6 cursor-pointer flex items-center justify-between" onclick="toggleCollapse('short-questions-container')">
+                    <span>Short Questions</span>
+                    <span id="short-questions-container-arrow" class="text-xs transition-transform ml-auto">▼</span>
                 </h3>
-                <div id="short-questions-container" class="collapsible-content open">
-                    <!-- Short Questions will be dynamically inserted here -->
-                </div>
+                <div id="short-questions-container" class="space-y-4 hidden"></div>
             </div>
-
-            <!-- Q.3: Long Questions -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6 cursor-pointer" onclick="toggleCollapsible('long-questions-container')">
-                    Q.3 Long Questions
+            <div class="p-6 bg-dojo-card rounded-lg">
+                <h3 class="text-2xl font-bold mb-6 cursor-pointer flex items-center justify-between" onclick="toggleCollapse('long-questions-container')">
+                    <span>Long Questions</span>
+                    <span id="long-questions-container-arrow" class="text-xs transition-transform ml-auto">▼</span>
                 </h3>
-                <div id="long-questions-container" class="collapsible-content open">
-                    <!-- Long Questions will be dynamically inserted here -->
-                </div>
+                <div id="long-questions-container" class="space-y-4 hidden"></div>
             </div>
         </div>
     </main>
