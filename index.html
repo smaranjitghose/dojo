@@ -79,7 +79,7 @@
                         />
                     </div>
                 <di
-                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300"
+                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300" onclick="navigateToChoice('web-dev')"
                 >
                   Learn More
                 </di>
@@ -116,7 +116,7 @@
                 </div>
 
                 <di
-                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300"
+                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300"onclick="navigateToChoice('backend')"
                 >
                   Learn More
                 </a>
@@ -196,8 +196,8 @@
                     class="w-12 h-12 mx-auto mb-3"
                     />
                 </div>
-                <di
-                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300"
+                <di 
+                  class="inline-flex items-center px-6 py-2 border-2 border-dojo-accent text-dojo-accent bg-transparent rounded-lg hover:bg-dojo-accent/10 hover:text-white transition-all duration-300" onclick="navigateToChoice('javascript')"
                 >
                   Learn More
                 </a>
@@ -284,6 +284,16 @@
         >
           <p>&copy; 2025 PracticeDojo. All rights reserved.</p>
         </footer>
+
+
+
+        <script>
+            function navigateToChoice(subject) {
+        window.location.href = `choice.html?type=${encodeURIComponent(subject)}`;
+    }
+    
+        </script>
+          
       </body>
     </html>
 
