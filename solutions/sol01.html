@@ -19,6 +19,7 @@
             }
         }
     </script>
+    
     <!-- Prism.js for code highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
@@ -123,7 +124,7 @@
         async function loadSolutions() {
             try {
                 // Fetch solutions
-                const response = await fetch('../../data/sol01.json');
+                const response = await fetch('../data/sol01.json'); // Update this path
                 const data = await response.json();
 
                 // Set paper title and date

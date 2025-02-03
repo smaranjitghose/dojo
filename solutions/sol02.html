@@ -98,7 +98,7 @@
         // Same JavaScript as sol01.html but with different data source
         async function loadSolutions() {
             try {
-                const response = await fetch('../../data/sol02.json');
+                const response = await fetch('../data/sol02.json');
                 const data = await response.json();
 
                 document.getElementById('paper-title').textContent = data.title;
