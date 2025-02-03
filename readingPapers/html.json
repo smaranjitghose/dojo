@@ -1,0 +1,22 @@
+{
+    "title": "HTML Questions",
+    "date": "3rd February 2025",
+    "theoryQuestions": [
+      {
+        "id": 1,
+        "question": "What is the purpose of semantic HTML? List three semantic elements and explain their appropriate usage.",
+        "answer": "Semantic HTML is used to provide meaning to web content, improving accessibility and SEO. It helps search engines and assistive technologies understand the structure of a webpage. Three semantic elements are:\n\n1. `header`: Represents the introductory content or a container for navigation links.\n2. `article`: Defines a self-contained piece of content, such as a blog post or news article.\n3. `footer`: Represents the bottom section of a webpage, often containing copyright information and links."
+      },
+      {
+        "id": 2,
+        "question": "Describe the difference between `localStorage` and `sessionStorage` in HTML5.",
+        "answer": "`localStorage` and `sessionStorage` are web storage APIs used to store data in the browser. The key differences are:\n\n- `localStorage`: Stores data with no expiration time, meaning it persists even after the browser is closed and reopened.\n- `sessionStorage`: Stores data only for the duration of the session. The data is cleared when the page is closed.\n\nExample:\n```javascript\nlocalStorage.setItem('name', 'John');\nconsole.log(localStorage.getItem('name')); // Output: John\n\nsessionStorage.setItem('sessionKey', 'value');\nconsole.log(sessionStorage.getItem('sessionKey')); // Output: value (until the tab is closed)\n```"
+      },
+      {
+        "id": 3,
+        "question": "What is the role of the viewport meta tag in HTML5?",
+        "answer": "The viewport meta tag helps control how a webpage is displayed on mobile devices by setting the width and scaling properties. It ensures responsive design by adjusting the layout to different screen sizes.\n\nExample:\n```html\n<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n```\n\n- `width=device-width`: Sets the page width to match the screen width.\n- `initial-scale=1.0`: Sets the initial zoom level.\n\nWithout the viewport tag, a webpage may appear zoomed out or improperly scaled on mobile screens."
+      }
+    ]
+  }
+  

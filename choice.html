@@ -85,17 +85,27 @@
         
                 if (type === "web-dev") {
                     subjects = [
-                        { name: "HTML", img: "./assets/icons/html5.svg" },
-                        { name: "CSS", img: "./assets/icons/css3.svg" },
-                        { name: "JavaScript", img: "./assets/icons/javascript.svg" }
+                        { name: "html", img: "./assets/icons/html5.svg" },
+                        { name: "css", img: "./assets/icons/css3.svg" },
+                        { name: "javascript", img: "./assets/icons/javascript.svg" }
                     ];
                 } else if (type === "backend") {
                     subjects = [
-                        { name: "Node.js", img: "./assets/icons/node.png" },
-                        { name: "Python", img: "./assets/icons/python.png" },
-                        { name: "SQL", img: "./assets/icons/sql.png" }
+                        { name: "nodejs", img: "./assets/icons/nodejs.svg" },
+                        { name: "expressjs", img: "./assets/icons/express.svg" },
+                        { name: "bunjs", img: "./assets/icons/Bun.svg" }
                     ];
                 }
+                else if(type === "frontend"){
+                    subjects = [
+                        { name: "reactJs", img: "./assets/icons/react.svg" },
+                        { name: "tailwindJs", img: "./assets/icons/tailwind.svg" }
+                    ];
+                }
+                // else if(type === "database"){
+
+                // }
+
                 // document.getElementById(".contai").textContent= type;
                 subjects.forEach(subject => {
                     const card = document.createElement("div");
@@ -107,10 +117,10 @@
                         <div class="content">
                             <h1>${subject.name}</h1>
                             <div class="btons">
-                                <button onclick="navigateToPage('${subject.name}','Reading_Material')">Reading Material</button>
-                                <button onclick="navigateToPage('${subject.name}','Interview')">Interview Q/A</button>
-                                <button onclick="navigateToPage('${subject.name}','Practice_Test')">Practice Test</button>
-                                <button onclick="navigateToPage('${subject.name}','Tasks')">Tasks</button>
+                                <button onclick="navigateToPage('${subject.name}','readingPapers')">Reading Material</button>
+                                <button onclick="navigateToPage('${subject.name}','interviewPaper')">Interview Q/A</button>
+                                <button onclick="navigateToPage('${subject.name}','PracticeTest')">Practice Test</button>
+                                <button onclick="navigateToPage('${subject.name}','practicalTaskPaper')">Tasks</button>
                             </div>
                         </div>
                     `;
@@ -129,7 +139,6 @@
         
 </body>
 </html>
-
 
 
 

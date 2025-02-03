@@ -1,0 +1,32 @@
+{
+  "title": "JavaScript Questions",
+  "date": "3rd February 2025",
+    "theoryQuestions": [
+      {
+        "id": 1,
+        "question": "Explain how closures work in JavaScript with an example. How do they help in data privacy?",
+        "answer": "A closure in JavaScript is created when a function is defined within another function, allowing the inner function to access the outer function's variables even after the outer function has finished execution. Closures help in data privacy because they enable encapsulation, where private variables are kept safe from external access and manipulation. Example:\n\nfunction outer() {\n  let secret = 'I am private';\n  return function inner() {\n    console.log(secret); // Accessing outer function's variable\n  };\n}\n\nconst closureFunc = outer();\nclosureFunc(); // Output: I am private"
+      },
+      {
+        "id": 2,
+        "question": "Compare and contrast the different ways to create objects in JavaScript. Include examples of using object literals, constructor functions, and classes.",
+        "answer": "In JavaScript, there are several ways to create objects, each with its own use cases and syntax. Here’s a comparison of three common methods: Object literals, Constructor functions, and Classes.\n\n1. Object Literals:\n   - Simplest and most common way to create objects.\n   - Defined by wrapping key-value pairs in curly braces.\n   Example:\n     const person = { name: 'John', greet() { console.log(`Hello, my name is ${this.name}`); }};\n\n2. Constructor Functions:\n   - Used to create multiple instances of an object.\n   - Functions are called with the `new` keyword.\n   Example:\n     function Person(name, age) {\n       this.name = name;\n       this.age = age;\n       this.greet = function() {\n         console.log(`Hello, my name is ${this.name}`);\n       };\n     }\n     const person1 = new Person('John', 30);\n\n3. Classes:\n   - Syntactic sugar for constructor functions.\n   - Provides inheritance, static methods, and cleaner syntax.\n   Example:\n     class Person {\n       constructor(name, age) {\n         this.name = name;\n         this.age = age;\n       }\n       greet() {\n         console.log(`Hello, my name is ${this.name}`);\n       }\n     }\n     const person1 = new Person('John', 30);\n\nConclusion: Use object literals for one-off objects, constructor functions for reusable objects, and classes for more complex and structured code with inheritance."
+      },
+      {
+        "id": 3,
+        "question": "Describe the test lifecycle hooks in Vitest (beforeEach, afterEach, beforeAll, afterAll). When would you use each one?",
+        "answer": "Vitest provides hooks to manage setup and teardown operations for tests. These hooks help ensure that tests are isolated and independent from each other.\n\n- `beforeEach`: Runs before each individual test. Used for setting up state or mock data for every test.\n- `afterEach`: Runs after each individual test. Used for cleaning up or resetting the state after each test.\n- `beforeAll`: Runs once before all tests in a suite. Useful for global setup tasks, like initializing databases or starting a server.\n- `afterAll`: Runs once after all tests in a suite. Useful for global cleanup tasks, like closing database connections or stopping servers."
+      },
+      {
+        "id": 4,
+        "question": "Write a function that implements method chaining for string operations (similar to lodash). Include methods for uppercase, reverse, and trim.",
+        "answer": "Here’s a JavaScript implementation of method chaining for string operations, similar to what you might find in libraries like Lodash. The class will include methods for uppercase, reverse, and trim, allowing you to chain them together:\n\nclass StringManipulator {\n  constructor(value) {\n    this.value = value;\n  }\n  uppercase() {\n    this.value = this.value.toUpperCase();\n    return this;\n  }\n  reverse() {\n    this.value = this.value.split('').reverse().join('');\n    return this;\n  }\n  trim() {\n    this.value = this.value.trim();\n    return this;\n  }\n  getValue() {\n    return this.value;\n  }\n}\n\n// Example of chaining the methods:\nconst result = new StringManipulator('  hello world  ')\n  .trim()\n  .uppercase()\n  .reverse()\n  .getValue();\nconsole.log(result); // Output: 'DLROW OLLEH'"
+      },
+      {
+        "id": 5,
+        "question": "Explain the concept of prototypal inheritance in JavaScript with an example. How does it differ from classical inheritance?",
+        "answer": "Prototypal inheritance is a type of inheritance in JavaScript where objects inherit properties and methods from other objects. Each object in JavaScript has an internal property called [[Prototype]] (or __proto__), which refers to another object. When a property or method is accessed on an object, JavaScript first looks at that object. If the property isn't found, it checks the object's prototype, and so on.\n\nExample of Prototypal Inheritance:\nconst animal = {\n  species: 'Unknown',\n  eat() {\n    console.log(`${this.species} is eating.`);\n  }\n};\nconst dog = Object.create(animal);\ndog.species = 'Dog';\ndog.eat(); // Output: Dog is eating.\n\nDifference from Classical Inheritance:\n- Prototypal inheritance involves direct inheritance from objects, whereas classical inheritance is based on classes.\n- Classical inheritance uses a rigid class hierarchy, whereas prototypal inheritance is dynamic and flexible."
+      }
+    ]
+  }
+  

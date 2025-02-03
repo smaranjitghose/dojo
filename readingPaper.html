@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Paper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* Add styles for markdown content */
+        .markdown-content h1 { @apply text-3xl font-bold mb-4 text-blue-400; }
+        .markdown-content h2 { @apply text-2xl font-bold mb-3 text-blue-400; }
+        .markdown-content h3 { @apply text-xl font-bold mb-2 text-blue-400; }
+        .markdown-content p { @apply text-gray-400 mb-4; }
+        .markdown-content ul { @apply list-disc list-inside text-gray-400 mb-4; }
+        .markdown-content ol { @apply list-decimal list-inside text-gray-400 mb-4; }
+        .markdown-content code { @apply bg-gray-800 px-2 py-1 rounded; }
+        .markdown-content pre { @apply bg-gray-800 p-4 rounded mb-4; }
+        .markdown-content blockquote { @apply border-l-4 border-blue-400 pl-4 italic mb-4; }
+    </style>
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script>
+        // Function to load and display paper details, MCQs, fill in the blanks, theory, and practical questions
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        async function checkFileExists(url) {
+            try {
+                const response = await fetch(url, { method: 'HEAD' });
+                return response.ok;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        async function loadMarkdownContent(subject) {
+            try {
+                const response = await fetch(`../readingPapers/${subject}.md`);
+                if (!response.ok) throw new Error('MD file not found');
+                
+                const mdContent = await response.text();
+                
+                // Set title
+                document.getElementById('paper-title').textContent = subject.charAt(0).toUpperCase() + subject.slice(1);
+                document.getElementById('paper-date').textContent = `Date: ${new Date().toLocaleDateString()}`;
+
+                // Hide all question containers
+                ['mcqs-container', 'fill-in-the-blanks-container', 'theory-questions-container', 'practical-implementation-container']
+                    .forEach(id => {
+                        const container = document.getElementById(id);
+                        if (container) container.style.display = 'none';
+                    });
+
+                // Create markdown container if it doesn't exist
+                let markdownContainer = document.getElementById('markdown-container');
+                if (!markdownContainer) {
+                    markdownContainer = document.createElement('div');
+                    markdownContainer.id = 'markdown-container';
+                    markdownContainer.className = 'markdown-content text-gray-400';
+                    document.querySelector('main .space-y-8').appendChild(markdownContainer);
+                }
+
+                // Render markdown content
+                markdownContainer.innerHTML = marked.parse(mdContent);
+                return true;
+            } catch (error) {
+                console.log('No markdown file found, trying JSON...');
+                return false;
+            }
+        }
+
+        async function loadQuestions() {
+            try {
+                const subject = getQueryParam('subject');
+                const type = getQueryParam('type');
+                if (!subject) throw new Error('No subject specified');
+                
+
+                // First try to load markdown file
+                // const mdLoaded = await loadMarkdownContent(subject);
+                // if (mdLoaded) return;
+
+                // If no markdown file, try JSON
+                const response = await fetch(`../${type}/${subject}.json`);
+                const data = await response.json();
+                
+                // Hide markdown container if it exists
+                const markdownContainer = document.getElementById('markdown-container');
+                if (markdownContainer) markdownContainer.style.display = 'none';
+
+                // Set paper title and date
+                document.getElementById('paper-title').textContent = data.title || 'Paper Title Not Available';
+                document.getElementById('paper-date').textContent = data.date ? `Date: ${data.date}` : '';
+
+                const mcqsContainer = document.getElementById('mcqs-container');
+                const fillInTheBlanksContainer = document.getElementById('fill-in-the-blanks-container');
+                const theoryQuestionsContainer = document.getElementById('theory-questions-container');
+                const practicalImplementationContainer = document.getElementById('practical-implementation-container');
+
+                // Hide all containers by default
+                mcqsContainer.style.display = 'none';
+                fillInTheBlanksContainer.style.display = 'none';
+                theoryQuestionsContainer.style.display = 'none';
+                practicalImplementationContainer.style.display = 'none';
+
+                // Load MCQs if they exist
+                if (data.mcqs && Array.isArray(data.mcqs) && data.mcqs.length > 0) {
+                    console.log('in mcq block');
+                    mcqsContainer.style.display = 'block';
+                    data.mcqs.forEach((mcq, index) => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'mb-6';
+
+                        let questionHTML = `
+                            <p class="text-gray-400">
+                                <strong>(${mcq.id || index + 1})</strong> ${mcq.question || 'Question not available'}
+                            </p>
+                        `;
+
+                        if (mcq.options && typeof mcq.options === 'object') {
+                            const options = Object.entries(mcq.options)
+                                .map(([key, value]) => `${key}) ${value}`)
+                                .join('    ');
+
+                            questionHTML += `
+                                <p class="text-gray-400">
+                                    ${options}
+                                </p>
+                                <p class="text-blue-400">
+                                    Answer: ${mcq.answer || 'Not provided'}
+                                </p>
+                            `;
+                        }
+
+                        questionDiv.innerHTML = questionHTML;
+                        mcqsContainer.appendChild(questionDiv);
+                    });
+                }
+
+                // Load Fill in the Blanks if they exist
+                if (data.fillInTheBlanks && Array.isArray(data.fillInTheBlanks) && data.fillInTheBlanks.length > 0) {
+                    fillInTheBlanksContainer.style.display = 'block';
+                    data.fillInTheBlanks.forEach(fillInTheBlank => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'mb-6';
+                        questionDiv.innerHTML = `
+                            <p class="text-gray-400">
+                                <strong>(${fillInTheBlank.id})</strong> ${fillInTheBlank.question}
+                            </p>
+                            <p class="text-blue-400">
+                                Answer: ${fillInTheBlank.answer}
+                            </p>
+                        `;
+                        fillInTheBlanksContainer.appendChild(questionDiv);
+                    });
+                }
+
+                // Load Theory Questions if they exist
+                if (data.theoryQuestions && Array.isArray(data.theoryQuestions) && data.theoryQuestions.length > 0) {
+                    theoryQuestionsContainer.style.display = 'block';
+                    data.theoryQuestions.forEach(theory => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'mb-6';
+                        questionDiv.innerHTML = `
+                            <p class="text-gray-400">
+                                <strong>(${theory.id})</strong> ${theory.question}
+                            </p>
+                            <p class="text-gray-400">
+                                Answer: 
+                            </p>
+                            <p class="text-blue-400">
+                                ${theory.answer}
+                            </p>
+                        `;
+                        theoryQuestionsContainer.appendChild(questionDiv);
+                    });
+                }
+
+                // Load Practical Implementation Questions if they exist
+                if (data.practicalImplementationQuestions && Array.isArray(data.practicalImplementationQuestions) && data.practicalImplementationQuestions.length > 0) {
+                    practicalImplementationContainer.style.display = 'block';
+                    data.practicalImplementationQuestions.forEach(practical => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'mb-6';
+                        let subpartsHTML = '';
+                        if (practical.subparts && Array.isArray(practical.subparts)) {
+                            subpartsHTML = practical.subparts.map(subpart => `<li class="text-gray-400">- ${subpart}</li>`).join('');
+                        }
+                        questionDiv.innerHTML = `
+                            <p class="text-gray-400">
+                                <strong>(${practical.id})</strong> ${practical.question}
+                            </p>
+                            <ul class="mt-2 list-inside">
+                                ${subpartsHTML}
+                            </ul>
+                            <p class="text-blue-400">
+                                Answer: ${practical.answer}
+                            </p>
+                        `;
+                        practicalImplementationContainer.appendChild(questionDiv);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading questions:', error);
+                const mcqsContainer = document.getElementById('mcqs-container');
+                mcqsContainer.innerHTML = '<p class="text-red-500">Error loading questions. Please try again later.</p>';
+            }
+        }
+
+        // Load questions when the page loads
+        window.addEventListener('load', loadQuestions);
+    </script>
+</head>
+<body class="bg-[#020817] text-gray-100 min-h-screen">
+    <!-- Back Button -->
+    <div class="container mx-auto px-4 py-6">
+        <a href="/index.html" class="inline-flex items-center text-dojo-accent hover:text-dojo-accent/80 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Papers
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 p-4">
+        <!-- Paper Title Section -->
+        <div class="mb-16 animate-title">
+            <h1 id="paper-title" class="text-4xl md:text-5xl font-bold text-blue-400 mb-4">
+                <!-- Title will be dynamically inserted here -->
+            </h1>
+            <p id="paper-date" class="text-gray-400 text-lg">
+                <!-- Date will be dynamically inserted here -->
+            </p>
+        </div>
+
+        <!-- Questions Section -->
+        <div class="space-y-8">
+            <!-- Q.1: Multiple Choice Questions -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6 " id="mcqs-container">Multiple Choice Questions</h3>
+                <div id="mcqs-container" class="space-y-4">
+                </div>
+            </div>
+
+            <!-- Q.2: Fill in the Blanks -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6" id="fill-in-the-blanks-container">Fill in the Blanks</h3>
+                <div id="fill-in-the-blanks-container" class="space-y-4">
+                </div>
+            </div>
+
+            <!-- Q.3: Theory Questions -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6" id="theory-questions-container">Theory Questions</h3>
+                <div id="theory-questions-container" class="space-y-4">
+                </div>
+            </div>
+
+            <!-- Q.4: Practical Implementation -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6" id="practical-implementation-container">Practical Implementation Questions</h3>
+                <div id="practical-implementation-container" class="space-y-4">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 px-4 text-center text-gray-400 border-t border-gray-800">
+        <p>&copy; 2025 PracticeDojo. All rights reserved.</p>
+    </footer>
+</body>
+</html>
