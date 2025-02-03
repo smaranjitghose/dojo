@@ -78,14 +78,16 @@
         async function loadQuestions() {
             try {
                 const subject = getQueryParam('subject');
+                const type = getQueryParam('type');
                 if (!subject) throw new Error('No subject specified');
+                
 
                 // First try to load markdown file
-                const mdLoaded = await loadMarkdownContent(subject);
-                if (mdLoaded) return;
+                // const mdLoaded = await loadMarkdownContent(subject);
+                // if (mdLoaded) return;
 
                 // If no markdown file, try JSON
-                const response = await fetch(`../readingPapers/${subject}.json`);
+                const response = await fetch(`../${type}/${subject}.json`);
                 const data = await response.json();
                 
                 // Hide markdown container if it exists

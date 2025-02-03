@@ -85,15 +85,15 @@
         
                 if (type === "web-dev") {
                     subjects = [
-                        { name: "HTML", img: "./assets/icons/html5.svg" },
-                        { name: "CSS", img: "./assets/icons/css3.svg" },
-                        { name: "JavaScript", img: "./assets/icons/javascript.svg" }
+                        { name: "html", img: "./assets/icons/html5.svg" },
+                        { name: "css", img: "./assets/icons/css3.svg" },
+                        { name: "javascript", img: "./assets/icons/javascript.svg" }
                     ];
                 } else if (type === "backend") {
                     subjects = [
-                        { name: "Node.js", img: "./assets/icons/node.png" },
-                        { name: "Python", img: "./assets/icons/python.png" },
-                        { name: "SQL", img: "./assets/icons/sql.png" }
+                        { name: "node.js", img: "./assets/icons/node.png" },
+                        { name: "python", img: "./assets/icons/python.png" },
+                        { name: "sql", img: "./assets/icons/sql.png" }
                     ];
                 }
                 // document.getElementById(".contai").textContent= type;
@@ -107,10 +107,10 @@
                         <div class="content">
                             <h1>${subject.name}</h1>
                             <div class="btons">
-                                <button onclick="navigateToPage('${subject.name}','Reading_Material')">Reading Material</button>
-                                <button onclick="navigateToPage('${subject.name}','Interview')">Interview Q/A</button>
-                                <button onclick="navigateToPage('${subject.name}','Practice_Test')">Practice Test</button>
-                                <button onclick="navigateToPage('${subject.name}','Tasks')">Tasks</button>
+                                <button onclick="navigateToPage('${subject.name}','readingPapers')">Reading Material</button>
+                                <button onclick="navigateToPage('${subject.name}','interviewPaper')">Interview Q/A</button>
+                                <button onclick="navigateToPage('${subject.name}','PracticeTest')">Practice Test</button>
+                                <button onclick="navigateToPage('${subject.name}','practicalTaskPaper')">Tasks</button>
                             </div>
                         </div>
                     `;
