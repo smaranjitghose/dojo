@@ -111,7 +111,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('testimonials.json')
+            fetch('data/testimonials.json')
                 .then(response => response.json())
                 .then(testimonials => {
                     const container = document.getElementById("testimonial-container");
