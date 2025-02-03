@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose...</title>
-    <link rel="stylesheet" href="./assets/css/div.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,52 +22,35 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body class="bg-[#020817] text-gray-100 min-h-screen">
-
-    <div class="container mx-auto px-4 py-6">
-        <a href="index.html" class="inline-flex items-center text-dojo-accent hover:text-dojo-accent/80 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Home
-        </a>
-    </div>
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-        <div class="container1" id="contai">
-            <div class="card">
-
-            </div>
-            <!-- <div class="card">
-                <div class="image">
-                    <img src="./assets/icons/html.png">
-                </div>
-                <div class="content">
-                    <h1 id="heading">Html</h1>
-                    <div class="btons">
-                        <button onclick="">Reading Material ></button>
-                        <button onclick="">Interview Q/A ></button>
-                        <button onclick="">Practice Test ></button>
-                        <button onclick="">Tasks ></button>
+        <div class="flex justify-center items-center min-h-screen">
+            <!-- Web Development Foundations -->
+            <div class="tech-card " >
+                <div class="bg-[#0F172A] rounded-xl p-8 ">
+                    
+                    <h2 class="text-2xl font-bold mb-8 text-dojo-accent" id="subject-title">Select By your Own</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-[#1E293B] p-6 rounded-lg tech-item cursor-pointer" 
+                        onclick="navigateToPage()">
+                       <img src="assets/icons/open-book2.png" alt="Reading" class="w-16 h-16 mx-auto mb-4">
+                       <h3 class="text-center font-medium">Reading Material</h3>
+                   </div>
+                   
+                   <div class="bg-[#1E293B] p-6 rounded-lg tech-item cursor-pointer" 
+                        onclick="navigateToPage()">
+                       <img src="assets/icons/test2.png" alt="Practice Test" class="w-16 h-16 mx-auto mb-4">
+                       <h3 class="text-center font-medium">Practice Test</h3>
+                   </div>
+                   
+                        
                     </div>
                 </div>
             </div>
-             <div class="card">
-                <div class="image">
-                    <img src="./assets/icons/css.png">
-                </div>
-                <div class="content">
-                    <h1 id="heading">CSS</h1>
-                    <div class="btons">
-                        <button onclick="">Reading Material ></button>
-                        <button onclick="">Interview Q/A ></button>
-                        <button onclick="">Practice Test ></button>
-                        <button onclick="">Tasks ></button>
-                    </div>
-                </div>
-            </div> -->
+
+         
+            
         </div>
-    </main>
-    
+        </main>
         <script>
             function getQueryParam(param) {
                 const urlParams = new URLSearchParams(window.location.search);
@@ -76,62 +58,20 @@
             }
         
             document.addEventListener("DOMContentLoaded", () => {
-                const type = getQueryParam("type");
-        
-                const container = document.querySelector(".container1");
-                container.innerHTML = ""; // Clear existing content
-        
-                let subjects = [];
-        
-                if (type === "web-dev") {
-                    subjects = [
-                        { name: "HTML", img: "./assets/icons/html5.svg" },
-                        { name: "CSS", img: "./assets/icons/css3.svg" },
-                        { name: "JavaScript", img: "./assets/icons/javascript.svg" }
-                    ];
-                } else if (type === "backend") {
-                    subjects = [
-                        { name: "Node.js", img: "./assets/icons/node.png" },
-                        { name: "Python", img: "./assets/icons/python.png" },
-                        { name: "SQL", img: "./assets/icons/sql.png" }
-                    ];
+                const subject = getQueryParam("subject");
+                if (subject) {
+                    document.getElementById("subject-title").innerText = subject;
+                    // You can modify this to load relevant content
                 }
-                // document.getElementById(".contai").textContent= type;
-                subjects.forEach(subject => {
-                    const card = document.createElement("div");
-                    card.className = "card";
-                    card.innerHTML = `
-                        <div class="image">
-                            <img src="${subject.img}">
-                        </div>
-                        <div class="content">
-                            <h1>${subject.name}</h1>
-                            <div class="btons">
-                                <button onclick="navigateToPage('${subject.name}','Reading_Material')">Reading Material</button>
-                                <button onclick="navigateToPage('${subject.name}','Interview')">Interview Q/A</button>
-                                <button onclick="navigateToPage('${subject.name}','Practice_Test')">Practice Test</button>
-                                <button onclick="navigateToPage('${subject.name}','Tasks')">Tasks</button>
-                            </div>
-                        </div>
-                    `;
-                    container.appendChild(card);
-                });
             });
-        
-            function navigateToPage(subject,type) {
-                window.location.href = `readingPaper.html?subject=${subject}&type=${type}`;
+            function navigateToPage(){
+                const subject = getQueryParam("subject");
+                window.location.href = `readingPaper.html?subject=${subject}`;
 
             }
-            
         </script>
         
        
         
 </body>
 </html>
-
-
-
-
-
-
