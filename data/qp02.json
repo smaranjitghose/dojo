@@ -4,7 +4,7 @@
     "mcqs": [
       {
         "id": 1,
-        "question": "What is the output of the following code?\n\n```javascript\nconsole.log(typeof typeof 1);\n```",
+        "question": "What is the output of the following code?\n\n",
         "code": "console.log(typeof typeof 1);",
         "options": {
           "a": "\"number\"",
@@ -26,7 +26,7 @@
       },
       {
         "id": 3,
-        "question": "What is the output of the following code?\n\n```javascript\nclass Rocket {\n  constructor() { this.payload = 1; }\n  getPayload() { return this.payload; }\n}\nconst starship = Rocket();\nconsole.log(starship.payload);\n```",
+        "question": "What is the output of the following code?\n\n",
         "code": "class Rocket {\n  constructor() { this.payload = 1; }\n  getPayload() { return this.payload; }\n}\nconst starship = Rocket();\nconsole.log(starship.payload);",
         "options": {
           "a": "1",
@@ -37,7 +37,7 @@
       },
       {
         "id": 4,
-        "question": "What is the output of the following code?\n\n```javascript\nconsole.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');\n```",
+        "question": "What is the output of the following code?\n\n",
         "code": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');",
         "options": {
           "a": "1, 2, 3, 4",
@@ -48,7 +48,7 @@
       },
       {
         "id": 5,
-        "question": "What is the output of the following code?\n\n```javascript\nconsole.log(1 + +\"2\" + \"2\");\n```",
+        "question": "What is the output of the following code?\n\n",
         "code": "console.log(1 + +\"2\" + \"2\");",
         "options": {
           "a": "\"122\"",
@@ -70,7 +70,7 @@
       },
       {
         "id": 7,
-        "question": "What is the output of the following code?\n\n```javascript\nconst book = { title: \"Autobiography of a Yogi\" };\nconst { title: bookName = \"Unknown\" } = book;\nconsole.log(bookName);\n```",
+        "question": "What is the output of the following code?\n\n",
         "code": "const book = { title: \"Autobiography of a Yogi\" };\nconst { title: bookName = \"Unknown\" } = book;\nconsole.log(bookName);",
         "options": {
           "a": "\"Autobiography of a Yogi\"",
@@ -103,7 +103,7 @@
       },
       {
         "id": 10,
-        "question": "What is the output of the following code?\n\n```javascript\nconst sym1 = Symbol(\"key\");\nconst sym2 = Symbol(\"key\");\nconsole.log(sym1 === sym2);\n```",
+        "question": "What is the output of the following code?\n\n",
         "code": "const sym1 = Symbol(\"key\");\nconst sym2 = Symbol(\"key\");\nconsole.log(sym1 === sym2);",
         "options": {
           "a": "true",
