@@ -45,12 +45,12 @@ For detailed guidelines, check our [Contribution Guide](./CONTRIBUTING.md).
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Maintainers 👨‍💻
-<div style="display:flex; justify-content:center">
 
-| <img src="./asset_readme/Mentor.png" width="250px"> |
-| :------------------------------------------: |
-| [Smaranjit Ghose](https://github.com/smaranjitghose/) |
-</div>
+<p align="center">
+  <img src="./asset_readme/Mentor.png" width="250px"><br>
+  <strong>[Smaranjit Ghose](https://github.com/smaranjitghose/)</strong>
+</p>
+
 ## Contributors 🌟
 A huge thanks to our contributors!
 <a href="https://github.com/smaranjitghose/dojo/graphs/contributors">
