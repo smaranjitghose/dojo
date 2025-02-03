@@ -1,0 +1,212 @@
+{
+    "title": "HTML and CSS Paper",
+  "date": "29th January 2025",
+    "mcqs": [
+        {
+            "id": 1,
+            "question": "What is the output of the following code?\n\nconsole.log(typeof typeof 1);",
+            "answer": "b) 'string'",
+            "explanation": "typeof 1 returns 'number', and then typeof 'number' returns 'string'.",
+            "code": null
+
+        },
+        {
+            "id": 2,
+            "question": "Which event occurs first in the DOM event flow?",
+            "answer": "c) Capturing phase",
+            "explanation": "In the DOM event flow, the event goes through capturing phase, target phase, and bubbling phase. Capturing happens first.",
+            "code": null
+        },
+        {
+            "id": 3,
+            "question": "What is the output of the following code?\n\nclass Rocket {\n  constructor() { this.payload = 1; }\n  getPayload() { return this.payload; }\n}\nconst starship = Rocket();\nconsole.log(starship.payload);",
+            "answer": "c) TypeError",
+            "explanation": "Rocket is called like a regular function instead of being instantiated with 'new'. This causes a TypeError.",
+            "code": null
+        },
+        {
+            "id": 4,
+            "question": "What is the output of the following code?\n\nconsole.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');",
+            "answer": "b) 1, 4, 3, 2",
+            "explanation": "Synchronous code runs first (1, 4). The microtask (promise) runs next (3), and then the setTimeout callback runs last (2).",
+            "code": null
+        },
+        {
+            "id": 5,
+            "question": "What is the output of the following code?\n\nconsole.log(1 + +'2' + '2');",
+            "answer": "a) '122'",
+            "explanation": "The expression '1 + +'2' + '2' is evaluated as '1 + 2 + '2'', resulting in string concatenation ('122').",
+            "code": null
+        },
+        {
+            "id": 6,
+            "question": "Which array method doesn't modify the original array?",
+            "answer": "c) map()",
+            "explanation": "The map() method creates a new array, while methods like push(), splice(), and sort() modify the original array.",
+            "code": null
+        },
+        {
+            "id": 7,
+            "question": "What is the output of the following code?\n\nconst book = { title: 'Autobiography of a Yogi' };\nconst { title: bookName = 'Unknown' } = book;\nconsole.log(bookName);",
+            "answer": "a) 'Autobiography of a Yogi'",
+            "explanation": "The 'title' property is extracted into bookName, which is 'Autobiography of a Yogi'.",
+            "code": null
+        },
+        {
+            "id": 8,
+            "question": "What's the best way to handle asynchronous errors?",
+            "answer": "b) .catch()",
+            "explanation": ".catch() is used to handle errors in promises.",
+            "code": null
+        },
+        {
+            "id": 9,
+            "question": "What's the difference between Object.freeze() and Object.seal()?",
+            "answer": "b) freeze prevents modifications, seal allows property value changes",
+            "explanation": "Object.freeze() makes an object immutable, while Object.seal() prevents adding/deleting properties but allows value modifications.",
+            "code": null
+        },
+        {
+            "id": 10,
+            "question": "What is the output of the following code?\n\nconst sym1 = Symbol('key');\nconst sym2 = Symbol('key');\nconsole.log(sym1 === sym2);",
+            "answer": "b) false",
+            "explanation": "Symbols are unique, even with the same description, so sym1 and sym2 are not equal.",
+            "code": null
+        }
+    ],
+    "shortQuestions": [
+        {
+            "id": 1,
+            "question": "Devise a JavaScript function 'organizePlaylist(songs)' that takes an array of song objects. Each song object has properties 'title', 'artist', and 'genre'. The function should return an object where keys are genres, and the values are arrays of song titles for that genre, sorted alphabetically.",
+            "solution": "The function groups the songs by genre and sorts the song titles alphabetically within each genre. It uses the 'reduce()' method to group the songs and 'sort()' to order the titles.",
+            "code": "function organizePlaylist(songs) {\n    const playlist = songs.reduce((acc, { title, genre }) => {\n        if (!acc[genre]) acc[genre] = [];\n        acc[genre].push(title);\n        return acc;\n    }, {});\n    for (const genre in playlist) {\n        playlist[genre].sort();\n    }\n    return playlist;\n}"
+        },
+        {
+            "id": 2,
+            "question": "You're implementing a comment system. Given a string representing a comment, write a function to truncate it to a maximum length of 150 characters and add an ellipsis ('...') if it was truncated. Handle cases where the comment is already shorter than 150 characters.",
+            "solution": "The function checks if the comment exceeds 150 characters. If it does, it slices the string to the first 150 characters and appends an ellipsis. If the comment is shorter, it returns the comment unchanged.",
+            "code": "function truncateComment(comment) {\n    return comment.length > 150 ? comment.slice(0, 150) + '...' : comment;\n}"
+        },
+        {
+            "id": 3,
+            "question": "Create a function `createLogger(prefix)` that takes a string prefix as an argument. It should return a new function that takes a string message as an argument and logs the prefix followed by the message to the console.",
+            "solution": "The function creates a closure where the prefix is captured, and a new function is returned that logs the message with the prefix to the console.",
+            "code": "function createLogger(prefix) {\n    return function(message) {\n        console.log(prefix + ': ' + message);\n    };\n}"
+        },
+        {
+            "id": 4,
+            "question": "You are building a calendar application. You need to represent different types of calendar events. Create a base `Event` object with properties like `title`, `date`, and `time`. Then, using prototypal inheritance, create two specific event types: `Meeting` (which adds an `attendees` property) and `Appointment` (which adds a `location` property). Ensure that both `Meeting` and `Appointment` inherit the common properties from `Event`. Implement a `getDescription()` method on each object that returns a string describing the event, including its specific properties.",
+            "solution": "The code demonstrates prototypal inheritance where `Meeting` and `Appointment` inherit properties and methods from the `Event` object. The `getDescription()` method is implemented for each type to return a detailed description of the event.",
+            "code": "function Event(title, date, time) {\n    this.title = title;\n    this.date = date;\n    this.time = time;\n}\n\nEvent.prototype.getDescription = function() {\n    return `${this.title} on ${this.date} at ${this.time}`;\n};\n\nfunction Meeting(title, date, time, attendees) {\n    Event.call(this, title, date, time);\n    this.attendees = attendees;\n}\n\nMeeting.prototype = Object.create(Event.prototype);\nMeeting.prototype.getDescription = function() {\n    return `${Event.prototype.getDescription.call(this)} with attendees: ${this.attendees.join(', ')}`;\n};\n\nfunction Appointment(title, date, time, location) {\n    Event.call(this, title, date, time);\n    this.location = location;\n}\n\nAppointment.prototype = Object.create(Event.prototype);\nAppointment.prototype.getDescription = function() {\n    return `${Event.prototype.getDescription.call(this)} at ${this.location}`;\n};"
+        },
+        {
+            "id": 5,
+            "question": "You are building a library for data analysis. You need to create a flexible function for performing mathematical operations on arrays of numbers. Use currying to create a function that can be partially applied to specify the operation (e.g., add, subtract, multiply) and then applied to an array of numbers to perform the calculation.",
+            "solution": "This curried function allows partial application for selecting an operation and then performs it on an array of numbers. It supports addition and multiplication operations.",
+            "code": "function calculate(operation) {\n    return function(numbers) {\n        if (operation === 'add') {\n            return numbers.reduce((acc, num) => acc + num, 0);\n        } else if (operation === 'multiply') {\n            return numbers.reduce((acc, num) => acc * num, 1);\n        }\n    };\n}"
+        },
+        {
+            "id": 6,
+            "question": "DeepSeek, a newly funded AI startup, is launching multiple services: a main website at deepseek.com, an API at api.deepseek.com, and will be using Google Workspace for email. List the necessary DNS record types and their specific values to achieve it.",
+            "solution": "To achieve this, you would need to configure A records for the website and API, and MX records for email services using Google Workspace.",
+            "code": "A Record for deepseek.com pointing to the IP address of the main website server.\nA Record for api.deepseek.com pointing to the API server.\nMX Record for deepseek.com pointing to Google Workspace email servers (e.g., ASPMX.L.GOOGLE.COM)."
+        },
+        {
+            "id": 7,
+            "question": "You are building tests for a tax calculation function `calculateTax(income)` present inside a `income.js` file. Perform the following: a) Set up a testing framework (Vitest, Cypress, or Jest) in your project. b) Create and structure your test file. c) Write unit tests to verify different income brackets using the chosen testing framework.",
+            "solution": "This solution sets up Jest as the testing framework and creates unit tests to verify different tax brackets for various income values.",
+            "code": "npm install --save-dev jest\nconst calculateTax = require('./income');\ntest('tax for income 50000', () => {\n    expect(calculateTax(50000)).toBe(5000);  // example tax calculation\n});\ntest('tax for income 100000', () => {\n    expect(calculateTax(100000)).toBe(10000);  // example tax calculation\n});"
+        }
+    ],
+    "longQuestions": [
+        {
+            "id": 1,
+            "question": "Create a webpage with an input field for password, a div to display a strength message, and JavaScript code to show 'Weak', 'Medium', or 'Strong' in different colors as user types based on password length.",
+            "solution": "This solution involves creating an HTML page with an input field and a div to display password strength. The JavaScript listens for input changes and checks the password length, displaying 'Weak' for less than 6 characters, 'Medium' for 6-9 characters, and 'Strong' for 10 or more characters.",
+            "subparts": [
+                {
+                    "question": "HTML Structure",
+                    "solution": "The HTML includes an input field for the password and a div to display the strength message.",
+                    "code": "&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot;&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n    &lt;title&gt;Password Strength&lt;/title&gt;\n    &lt;style&gt;&lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;input type=&quot;password&quot; id=&quot;password&quot;&gt;\n    &lt;div id=&quot;strength&quot;&gt;&lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;"
+                },
+                {
+                    "question": "JavaScript Functionality",
+                    "solution": "JavaScript listens for input events on the password field, checks its length, and updates the strength message and its color based on the length.",
+                    "code": "document.getElementById('password').addEventListener('input', function() {\n    const password = this.value;\n    const strengthDiv = document.getElementById('strength');\n\n    // Check password length\n    if (password.length < 6) {\n        strengthDiv.textContent = 'Weak';\n        strengthDiv.className = 'weak';\n    } else if (password.length < 10) {\n        strengthDiv.textContent = 'Medium';\n        strengthDiv.className = 'medium';\n    } else {\n        strengthDiv.textContent = 'Strong';\n        strengthDiv.className = 'strong';\n    }\n});"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "question": "Create a form system with three steps (personal info, address, payment), validates each step before allowing the next, allows going back to previous steps, saves progress in local storage, and submits all data at the final step.",
+            "solution": "This solution involves creating a form with multiple steps, validation logic for each step, and functionality to go back or move forward. Data is saved in local storage to maintain state between steps, and at the final step, the data is submitted.",
+            "subparts": [
+                {
+                    "question": "HTML Structure",
+                    "solution": "The HTML structure includes three sections for each form step and buttons for navigation between steps.",
+                    "code": "<!DOCTYPE html>\n&lt;html lang=\"en\"&gt;\n&lt;head&gt;\n    &lt;meta charset=\"UTF-8\"&gt;\n    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n    &lt;title&gt;Multi-Step Form&lt;/title&gt;\n    &lt;style&gt;\n        .step { display: none; }\n        .active { display: block; }\n    &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;h2&gt;Multi-Step Form&lt;/h2&gt;\n    &lt;form id=\"multiStepForm\"&gt;\n        &lt;div id=\"step1\" class=\"step active\"&gt;\n            &lt;h3&gt;Step 1: Personal Information&lt;/h3&gt;\n            &lt;label for=\"name\"&gt;Name:&lt;/label&gt;&lt;input type=\"text\" id=\"name\" name=\"name\"&gt;&lt;br&gt;&lt;br&gt;\n            &lt;label for=\"email\"&gt;Email:&lt;/label&gt;&lt;input type=\"email\" id=\"email\" name=\"email\"&gt;&lt;br&gt;&lt;br&gt;\n            &lt;button type=\"button\" onclick=\"nextStep(1)\"&gt;Next&lt;/button&gt;\n        &lt;/div&gt;\n        &lt;div id=\"step2\" class=\"step\"&gt;\n            &lt;h3&gt;Step 2: Address&lt;/h3&gt;\n            &lt;label for=\"address\"&gt;Address:&lt;/label&gt;&lt;input type=\"text\" id=\"address\" name=\"address\"&gt;&lt;br&gt;&lt;br&gt;\n            &lt;button type=\"button\" onclick=\"prevStep(2)\"&gt;Back&lt;/button&gt;\n            &lt;button type=\"button\" onclick=\"nextStep(2)\"&gt;Next&lt;/button&gt;\n        &lt;/div&gt;\n        &lt;div id=\"step3\" class=\"step\"&gt;\n            &lt;h3&gt;Step 3: Payment&lt;/h3&gt;\n            &lt;label for=\"cardNumber\"&gt;Card Number:&lt;/label&gt;&lt;input type=\"text\" id=\"cardNumber\" name=\"cardNumber\"&gt;&lt;br&gt;&lt;br&gt;\n            &lt;button type=\"button\" onclick=\"prevStep(3)\"&gt;Back&lt;/button&gt;\n            &lt;button type=\"button\" onclick=\"submitForm()\"&gt;Submit&lt;/button&gt;\n        &lt;/div&gt;\n    &lt;/form&gt;\n    &lt;script src=\"/path/to/your/script.js\"&gt;&lt;/script&gt;\n&lt;/body&gt;\n&lt;/html&gt;"
+                },
+                {
+                    "question": "JavaScript Functionality",
+                    "solution": "The JavaScript handles navigation between steps, validation of form data, saving progress in local storage, and submitting the form data at the final step.",
+                    "code": "let currentStep = 1;\n\n// Function to move to next step\nfunction nextStep(step) {\n    // Validate current step before proceeding\n    if (step === 1 && !validateStep1()) return;\n    if (step === 2 && !validateStep2()) return;\n\n    currentStep = step + 1;\n    updateForm();\n}\n\n// Function to go back to previous step\nfunction prevStep(step) {\n    currentStep = step - 1;\n    updateForm();\n}\n\n// Function to update form visibility\nfunction updateForm() {\n    for (let i = 1; i <= 3; i++) {\n        const step = document.getElementById('step' + i);\n        step.classList.remove('active');\n    }\n    const currentStepElement = document.getElementById('step' + currentStep);\n    currentStepElement.classList.add('active');\n    saveProgress();\n}\n\n// Validate Step 1\nfunction validateStep1() {\n    const name = document.getElementById('name').value;\n    const email = document.getElementById('email').value;\n    if (!name || !email) {\n        alert('Please fill in all fields in Step 1');\n        return false;\n    }\n    return true;\n}\n\n// Validate Step 2\nfunction validateStep2() {\n    const address = document.getElementById('address').value;\n    if (!address) {\n        alert('Please fill in the address field in Step 2');\n        return false;\n    }\n    return true;\n}\n\n// Save progress in localStorage\nfunction saveProgress() {\n    const name = document.getElementById('name').value;\n    const email = document.getElementById('email').value;\n    const address = document.getElementById('address').value;\n    const cardNumber = document.getElementById('cardNumber').value;\n    localStorage.setItem('name', name);\n    localStorage.setItem('email', email);\n    localStorage.setItem('address', address);\n    localStorage.setItem('cardNumber', cardNumber);\n}\n\n// Retrieve saved progress\nfunction retrieveProgress() {\n    document.getElementById('name').value = localStorage.getItem('name') || '';\n    document.getElementById('email').value = localStorage.getItem('email') || '';\n    document.getElementById('address').value = localStorage.getItem('address') || '';\n    document.getElementById('cardNumber').value = localStorage.getItem('cardNumber') || '';\n}\n\n// Submit form data\nfunction submitForm() {\n    const name = document.getElementById('name').value;\n    const email = document.getElementById('email').value;\n    const address = document.getElementById('address').value;\n    const cardNumber = document.getElementById('cardNumber').value;\n\n    const formData = {\n        name,\n        email,\n        address,\n        cardNumber\n    };\n\n    console.log('Form Submitted:', formData);\n    alert('Form submitted successfully!');\n    localStorage.clear();\n}\n\n// Initialize form with saved progress\nretrieveProgress();"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "Implement a task management system using JavaScript with a class `TaskManager` that handles tasks, operations history, localStorage persistence, and tab synchronization.",
+            "solution": "The solution involves creating a `TaskManager` class with various methods for task management, undo/redo operations, persistence, and syncing state across tabs using localStorage and the 'storage' event.",
+            "subparts": [
+                {
+                    "question": "TaskManager Class Implementation",
+                    "solution": "The `TaskManager` class manages an array of tasks, provides methods for adding/editing tasks, toggling status, and handles operations history with undo/redo functionality. It also persists tasks using localStorage and syncs across tabs.",
+                    "code": "class TaskManager {\n    #tasks = [];\n    #operationsHistory = [];\n    #historyPointer = -1;\n\n    constructor() {\n        this.loadFromStorage();\n        window.addEventListener('storage', () => this.syncTabs());\n    }\n\n    // Add a new task\n    addTask(title) {\n        const task = {\n            id: this.#tasks.length + 1,\n            title,\n            status: 'pending',\n            createdAt: new Date()\n        };\n        this.#tasks.push(task);\n        this.recordOperation('add', task);\n        this.saveToStorage();\n    }\n\n    // Edit a task\n    editTask(id, newTitle) {\n        const task = this.#tasks.find(t => t.id === id);\n        if (task) {\n            const oldTitle = task.title;\n            task.title = newTitle;\n            this.recordOperation('edit', { id, oldTitle, newTitle });\n            this.saveToStorage();\n        }\n    }\n\n    // Toggle task status between 'pending' and 'completed'\n    toggleStatus(id) {\n        const task = this.#tasks.find(t => t.id === id);\n        if (task) {\n            const oldStatus = task.status;\n            task.status = task.status === 'pending' ? 'completed' : 'pending';\n            this.recordOperation('toggleStatus', { id, oldStatus, newStatus: task.status });\n            this.saveToStorage();\n        }\n    }\n\n    // Record the operation for undo/redo functionality\n    recordOperation(action, data) {\n        this.#operationsHistory = this.#operationsHistory.slice(0, this.#historyPointer + 1);\n        this.#operationsHistory.push({ action, data });\n        this.#historyPointer++;\n    }\n\n    // Undo last action\n    undoLastAction() {\n        if (this.#historyPointer >= 0) {\n            const lastOperation = this.#operationsHistory[this.#historyPointer];\n            if (lastOperation.action === 'add') {\n                this.#tasks = this.#tasks.filter(t => t.id !== lastOperation.data.id);\n            } else if (lastOperation.action === 'edit') {\n                const task = this.#tasks.find(t => t.id === lastOperation.data.id);\n                if (task) task.title = lastOperation.data.oldTitle;\n            } else if (lastOperation.action === 'toggleStatus') {\n                const task = this.#tasks.find(t => t.id === lastOperation.data.id);\n                if (task) task.status = lastOperation.data.oldStatus;\n            }\n            this.#historyPointer--;\n            this.saveToStorage();\n        }\n    }\n\n    // Redo last undone action\n    redoLastAction() {\n        if (this.#historyPointer < this.#operationsHistory.length - 1) {\n            this.#historyPointer++;\n            const lastOperation = this.#operationsHistory[this.#historyPointer];\n            if (lastOperation.action === 'add') {\n                this.#tasks.push(lastOperation.data);\n            } else if (lastOperation.action === 'edit') {\n                const task = this.#tasks.find(t => t.id === lastOperation.data.id);\n                if (task) task.title = lastOperation.data.newTitle;\n            } else if (lastOperation.action === 'toggleStatus') {\n                const task = this.#tasks.find(t => t.id === lastOperation.data.id);\n                if (task) task.status = lastOperation.data.newStatus;\n            }\n            this.saveToStorage();\n        }\n    }\n\n    // Save tasks to localStorage\n    saveToStorage() {\n        localStorage.setItem('tasks', JSON.stringify(this.#tasks));\n        localStorage.setItem('operationsHistory', JSON.stringify(this.#operationsHistory));\n        localStorage.setItem('historyPointer', this.#historyPointer);\n    }\n\n    // Load tasks from localStorage\n    loadFromStorage() {\n        const tasks = localStorage.getItem('tasks');\n        if (tasks) this.#tasks = JSON.parse(tasks);\n        const operationsHistory = localStorage.getItem('operationsHistory');\n        if (operationsHistory) this.#operationsHistory = JSON.parse(operationsHistory);\n        const historyPointer = localStorage.getItem('historyPointer');\n        if (historyPointer) this.#historyPointer = parseInt(historyPointer);\n    }\n\n    // Sync tasks across tabs\n    syncTabs() {\n        this.loadFromStorage();\n        console.log('Tasks synced across tabs');\n    }\n\n    // Get tasks (to display them)\n    getTasks() {\n        return this.#tasks;\n    }\n}\n\n// Example usage\nconst taskManager = new TaskManager();\ntaskManager.addTask('Learn JavaScript');\ntaskManager.addTask('Write Code');\ntaskManager.editTask(1, 'Learn Advanced JavaScript');\ntaskManager.toggleStatus(2);"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": "You are building a vehicle speed monitoring system. Explain the implementation of the SpeedLimiter class.",
+            "solution": "The SpeedLimiter class provides a way to manage vehicle speed, with methods to accelerate, brake, and control the maximum speed using getter and setter methods. It prevents exceeding the maximum speed limit and converts speed units from km/h to mph.",
+            "subparts": [
+                {
+                    "question": "What is the purpose of the #currentSpeed and #maxSpeed private properties?",
+                    "solution": "The #currentSpeed property stores the current speed of the vehicle, while the #maxSpeed property stores the maximum allowed speed. Both are private to ensure the integrity of the speed values and prevent unauthorized modifications.",
+                    "code": "class SpeedLimiter { #currentSpeed = 0; #maxSpeed = 120; }"
+                },
+                {
+                    "question": "How does the getter for speed work?",
+                    "solution": "The getter for speed simply returns the value of the #currentSpeed property, providing the current speed in km/h to the user or other parts of the program.",
+                    "code": "get speed() { return this.#currentSpeed; }"
+                },
+                {
+                    "question": "How does the setter for speed prevent exceeding maxSpeed?",
+                    "solution": "The setter checks if the new speed exceeds the #maxSpeed property. If the speed is greater than the maximum allowed, it throws an error to prevent the speed from going over the limit.",
+                    "code": "set speed(value) { if (value > this.#maxSpeed) { throw new Error('Speed cannot exceed the maximum limit'); } this.#currentSpeed = value; }"
+                },
+                {
+                    "question": "What is the purpose of the speedMPH getter?",
+                    "solution": "The speedMPH getter converts the current speed from kilometers per hour to miles per hour using the conversion factor 1 km/h = 0.621371 mph, allowing the user to view the speed in both units.",
+                    "code": "get speedMPH() { return this.#currentSpeed * 0.621371; }"
+                },
+                {
+                    "question": "How do the accelerate and brake methods work?",
+                    "solution": "The accelerate method increases the speed by a specified amount, using the setter to ensure it does not exceed the max speed. The brake method decreases the speed by a specified amount, again using the setter to ensure the speed remains valid.",
+                    "code": "accelerate(amount) { this.speed = this.#currentSpeed + amount; } brake(amount) { this.speed = this.#currentSpeed - amount; }"
+                },
+                {
+                    "question":"FINALE CODE" ,
+                    "solution": "The provided code is a complete implementation of the SpeedLimiter class, with methods to accelerate, brake, and control the speed. It also includes a getter for speed in both km/h and mph, and a constructor that allows the maximum speed limit to be set when creating a new instance of the class.",
+                    "code": "class SpeedLimiter {\n  #currentSpeed = 0;\n  #maxSpeed = 120;\n\n  constructor(maxSpeed = 120) {\n    this.#maxSpeed = maxSpeed;\n  }\n\n  get speed() {\n    return this.#currentSpeed;\n  }\n\n  set speed(value) {\n    if (value > this.#maxSpeed) {\n      throw new Error('Speed cannot exceed the maximum limit');\n    }\n    this.#currentSpeed = value;\n  }\n\n  get speedMPH() {\n    return this.#currentSpeed * 0.621371;\n  }\n\n  accelerate(amount) {\n    this.speed = this.#currentSpeed + amount;\n  }\n\n  brake(amount) {\n    this.speed = this.#currentSpeed - amount;\n  }\n}\n\n// Example Usage:\nconst vehicle = new SpeedLimiter(150);\nvehicle.accelerate(50);\nconsole.log(vehicle.speed);     // 50\nconsole.log(vehicle.speedMPH);  // 31.06855\nvehicle.brake(20);\nconsole.log(vehicle.speed);     // 30\n"
+                }
+            ]
+        }
+        
+        
+        
+        
+        
+        
+    ]
+}

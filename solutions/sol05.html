@@ -92,7 +92,7 @@
         // Same JavaScript as previous files but with data source changed to sol05.json
         async function loadSolutions() {
             try {
-                const response = await fetch('../../data/sol05.json');
+                const response = await fetch('../data/sol05.json');
                 const data = await response.json();
 
                 document.getElementById('paper-title').textContent = data.title;

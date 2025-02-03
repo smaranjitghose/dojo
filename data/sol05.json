@@ -1,0 +1,260 @@
+{
+    "title": "NodeJS and Intro to Backend",
+  "date": "29th January 2025",
+    "mcqs": [
+        
+            {
+                "id": 1,
+                "question": "What's the correct way to handle file uploads in NodeJS while considering memory efficiency?",
+                "answer": "b) Use streams with pipe()",
+                "explanation": "Streams allow handling large files efficiently by processing data in chunks instead of loading the entire file into memory."
+            },
+            {
+                "id": 2,
+                "question": "Which of the following is TRUE about the Node.js Event Loop?",
+                "answer": "c) It processes the event queue after the call stack is empty",
+                "explanation": "The event loop ensures non-blocking I/O by processing events from the queue once the call stack is cleared."
+            },
+            {
+                "id": 3,
+                "question": "Which of the following statements is true about require() and import in Node.js?",
+                "answer": "d) require() is part of CommonJS, while import is part of ES modules",
+                "explanation": "Node.js supports CommonJS by default, whereas ES modules require specific configurations."
+            },
+            {
+                "id": 4,
+                "question": "What is the purpose of a buffer in Node.js?",
+                "answer": "a) To store binary data",
+                "explanation": "Buffers are used to handle raw binary data in memory before processing."
+            },
+            {
+                "id": 5,
+                "question": "What is the underlying JavaScript engine for NodeJS?",
+                "answer": "c) V8",
+                "explanation": "Node.js uses the V8 engine, developed by Google, to execute JavaScript code efficiently."
+            },
+            {
+                "id": 6,
+                "question": "Which of the following is NOT a feature of Node.js?",
+                "answer": "c) Blocking operations",
+                "explanation": "Node.js is designed to be asynchronous and non-blocking, making it efficient for I/O operations."
+            },
+            {
+                "id": 7,
+                "question": "Which of these is NOT a valid HTTP status code?",
+                "answer": "b) 601",
+                "explanation": "HTTP status codes range from 100 to 599. 601 is not a defined status code."
+            },
+            {
+                "id": 8,
+                "question": "How should you handle file paths in Node.js?",
+                "answer": "b) Use path module",
+                "explanation": "The 'path' module provides utilities for working with file and directory paths in a cross-platform manner."
+            },
+            {
+                "id": 9,
+                "question": "Which method is used to delete a file in Node.js?",
+                "answer": "a) fs.unlink()",
+                "explanation": "fs.unlink() is the correct method to delete files asynchronously."
+            },
+            {
+                "id": 10,
+                "question": "Which of the following is NOT a core module in Node.js?",
+                "answer": "c) chalk",
+                "explanation": "The 'chalk' module is a third-party library used for styling terminal output, not a built-in Node.js module."
+            }
+        
+        
+    ],
+    "shortQuestions": [
+        
+            {
+                "id": 1,
+                "question": "What is semantic versioning in NodeJS? Explain the meaning of ^, ~, and * in version numbers.",
+                "solution": "Semantic Versioning (SemVer) is a system for versioning software that follows the pattern MAJOR.MINOR.PATCH. \n- ^ (Caret): Updates to the latest minor or patch version, e.g., ^1.2.3 allows updates to 1.x.x but not 2.x.x. \n- ~ (Tilde): Updates to the latest patch version within the same minor version, e.g., ~1.2.3 allows updates to 1.2.x but not 1.3.x. \n- * (Wildcard): Allows any version, e.g., * will install the latest available version."
+            },
+            {
+                "id": 2,
+                "question": "What are environment variables? How do you read them in Node.js, and how do you specify an environment variable file using the CLI?",
+                "solution": "Environment variables store configuration values outside the code to maintain security and flexibility. \n- In Node.js, you can read environment variables using `process.env.VARIABLE_NAME`. \n- To load variables from a file, use a `.env` file and `dotenv` package (`require('dotenv').config()`). \n- Using CLI, set variables as `VARIABLE_NAME=value node app.js` (Linux/macOS) or `set VARIABLE_NAME=value && node app.js` (Windows)."
+            },
+            {
+                "id": 3,
+                "question": "Write the NPM commands to: a) Initialize a NodeJS project with defaults b) install the modules “chalk” and “ollama” c) globally install the “zod” module.",
+                "solution": "a) `npm init -y` \n b) `npm install chalk ollama` \n c) `npm install -g zod`"
+            },
+            {
+                "id": 4,
+                "question": "Briefly explain the five categories of HTTP status codes.",
+                "solution": "1xx - Informational: Request received, continuing process. (e.g., 100 Continue) \n2xx - Success: Request was successfully received and processed. (e.g., 200 OK, 201 Created) \n3xx - Redirection: Further action is needed to complete the request. (e.g., 301 Moved Permanently, 302 Found) \n4xx - Client Errors: The request contains bad syntax or cannot be fulfilled. (e.g., 400 Bad Request, 404 Not Found) \n5xx - Server Errors: The server failed to fulfill a valid request. (e.g., 500 Internal Server Error, 503 Service Unavailable)"
+            },
+            {
+                "id": 5,
+                "question": "What are the different types of modules in NodeJS? Explain with example for each.",
+                "solution": "Node.js modules allow code reuse and better organization. There are four main types of modules in Node.js:\n\n1. **Core Modules** - These are built-in modules provided by Node.js. They do not require installation and can be imported directly using `require()`. \n   Example:\n   ```js\n   const fs = require('fs');\n   fs.writeFileSync('test.txt', 'Hello, World!');\n   console.log('File created successfully!');\n   ```\n\n2. **Local Modules** - These are user-defined modules created within a Node.js project. Local modules are stored as separate files and can be imported using `require()`.\n   Example:\n   - `math.js` (Local Module):\n   ```js\n   function add(a, b) { return a + b; }\n   module.exports = { add };\n   ```\n   - `index.js` (Importing Local Module):\n   ```js\n   const math = require('./math');\n   console.log(math.add(5, 3));\n   ```\n\n3. **Third-Party Modules** - These are external modules installed via npm (Node Package Manager). These modules provide additional functionalities beyond core Node.js capabilities.\n   Example:\n   ```js\n   const express = require('express');\n   const app = express();\n   app.get('/', (req, res) => res.send('Hello, Express!'));\n   app.listen(3000, () => console.log('Server running on port 3000'));\n   ```\n\n4. **ES Modules (ECMAScript Modules)** - These are modern JavaScript modules using `import/export` syntax. To use them, set type: module in `package.json`.\n   Example:\n   - `math.mjs`:\n   ```js\n   export function multiply(a, b) { return a * b; }\n   ```\n   - `index.mjs`:\n   ```js\n   import { multiply } from './math.mjs';\n   console.log(multiply(4, 5));\n   ```"
+            },
+            {
+                "id": 6,
+                "question": "Explain the concept of the Event Loop in Node.js with a diagram. How does it handle asynchronous operations?",
+                "solution": "The Event Loop is the core mechanism in Node.js that enables non-blocking, asynchronous execution. It processes operations in phases and ensures that JavaScript remains single-threaded while handling multiple tasks.\n\n### **How the Event Loop Works:**\n1. **Call Stack:** Executes synchronous code first.\n2. **Task Queue:** Stores asynchronous tasks like `setTimeout`, I/O operations, and promises.\n3. **Microtask Queue:** Prioritizes `process.nextTick()` and resolved Promises before returning to the main loop.\n4. **Event Loop Execution Phases:**\n   - **Timers Phase:** Executes `setTimeout()` and `setInterval()` callbacks.\n   - **Pending Callbacks Phase:** Handles completed I/O operations.\n   - **Idle/Prepare Phase:** Used internally by Node.js.\n   - **Poll Phase:** Retrieves new I/O events, executing callbacks when data is available.\n   - **Check Phase:** Executes `setImmediate()` callbacks.\n   - **Close Callbacks Phase:** Executes cleanup functions like socket `close` events.\n\n### **Example of Asynchronous Behavior:**\n```js\nconsole.log('Start');\nsetTimeout(() => console.log('Timeout callback'), 0);\nPromise.resolve().then(() => console.log('Promise resolved'));\nconsole.log('End');\n```\n#### **Output Order:**\n1. Start\n2. End\n3. Promise resolved (Microtask queue executes before timers)\n4. Timeout callback (Executed in the Timers phase)\n\nThis demonstrates how the Event Loop processes synchronous tasks first, then handles Promises before executing timers and I/O callbacks."
+            },
+            {
+                "id": 7,
+                "question": "Write a Node.js program that creates a readable stream to read a large file named input.txt in chunks and pipes the data to a writable stream, saving it as transactions.txt.",
+                "solution": "Using streams helps efficiently process large files without loading them entirely into memory.",
+                "code": "const fs = require('fs');\nconst readableStream = fs.createReadStream('input.txt');\nconst writableStream = fs.createWriteStream('transactions.txt');\nreadableStream.pipe(writableStream);\nconsole.log('File copied successfully!');"
+            }
+        
+        
+    ],
+    "longQuestions": [
+        
+            {
+                "id": 1,
+                "question": "Using NodeJS, build a web server for a blog that achieves the following requirements.",
+                "solution": "",
+                "subparts": [
+                    {
+                        "question": "Create an HTTP server that listens on port 3000.",
+                        "solution": "The HTTP module in Node.js allows us to create a web server that listens on a specified port.",
+                        "code": "const http = require('http');\nconst server = http.createServer((req, res) => {});\nserver.listen(3000, () => console.log('Server running on port 3000'));"
+                    },
+                    {
+                        "question": "Log every incoming request (method and URL) to a file called request_logs.txt.",
+                        "solution": "The fs module is used to write request logs asynchronously to a file.",
+                        "code": "const fs = require('fs');\nserver.on('request', (req) => {\n  const log = `${req.method} ${req.url}\\n`;\n  fs.appendFile('request_logs.txt', log, err => { if (err) console.error(err); });\n});"
+                    },
+                    {
+                        "question": "Respond with an HTML page containing 'Welcome to BitVanguard' for the root route (/).",
+                        "solution": "The response header should be set to 'text/html' and an HTML message should be sent.",
+                        "code": "server.on('request', (req, res) => {\n  if (req.url === '/' && req.method === 'GET') {\n    res.writeHead(200, { 'Content-Type': 'text/html' });\n    res.end('<h1>Welcome to BitVanguard</h1>');\n  }\n});"
+                    },
+                    {
+                        "question": "Implement a /contact route that responds to all GET requests with JSON {“email”: “editor@bitvanguard.com”}.",
+                        "solution": "Set the Content-Type header to 'application/json' and send a JSON response.",
+                        "code": "server.on('request', (req, res) => {\n  if (req.url === '/contact' && req.method === 'GET') {\n    res.writeHead(200, { 'Content-Type': 'application/json' });\n    res.end(JSON.stringify({ email: 'editor@bitvanguard.com' }));\n  }\n});"
+                    },
+                    {
+                        "question": "Respond with a 404 status and a message 'Page not found' for all other routes.",
+                        "solution": "For any undefined route, send a 404 response with an error message.",
+                        "code": "server.on('request', (req, res) => {\n  res.writeHead(404, { 'Content-Type': 'text/plain' });\n  res.end('Page not found');\n});"
+                    },
+                    {
+                        "question": "Final completed code.",
+                        "solution": "Here is the final code for the entire web server.",
+                        "code": "const http = require('http');\nconst fs = require('fs');\n\nconst server = http.createServer((req, res) => {\n  const log = `${req.method} ${req.url}\\n`;\n  fs.appendFile('request_logs.txt', log, err => { if (err) console.error(err); });\n\n  if (req.url === '/' && req.method === 'GET') {\n    res.writeHead(200, { 'Content-Type': 'text/html' });\n    res.end('<h1>Welcome to BitVanguard</h1>');\n  } else if (req.url === '/contact' && req.method === 'GET') {\n    res.writeHead(200, { 'Content-Type': 'application/json' });\n    res.end(JSON.stringify({ email: 'editor@bitvanguard.com' }));\n  } else {\n    res.writeHead(404, { 'Content-Type': 'text/plain' });\n    res.end('Page not found');\n  }\n});\n\nserver.listen(3000, () => console.log('Server running on port 3000'));"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "question": "Using Node.js, create a program that performs the following operations asynchronously.",
+                "solution": "",
+                "subparts": [
+                    {
+                        "question": "Create a folder called vaccine_research.",
+                        "solution": "The fs module provides mkdir to create directories asynchronously.",
+                        "code": "const fs = require('fs');\nfs.mkdir('vaccine_research', { recursive: true }, err => { if (err) console.error(err); });"
+                    },
+                    {
+                        "question": "Inside the folder, create a file trial_notes.txt and write initial content.",
+                        "solution": "The writeFile method writes content to a new file inside the directory.",
+                        "code": "fs.writeFile('vaccine_research/trial_notes.txt', 'Phase 1 clinical trials show 85% efficacy rate with minimal side effects', err => { if (err) console.error(err); });"
+                    },
+                    {
+                        "question": "Append a new line to trial_notes.txt.",
+                        "solution": "The appendFile method is used to add new content to an existing file.",
+                        "code": "fs.appendFile('vaccine_research/trial_notes.txt', '\\nFollow-up studies indicate sustained immunity levels after 6 months', err => { if (err) console.error(err); });"
+                    },
+                    {
+                        "question": "Rename trial_notes.txt to phase1_results.txt.",
+                        "solution": "The rename method renames an existing file asynchronously.",
+                        "code": "fs.rename('vaccine_research/trial_notes.txt', 'vaccine_research/phase1_results.txt', err => { if (err) console.error(err); });"
+                    },
+                    {
+                        "question": "Read and display the contents of phase1_results.txt.",
+                        "solution": "The readFile method is used to read the file and display its contents.",
+                        "code": "fs.readFile('vaccine_research/phase1_results.txt', 'utf8', (err, data) => { if (err) console.error(err); console.log(data); });"
+                    },
+                    {
+                        "question": "Final completed code.",
+                        "solution": "Here is the final code for the entire program.",
+                        "code": "const fs = require('fs');\n\n// Create folder\nfs.mkdir('vaccine_research', { recursive: true }, err => { if (err) console.error(err); });\n\n// Create file and write initial content\nfs.writeFile('vaccine_research/trial_notes.txt', 'Phase 1 clinical trials show 85% efficacy rate with minimal side effects', err => { if (err) console.error(err); });\n\n// Append content\nfs.appendFile('vaccine_research/trial_notes.txt', '\\nFollow-up studies indicate sustained immunity levels after 6 months', err => { if (err) console.error(err); });\n\n// Rename file\nfs.rename('vaccine_research/trial_notes.txt', 'vaccine_research/phase1_results.txt', err => { if (err) console.error(err); });\n\n// Read file\nfs.readFile('vaccine_research/phase1_results.txt', 'utf8', (err, data) => { if (err) console.error(err); console.log(data); });"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "question": "Using Node.js, construct a program that compresses a file using gzip.",
+                "solution": "",
+                "subparts": [
+                    {
+                        "question": "Compress student_records.txt using gzip compression.",
+                        "solution": "The zlib module provides gzip functionality for compressing files.",
+                        "code": "const fs = require('fs');\nconst zlib = require('zlib');\nconst gzip = zlib.createGzip();\nconst input = fs.createReadStream('student_records.txt');\nconst output = fs.createWriteStream('student_records.txt.gz');\ninput.pipe(gzip).pipe(output);"
+                    },
+                    {
+                        "question": "Log the original and compressed file sizes.",
+                        "solution": "The fs.stat method retrieves file sizes.",
+                        "code": "fs.stat('student_records.txt', (err, stats) => {\n  console.log(`Original Size: ${stats.size} bytes`);\n});\nfs.stat('student_records.txt.gz', (err, stats) => {\n  console.log(`Compressed Size: ${stats.size} bytes`);\n});"
+                    },
+                    {
+                        "question": "Log the compression timestamp in compression_log.txt.",
+                        "solution": "The appendFile method logs the compression timestamp.",
+                        "code": "fs.appendFile('compression_log.txt', `Compressed at: ${new Date().toISOString()}\\n`, err => { if (err) console.error(err); });"
+                    },
+                    {
+                        "question": "Log a success message when compression is complete.",
+                        "solution": "Use the 'finish' event to confirm completion.",
+                        "code": "output.on('finish', () => console.log('Student records archived successfully!'));"
+                    },
+                    {
+                        "question": "Final completed code.",
+                        "solution": "Here is the final code for the entire program.",
+                        "code": "const fs = require('fs');\nconst zlib = require('zlib');\nconst gzip = zlib.createGzip();\n\nconst input = fs.createReadStream('student_records.txt');\nconst output = fs.createWriteStream('student_records.txt.gz');\n\ninput.pipe(gzip).pipe(output);\n\nfs.stat('student_records.txt', (err, stats) => {\n  console.log(`Original Size: ${stats.size} bytes`);\n});\nfs.stat('student_records.txt.gz', (err, stats) => {\n  console.log(`Compressed Size: ${stats.size} bytes`);\n});\n\nfs.appendFile('compression_log.txt', `Compressed at: ${new Date().toISOString()}\\n`, err => { if (err) console.error(err); });\n\noutput.on('finish', () => console.log('Student records archived successfully!'));"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "question": "Using Node.js, forge a command-line application to manage contacts.",
+                "solution": "",
+                "subparts": [
+                    {
+                        "question": "Use contacts.txt to store contact information.",
+                        "solution": "The contacts.txt file will store contacts in a structured format.",
+                        "code": "const fs = require('fs');\nif (!fs.existsSync('contacts.txt')) fs.writeFileSync('contacts.txt', '');"
+                    },
+                    {
+                        "question": "Implement command node contact.js add to add new contact.",
+                        "solution": "Command-line arguments are used to add a new contact.",
+                        "code": "const name = process.argv[3];\nconst phone = process.argv[4];\nfs.appendFile('contacts.txt', `${name},${phone}\\n`, err => { if (err) console.error(err); console.log('Contact added!'); });"
+                    },
+                    {
+                        "question": "Implement command node contact.js list to show all contacts.",
+                        "solution": "Read and display the contact list.",
+                        "code": "fs.readFile('contacts.txt', 'utf8', (err, data) => { if (err) console.error(err); console.log(data); });"
+                    },
+                    {
+                        "question": "Implement command node contact.js search to find a contact.",
+                        "solution": "Filter contacts based on search query.",
+                        "code": "const query = process.argv[3];\nfs.readFile('contacts.txt', 'utf8', (err, data) => { \n  if (err) console.error(err);\n  const results = data.split('\\n').filter(line => line.includes(query));\n  console.log(results.length ? results : 'No contact found');\n});"
+                    },
+                    {
+                        "question": "Final completed code.",
+                        "solution": "Here is the final code that implements the complete functionality for the command-line contact management app.",
+                        "code": "const fs = require('fs');\nconst readline = require('readline');\nconst path = 'contacts.txt';\nconst rl = readline.createInterface({\n  input: process.stdin,\n  output: process.stdout\n});\n\nif (!fs.existsSync(path)) {\n  fs.writeFileSync(path, '', 'utf8');\n}\n\nconst addContact = (name, phone, email) => {\n  const contact = `${name},${phone},${email}\\n`;\n  fs.appendFileSync(path, contact, 'utf8');\n  console.log('Contact added successfully!');\n};\n\nif (process.argv[2] === 'add') {\n  rl.question('Enter name: ', name => {\n    rl.question('Enter phone number: ', phone => {\n      rl.question('Enter email: ', email => {\n        if (!name.trim()) {\n          console.log('Name cannot be empty.');\n          rl.close();\n        } else if (!/\\d{10}/.test(phone)) {\n          console.log('Invalid phone number.');\n          rl.close();\n        } else if (!email) {\n          console.log('Email cannot be empty.');\n          rl.close();\n        } else {\n          addContact(name, phone, email);\n          rl.close();\n        }\n      });\n    });\n  });\n}\n\nif (process.argv[2] === 'list') {\n  fs.readFile(path, 'utf8', (err, data) => {\n    if (err) console.error('Error reading contacts file.');\n    else console.log('Contacts:\\n' + data);\n  });\n}\n\nconst searchContact = (searchTerm) => {\n  fs.readFile(path, 'utf8', (err, data) => {\n    if (err) console.error('Error reading contacts file.');\n    else {\n      const contacts = data.split('\\n').filter(line => line.includes(searchTerm));\n      if (contacts.length > 0) {\n        console.log('Found contacts:\\n' + contacts.join('\\n'));\n      } else {\n        console.log('No contact found.');\n      }\n    }\n  });\n};\n\nif (process.argv[2] === 'search') {\n  const searchTerm = process.argv[3];\n  searchContact(searchTerm);\n}"
+                    }
+                ]
+            }
+        ]
+                  
+        }
+        
+        
+        
+        
+        
+        
+    
+
