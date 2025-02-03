@@ -4,10 +4,10 @@
 
 <div align="center">
 
-<a href="https://dojo-steel.vercel.app/papers.html"><img src="https://img.shields.io/badge/Live%20Project-Visit%20Now-brightgreen"></a>
-<a href="https://github.com/your-repo-link"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
-<a href="https://github.com/your-repo-link/issues"><img src="https://img.shields.io/github/issues/your-repo-link?color=0059b3"></a>
-<a href="https://github.com/your-repo-link/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?v=103"></a>
+<a href="https://dojo-steel.vercel.app"><img src="https://img.shields.io/badge/Live%20Project-Visit%20Now-brightgreen"></a>
+<a href="https://github.com/smaranjitghose/dojo"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
+<a href="https://github.com/smaranjitghose/dojo/issues"><img src="https://img.shields.io/github/issues/your-repo-link?color=0059b3"></a>
+<a href="https://github.com/smaranjitghose/dojo/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?v=103"></a>
 
 </div>
 
@@ -21,9 +21,9 @@ Dojo is a platform designed to streamline access to research papers and academic
 - 🌐 **Accessible from anywhere with an internet connection**
 
 ## Live Demo 🌍
-Check out Dojo in action: [Dojo Website](https://dojo-steel.vercel.app/papers.html)
+Check out Dojo in action: [Dojo Website](https://dojo-steel.vercel.app)
 
-## Screenshots 🖼️
+
 ### Home Page
 ![Homepagegif](./asset_readme/Homepagegif.gif)
 
@@ -33,14 +33,6 @@ Check out Dojo in action: [Dojo Website](https://dojo-steel.vercel.app/papers.ht
 ![TestpageGif](./asset_readme/TestpageGif.gif)
 
 
-## Getting Started 🚀
-### Installation
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-repo-link.git
-   cd dojo
-   ```
-
 ## Contributing 🤝
 We welcome contributions! If you’d like to contribute, please follow these steps:
 1. Fork the repository
@@ -49,15 +41,16 @@ We welcome contributions! If you’d like to contribute, please follow these ste
 4. Push to your fork and submit a Pull Request
 
 For detailed guidelines, check our [Contribution Guide](./CONTRIBUTING.md).
-aedb6e4c8fa4
 ## License 📜
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Maintainers 👨‍💻
+<div style="display:flex; justify-content:center">
+
 | <img src="./asset_readme/Mentor.png" width="250px"> |
 | :------------------------------------------: |
 | [Smaranjit Ghose](https://github.com/smaranjitghose/) |
-
+</div>
 ## Contributors 🌟
 A huge thanks to our contributors!
 <a href="https://github.com/smaranjitghose/dojo/graphs/contributors">
